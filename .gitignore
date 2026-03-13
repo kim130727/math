@@ -5,6 +5,9 @@ build/
 dist/
 wheels/
 *.egg-info
+.env
+tts_output/
+media/
 
 # Virtual environments
 .venv
