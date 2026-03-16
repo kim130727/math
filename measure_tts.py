@@ -1,76 +1,70 @@
 from __future__ import annotations
 
 import json
+import sys
 from pathlib import Path
+
 from mutagen.mp3 import MP3
 
-AUDIO_DIR = Path("tts_output")
-OUTPUT_JSON = Path("timings.json")
 
-ORDER = [
-    "01_title",
-    "02_question",
-    "03_no_multiply",
-    "04_repeat_add_intro",
-    "05_repeat_add_count",
-    "06_inconvenient",
-    "07_multiplication_meaning",
-    "08_short_expression",
-    "09_grid_intro",
-    "10_grid_explain",
-    "11_grid_concept",
-    "12_conclusion",
-    "13_formula_wrapup",
-    "14_final",
-]
+PROJECT_DIR = Path(__file__).resolve().parent
+SCRIPT_FILE = PROJECT_DIR / "script.txt"
+TTS_DIR = PROJECT_DIR / "tts_output"
+TIMINGS_FILE = PROJECT_DIR / "timings.json"
 
 
-def get_mp3_duration_seconds(path: Path) -> float:
-    audio = MP3(path)
-    return float(audio.info.length)
+def load_scene_count(script_file: Path) -> int:
+    if not script_file.exists():
+        raise FileNotFoundError(f"스크립트 파일이 없습니다: {script_file}")
+
+    count = 0
+    lines = script_file.read_text(encoding="utf-8").splitlines()
+
+    for raw in lines:
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        count += 1
+
+    if count == 0:
+        raise ValueError("script.txt에 장면 데이터가 없습니다.")
+
+    return count
 
 
-def main() -> None:
-    if not AUDIO_DIR.exists():
-        raise FileNotFoundError(f"오디오 폴더가 없습니다: {AUDIO_DIR.resolve()}")
+def measure_tts() -> None:
+    scene_count = load_scene_count(SCRIPT_FILE)
 
-    timings: dict[str, float] = {}
-    missing_files: list[str] = []
+    durations: list[float] = []
+    missing: list[str] = []
 
-    print(f"오디오 폴더: {AUDIO_DIR.resolve()}")
-    print("-" * 50)
-
-    total_duration = 0.0
-
-    for name in ORDER:
-        mp3_path = AUDIO_DIR / f"{name}.mp3"
+    for idx in range(1, scene_count + 1):
+        mp3_path = TTS_DIR / f"{idx:02d}.mp3"
 
         if not mp3_path.exists():
-            missing_files.append(mp3_path.name)
-            print(f"[누락] {mp3_path.name}")
+            missing.append(mp3_path.name)
             continue
 
-        duration = round(get_mp3_duration_seconds(mp3_path), 2)
-        timings[name] = duration
-        total_duration += duration
+        audio = MP3(mp3_path)
+        durations.append(round(float(audio.info.length), 3))
 
-        print(f"{mp3_path.name:<32} {duration:>6.2f} sec")
+    if missing:
+        raise FileNotFoundError("다음 mp3 파일이 없습니다: " + ", ".join(missing))
 
-    print("-" * 50)
-    print(f"총 길이: {total_duration:.2f} sec")
+    payload = {"durations": durations}
 
-    OUTPUT_JSON.write_text(
-        json.dumps(timings, ensure_ascii=False, indent=2),
+    TIMINGS_FILE.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2),
         encoding="utf-8",
     )
 
-    print(f"저장 완료: {OUTPUT_JSON.resolve()}")
-
-    if missing_files:
-        print("\n누락된 파일:")
-        for filename in missing_files:
-            print(f" - {filename}")
+    print("[DONE] timings.json 생성 완료")
+    print(json.dumps(payload, ensure_ascii=False, indent=2))
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        measure_tts()
+    except Exception as exc:
+        print(f"[ERROR] {exc}")
+        sys.exit(1)

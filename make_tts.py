@@ -1,54 +1,148 @@
+from __future__ import annotations
+
+import sys
 from pathlib import Path
-import os
+
 from dotenv import load_dotenv
 from openai import OpenAI
 
-# .env 로드
-load_dotenv()
 
-client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
-)
-
-OUT_DIR = Path("tts_output")
-OUT_DIR.mkdir(exist_ok=True)
+PROJECT_DIR = Path(__file__).resolve().parent
+SCRIPT_FILE = PROJECT_DIR / "script.txt"
+OUTPUT_DIR = PROJECT_DIR / "tts_output"
 
 MODEL = "gpt-4o-mini-tts"
 VOICE = "alloy"
 
-INSTRUCTIONS = (
-    "초등학생 대상 수학 강의 내레이션입니다. "
-    "친절하고 또렷하게, 너무 빠르지 않게 읽어주세요. "
-    "문장 사이에는 자연스러운 짧은 쉬는 구간을 넣고, "
-    "숫자와 수식은 분명하게 발음해주세요."
-)
 
-SEGMENTS = [
-    ("01_title", "왜 곱하기를 배워야 할까요?"),
-    ("02_question", "여러분, 8 곱하기 8은 얼마일까요? 맞아요. 64입니다. 그런데 왜 우리는 곱하기를 배워야 할까요?"),
-    ("03_no_multiply", "곱하기를 배우지 않았다면, 8 곱하기 8을 바로 계산할 수 없어요. 대신 8을 8번 더해야 합니다."),
-    ("04_repeat_add_intro", "즉, 8을 8번 더해야 하지요."),
-    ("05_repeat_add_count", "8, 16, 24, 32, 40, 48, 56, 64."),
-    ("06_inconvenient", "이 방법도 틀리지는 않아요. 하지만 수가 커질수록 너무 길고 불편해집니다."),
-    ("07_multiplication_meaning", "그래서 수학에서는 같은 수를 반복해서 더하는 것을 더 간단하게 나타내는 방법을 만들었습니다. 그것이 바로 곱하기입니다."),
-    ("08_short_expression", "8을 8번 더하는 것을 8 곱하기 8이라고 짧고 효율적으로 쓰는 것입니다."),
-    ("09_grid_intro", "8개씩 있는 줄이 8줄 있다고 생각해 볼까요?"),
-    ("10_grid_explain", "한 줄에 8개, 그런 줄이 8개 있으면 모두 64개가 됩니다."),
-    ("11_grid_concept", "이처럼 곱하기는 반복되는 더하기를 한눈에 보이게 해 주는 약속입니다."),
-    ("12_conclusion", "정리해 볼게요. 곱하기를 배우는 이유는 같은 수를 여러 번 더해야 할 때 더 빠르고, 더 짧고, 더 정확하게 계산하기 위해서입니다."),
-    ("13_formula_wrapup", "그래서 8 더하기 8 더하기 8 더하기 8 더하기 8 더하기 8 더하기 8 더하기 8은 64를, 8 곱하기 8은 64로 간단하게 표현하는 것입니다."),
-    ("14_final", "즉, 곱하기는 반복되는 더하기를 효율적으로 바꿔 주는 수학의 도구입니다."),
-]
+def load_script(script_file: Path) -> list[dict]:
+    if not script_file.exists():
+        raise FileNotFoundError(f"스크립트 파일이 없습니다: {script_file}")
 
-for name, text in SEGMENTS:
-    out_path = OUT_DIR / f"{name}.mp3"
+    scenes: list[dict] = []
 
-    with client.audio.speech.with_streaming_response.create(
-        model=MODEL,
-        voice=VOICE,
-        input=text,
-        instructions=INSTRUCTIONS,
-    ) as response:
-        response.stream_to_file(out_path)
+    lines = script_file.read_text(encoding="utf-8").splitlines()
+    for line_no, raw in enumerate(lines, start=1):
+        line = raw.strip()
 
-    print(f"saved: {out_path}")
+        if not line or line.startswith("#"):
+            continue
+
+        parts = [p.strip() for p in line.split("|")]
+        scene_type = parts[0].lower()
+
+        scenes.append(
+            {
+                "line_no": line_no,
+                "type": scene_type,
+                "parts": parts[1:],
+                "raw": raw,
+            }
+        )
+
+    if not scenes:
+        raise ValueError("script.txt에 장면 데이터가 없습니다.")
+
+    return scenes
+
+
+def tts_text_for_scene(scene: dict) -> str:
+    scene_type = scene["type"]
+    parts = scene["parts"]
+
+    if scene_type == "title":
+        if len(parts) < 2:
+            raise ValueError("title 장면은 'title|제목|부제' 형식이어야 합니다.")
+        return f"{parts[0]}. {parts[1]}"
+
+    if scene_type == "question":
+        if len(parts) < 2:
+            raise ValueError("question 장면은 'question|수식|질문문장' 형식이어야 합니다.")
+        return parts[1]
+
+    if scene_type == "explain":
+        if len(parts) < 3:
+            raise ValueError(
+                "explain 장면은 'explain|윗문장|아랫문장|반복덧셈수식' 형식이어야 합니다."
+            )
+        return f"{parts[0]}. {parts[1]}."
+
+    if scene_type == "count_add":
+        if len(parts) < 2:
+            raise ValueError("count_add 장면은 'count_add|더하는수|몇번' 형식이어야 합니다.")
+        addend = parts[0]
+        count = parts[1]
+        return f"{addend}을 {count}번 더해 볼까요?"
+
+    if scene_type == "highlight":
+        if len(parts) < 2:
+            raise ValueError("highlight 장면은 'highlight|강조할수식|강조문장' 형식이어야 합니다.")
+        return parts[1]
+
+    if scene_type == "meaning":
+        if len(parts) < 2:
+            raise ValueError("meaning 장면은 'meaning|문장1|문장2' 형식이어야 합니다.")
+        return f"{parts[0]}. {parts[1]}"
+
+    if scene_type == "short_expr":
+        if len(parts) < 2:
+            raise ValueError(
+                "short_expr 장면은 'short_expr|반복덧셈수식|곱셈수식' 형식이어야 합니다."
+            )
+        add_expr = parts[0].replace("+", " 더하기 ")
+        mul_expr = parts[1].replace(r"\times", " 곱하기 ")
+        return f"{add_expr}. 이것을 {mul_expr} 로 간단히 나타낼 수 있습니다."
+
+    if scene_type == "grid":
+        if len(parts) < 6:
+            raise ValueError(
+                "grid 장면은 'grid|행수|열수|윗문장|왼쪽라벨|아래라벨|결과수식' 형식이어야 합니다."
+            )
+        title_text = parts[2]
+        result_text = parts[5].replace(r"\times", " 곱하기 ")
+        return f"{title_text}. 그래서 {result_text} 입니다."
+
+    if scene_type == "conclusion":
+        if len(parts) < 5:
+            raise ValueError(
+                "conclusion 장면은 "
+                "'conclusion|제목|문장1|문장2|긴수식|짧은수식' 형식이어야 합니다."
+            )
+        return f"{parts[0]}. {parts[1]}. {parts[2]}."
+
+    raise ValueError(f"{scene['line_no']}번째 줄: 알 수 없는 장면 종류입니다: {scene_type}")
+
+
+def make_tts() -> None:
+    load_dotenv()
+    client = OpenAI()
+
+    scenes = load_script(SCRIPT_FILE)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    total = len(scenes)
+    print(f"[INFO] 총 {total}개 장면의 TTS를 생성합니다.")
+
+    for idx, scene in enumerate(scenes, start=1):
+        output_path = OUTPUT_DIR / f"{idx:02d}.mp3"
+        text = tts_text_for_scene(scene)
+
+        print(f"[{idx}/{total}] 생성 중: {output_path.name}")
+        print(f"  TTS: {text}")
+
+        with client.audio.speech.with_streaming_response.create(
+            model=MODEL,
+            voice=VOICE,
+            input=text,
+        ) as response:
+            response.stream_to_file(output_path)
+
+    print("[DONE] TTS 생성 완료")
+
+
+if __name__ == "__main__":
+    try:
+        make_tts()
+    except Exception as exc:
+        print(f"[ERROR] {exc}")
+        sys.exit(1)

@@ -8,8 +8,7 @@ wheels/
 .env
 tts_output/
 media/
+tts_output/
 
 # Virtual environments
 .venv
-
-/media/
