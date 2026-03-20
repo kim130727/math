@@ -283,9 +283,9 @@ def build_new_concept_scene(spec: VideoSpec) -> SceneSpec:
             type="transform",
             payload={
                 "from_expression": repeated,
-                "to_expression": f"{addend}\\times{count}",
+                "to_expression": f"{count}\\times{addend}",
             },
-            tts=f"그래서 {addend} 곱하기 {count}로 짧게 나타냅니다.",
+            tts=f"그래서 {count} 곱하기 {addend}로 짧게 나타냅니다.",
         )
 
     if ex_type == "division_grouping":

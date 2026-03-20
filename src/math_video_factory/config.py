@@ -1,11 +1,11 @@
 from __future__ import annotations
 
+import os
 from pathlib import Path
 
+from dotenv import load_dotenv
 
-# =========================================
-# 기본 경로 설정
-# =========================================
+load_dotenv()
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
@@ -21,46 +21,18 @@ VIDEOS_DIR = GENERATED_DIR / "videos"
 ASSETS_DIR = PROJECT_ROOT / "assets"
 FONTS_DIR = ASSETS_DIR / "fonts"
 
+MANIM_QUALITY = os.getenv("MANIM_QUALITY", "-pqh")
 
-# =========================================
-# Manim 설정
-# =========================================
-
-MANIM_QUALITY = "-pqh"  # preview + high quality
-
-MANIM_ENTRY_FILE = (
-    PROJECT_ROOT
-    / "src"
-    / "math_video_factory"
-    / "manim_entry.py"
-)
-
+MANIM_ENTRY_FILE = PROJECT_ROOT / "src" / "math_video_factory" / "manim_entry.py"
 MANIM_SCENE_NAME = "AutoVideoScene"
 
+TTS_MODEL = os.getenv("TTS_MODEL", "gpt-4o-mini-tts")
+TTS_VOICE = os.getenv("TTS_VOICE", "alloy")
 
-# =========================================
-# TTS 설정
-# =========================================
+DEFAULT_FONT = os.getenv("DEFAULT_FONT", "Malgun Gothic")
 
-TTS_MODEL = "gpt-4o-mini-tts"
-TTS_VOICE = "alloy"
-
-
-# =========================================
-# 기본 폰트 설정
-# =========================================
-
-DEFAULT_FONT = "Malgun Gothic"
-
-
-# =========================================
-# 디렉토리 생성
-# =========================================
 
 def ensure_directories() -> None:
-    """
-    필요한 폴더 자동 생성
-    """
     for path in [
         GENERATED_DIR,
         SCRIPTS_DIR,

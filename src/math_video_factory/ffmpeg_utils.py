@@ -20,13 +20,14 @@ def check_ffmpeg_available() -> None:
 
 
 def list_mp3_files(audio_dir: Path) -> list[Path]:
-    """
-    오디오 폴더 안의 mp3 파일을 이름순으로 정렬해서 반환한다.
-    """
     if not audio_dir.exists():
         raise FileNotFoundError(f"오디오 폴더가 없습니다: {audio_dir}")
 
-    mp3_files = sorted(audio_dir.glob("*.mp3"))
+    mp3_files = sorted(
+        p for p in audio_dir.glob("*.mp3")
+        if not p.name.endswith("_merged.mp3")
+    )
+
     if not mp3_files:
         raise FileNotFoundError(f"mp3 파일이 없습니다: {audio_dir}")
 

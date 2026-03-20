@@ -75,24 +75,19 @@ def render_script_with_manim(
 
 
 def find_latest_rendered_video(scene_name: str = MANIM_SCENE_NAME) -> Path:
-    """
-    Manim 렌더 후 생성된 mp4를 media/videos 아래에서 찾아 반환한다.
-    """
     search_root = PROJECT_ROOT / "media" / "videos"
 
     if not search_root.exists():
-        raise FileNotFoundError(
-            f"Manim 렌더 출력 폴더가 없습니다: {search_root}"
-        )
+        raise FileNotFoundError(f"Manim 렌더 출력 폴더가 없습니다: {search_root}")
 
-    candidates = sorted(search_root.glob(f"**/{scene_name}.mp4"))
-
+    candidates = list(search_root.glob(f"**/{scene_name}.mp4"))
     if not candidates:
         raise FileNotFoundError(
             f"Manim 렌더 결과를 찾지 못했습니다. scene_name={scene_name}"
         )
 
-    return candidates[-1]
+    candidates.sort(key=lambda p: p.stat().st_mtime, reverse=True)
+    return candidates[0]
 
 
 def copy_rendered_video_to(rendered_video_path: Path, out_path: Path) -> Path:

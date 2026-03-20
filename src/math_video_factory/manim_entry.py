@@ -6,7 +6,7 @@ from pathlib import Path
 
 from manim import *
 
-from .config import DEFAULT_FONT
+from math_video_factory.config import DEFAULT_FONT
 
 
 def load_script_data() -> dict:
