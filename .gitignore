@@ -6,6 +6,7 @@ dist/
 wheels/
 *.egg-info
 .env
+.env.example
 tts_output/
 media/
 tts_output/
