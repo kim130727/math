@@ -12,9 +12,10 @@ videos:
       - "개수"
       - "세기"
     example:
-      type: "place_value"
-      number: 7
-    visual_model: "place_value_blocks"
+      type: "repeated_addition"
+      addend: 1
+      count: 7
+    visual_model: "dots"
     narration_style: "초등 친화적"
     conclusion: "숫자는 물건의 이름이 아니라 개수의 이름입니다."
 

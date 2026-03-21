@@ -6,7 +6,7 @@ from typing import Any
 
 @dataclass
 class ExampleSpec:
-    type: str
+    type: str = ""
     data: dict[str, Any] = field(default_factory=dict)
 
 

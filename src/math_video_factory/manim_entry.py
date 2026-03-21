@@ -10,9 +10,6 @@ from math_video_factory.config import DEFAULT_FONT
 
 
 def load_script_data() -> dict:
-    """
-    환경변수 VIDEO_SCRIPT_PATH 에서 script JSON 파일을 읽는다.
-    """
     script_path = os.environ.get("VIDEO_SCRIPT_PATH")
     if not script_path:
         raise ValueError("VIDEO_SCRIPT_PATH 환경변수가 설정되지 않았습니다.")
@@ -32,6 +29,31 @@ def load_script_data() -> dict:
     return data
 
 
+def load_timing_data() -> list[float]:
+    timing_path = os.environ.get("VIDEO_TIMING_PATH")
+    if not timing_path:
+        return []
+
+    path = Path(timing_path)
+    if not path.exists():
+        return []
+
+    data = json.loads(path.read_text(encoding="utf-8"))
+    durations = data.get("durations", [])
+
+    if not isinstance(durations, list):
+        return []
+
+    cleaned: list[float] = []
+    for value in durations:
+        try:
+            cleaned.append(float(value))
+        except (TypeError, ValueError):
+            cleaned.append(0.0)
+
+    return cleaned
+
+
 class AutoVideoScene(Scene):
     def construct(self) -> None:
         self.camera.background_color = WHITE
@@ -42,8 +64,11 @@ class AutoVideoScene(Scene):
 
         script_data = load_script_data()
         self.scenes_data = script_data["scenes"]
+        self.scene_durations = load_timing_data()
 
-        for scene in self.scenes_data:
+        for idx, scene in enumerate(self.scenes_data):
+            self.current_scene_index = idx
+
             scene_type = scene["type"]
             payload = scene.get("payload", {})
             tts_text = str(scene.get("tts", "")).strip()
@@ -74,11 +99,20 @@ class AutoVideoScene(Scene):
                 self.render_wrap_up(payload, tts_text)
             else:
                 raise ValueError(f"지원하지 않는 scene type: {scene_type}")
-
+            
     def hold_time(self, tts_text: str, minimum: float = 1.2) -> float:
         """
-        TTS 길이를 아직 직접 쓰지 않는 1차 버전용 간단 대기 시간 계산
+        가능하면 실제 측정된 mp3 길이를 사용하고,
+        없으면 문자 수 기반 추정치로 fallback 한다.
         """
+        idx = getattr(self, "current_scene_index", -1)
+
+        if 0 <= idx < len(getattr(self, "scene_durations", [])):
+            measured = float(self.scene_durations[idx])
+
+            # 음성 끝과 장면 전환이 너무 붙지 않게 소량 여유 추가
+            return max(measured + 0.25, minimum)
+
         estimated = max(len(tts_text) * 0.08, minimum)
         return min(estimated, 5.0)
 

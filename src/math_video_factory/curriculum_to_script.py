@@ -116,6 +116,11 @@ def build_problem_text(spec: VideoSpec) -> str:
 
     if ex_type == "equation_generalization":
         return "숫자가 계속 바뀌면 매번 새 식을 써야 할까요?"
+    
+    if ex_type == "counting_objects":
+        count = int(data.get("count", 5))
+        item = str(data.get("item", "사과"))
+        return f"{item}가 {count}개 있습니다. 우리는 물건 이름이 아니라 무엇을 보고 셀까요?"
 
     return f"{spec.concept}은 왜 필요할까요?"
 
@@ -240,6 +245,18 @@ def build_old_method_scene(spec: VideoSpec) -> SceneSpec | None:
                 "label": "비슷한 식들",
             },
             tts="숫자가 바뀔 때마다 식을 새로 쓰면 길고 번거롭습니다.",
+        )
+    
+    if ex_type == "counting_objects":
+        count = int(data.get("count", 5))
+        item = str(data.get("item", "사과"))
+        return SceneSpec(
+            type="concept",
+            payload={
+                "text": f"{item}를 하나씩 보아도 되지만, 수학에서는 전체 개수 {count}를 한 번에 생각할 수 있습니다.",
+                "tone": "normal",
+            },
+            tts=f"{item}를 하나씩 보아도 되지만, 수학에서는 전체 개수를 한 번에 생각할 수 있습니다.",
         )
 
     return None

@@ -4,6 +4,7 @@ import os
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 from .config import MANIM_ENTRY_FILE, MANIM_QUALITY, MANIM_SCENE_NAME, PROJECT_ROOT
@@ -31,16 +32,21 @@ def check_manim_available() -> None:
 def render_script_with_manim(
     script_json_path: Path,
     *,
+    timing_json_path: Path | None = None,
     entry_file: Path = MANIM_ENTRY_FILE,
     scene_name: str = MANIM_SCENE_NAME,
     quality_flag: str = MANIM_QUALITY,
     extra_env: dict[str, str] | None = None,
-) -> None:
+) -> float:
     """
     script JSON 경로를 환경변수로 넘겨 Manim 렌더를 수행한다.
+    반환값은 렌더 시작 시각(time.time())이다.
     """
     if not script_json_path.exists():
         raise FileNotFoundError(f"script JSON 파일이 없습니다: {script_json_path}")
+
+    if timing_json_path is not None and not timing_json_path.exists():
+        raise FileNotFoundError(f"timings JSON 파일이 없습니다: {timing_json_path}")
 
     if not entry_file.exists():
         raise FileNotFoundError(f"manim entry 파일이 없습니다: {entry_file}")
@@ -49,6 +55,9 @@ def render_script_with_manim(
 
     env = os.environ.copy()
     env["VIDEO_SCRIPT_PATH"] = str(script_json_path)
+
+    if timing_json_path is not None:
+        env["VIDEO_TIMING_PATH"] = str(timing_json_path)
 
     if extra_env:
         env.update(extra_env)
@@ -65,6 +74,10 @@ def render_script_with_manim(
     print("\n=== Manim 렌더 ===")
     print(" ".join(cmd))
     print(f"[INFO] VIDEO_SCRIPT_PATH={script_json_path}")
+    if timing_json_path is not None:
+        print(f"[INFO] VIDEO_TIMING_PATH={timing_json_path}")
+
+    started_at = time.time()
 
     subprocess.run(
         cmd,
@@ -73,8 +86,14 @@ def render_script_with_manim(
         env=env,
     )
 
+    return started_at
 
-def find_latest_rendered_video(scene_name: str = MANIM_SCENE_NAME) -> Path:
+
+def find_latest_rendered_video(
+    *,
+    scene_name: str = MANIM_SCENE_NAME,
+    started_after: float | None = None,
+) -> Path:
     search_root = PROJECT_ROOT / "media" / "videos"
 
     if not search_root.exists():
@@ -85,6 +104,14 @@ def find_latest_rendered_video(scene_name: str = MANIM_SCENE_NAME) -> Path:
         raise FileNotFoundError(
             f"Manim 렌더 결과를 찾지 못했습니다. scene_name={scene_name}"
         )
+
+    if started_after is not None:
+        filtered = [
+            p for p in candidates
+            if p.stat().st_mtime >= started_after - 1.0
+        ]
+        if filtered:
+            candidates = filtered
 
     candidates.sort(key=lambda p: p.stat().st_mtime, reverse=True)
     return candidates[0]
@@ -104,6 +131,7 @@ def copy_rendered_video_to(rendered_video_path: Path, out_path: Path) -> Path:
 
 def render_and_collect_video(
     script_json_path: Path,
+    timing_json_path: Path,
     output_video_path: Path,
     *,
     entry_file: Path = MANIM_ENTRY_FILE,
@@ -113,14 +141,18 @@ def render_and_collect_video(
     """
     Manim 렌더를 수행하고 결과 mp4를 지정 위치로 복사한다.
     """
-    render_script_with_manim(
+    started_at = render_script_with_manim(
         script_json_path=script_json_path,
+        timing_json_path=timing_json_path,
         entry_file=entry_file,
         scene_name=scene_name,
         quality_flag=quality_flag,
     )
 
-    rendered = find_latest_rendered_video(scene_name=scene_name)
+    rendered = find_latest_rendered_video(
+        scene_name=scene_name,
+        started_after=started_at,
+    )
     final_path = copy_rendered_video_to(rendered, output_video_path)
 
     print(f"[DONE] 렌더 영상 복사 완료: {final_path}")

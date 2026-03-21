@@ -10,6 +10,7 @@ from .config import (
     TTS_DIR,
     VIDEOS_DIR,
     ensure_directories,
+    validate_runtime_config,
 )
 from .curriculum_to_script import build_scripts_for_grade
 from .ffmpeg_utils import build_final_video
@@ -34,6 +35,8 @@ class BuildPipeline:
         특정 학년 전체 또는 특정 video_id 하나만 빌드한다.
         반환값은 최종 mp4 경로 리스트이다.
         """
+        validate_runtime_config(require_tts=True)
+
         curriculum = load_curriculum_by_grade(CURRICULUM_DIR, grade)
         scripts = build_scripts_for_grade(curriculum.grade, curriculum.videos)
 
@@ -87,6 +90,7 @@ class BuildPipeline:
         print(f"[STEP 4] Manim 렌더: {render_video_path}")
         render_and_collect_video(
             script_json_path=script_json_path,
+            timing_json_path=timing_json_path,
             output_video_path=render_video_path,
         )
 

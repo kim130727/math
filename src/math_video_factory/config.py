@@ -28,6 +28,7 @@ MANIM_SCENE_NAME = "AutoVideoScene"
 
 TTS_MODEL = os.getenv("TTS_MODEL", "gpt-4o-mini-tts")
 TTS_VOICE = os.getenv("TTS_VOICE", "alloy")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "").strip()
 
 DEFAULT_FONT = os.getenv("DEFAULT_FONT", "Malgun Gothic")
 
@@ -42,3 +43,15 @@ def ensure_directories() -> None:
         VIDEOS_DIR,
     ]:
         path.mkdir(parents=True, exist_ok=True)
+
+
+def validate_runtime_config(*, require_tts: bool = True) -> None:
+    """
+    실행 전 필수 환경변수를 검증한다.
+    """
+    if require_tts and not OPENAI_API_KEY:
+        raise RuntimeError(
+            "OPENAI_API_KEY가 설정되지 않았습니다.\n"
+            "프로젝트 루트의 .env 파일에 아래처럼 추가하세요.\n\n"
+            "OPENAI_API_KEY=your_api_key_here"
+        )

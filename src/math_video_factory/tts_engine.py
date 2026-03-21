@@ -3,10 +3,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from dotenv import load_dotenv
 from openai import OpenAI
 
-from .config import TTS_MODEL, TTS_VOICE
+from .config import OPENAI_API_KEY, TTS_MODEL, TTS_VOICE, validate_runtime_config
 
 
 def load_script_json(script_path: Path) -> dict:
@@ -59,8 +58,8 @@ def generate_tts_files(
     script JSON을 읽어 장면별 mp3 파일을 생성한다.
     반환값은 생성된 mp3 파일 경로 리스트이다.
     """
-    load_dotenv()
-    client = OpenAI()
+    validate_runtime_config(require_tts=True)
+    client = OpenAI(api_key=OPENAI_API_KEY)
 
     script_data = load_script_json(script_path)
     tts_items = extract_tts_items(script_data)
@@ -68,8 +67,8 @@ def generate_tts_files(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     created_files: list[Path] = []
-
     total = len(tts_items)
+
     print(f"[INFO] 총 {total}개 장면의 TTS를 생성합니다.")
 
     for idx, text in enumerate(tts_items, start=1):
@@ -78,12 +77,18 @@ def generate_tts_files(
         print(f"[{idx}/{total}] 생성 중: {out_path.name}")
         print(f"  TTS: {text}")
 
-        with client.audio.speech.with_streaming_response.create(
-            model=model,
-            voice=voice,
-            input=text,
-        ) as response:
-            response.stream_to_file(out_path)
+        try:
+            with client.audio.speech.with_streaming_response.create(
+                model=model,
+                voice=voice,
+                input=text,
+            ) as response:
+                response.stream_to_file(out_path)
+        except Exception as exc:
+            raise RuntimeError(
+                f"TTS 생성 중 오류가 발생했습니다. "
+                f"(scene={idx}, file={out_path.name})"
+            ) from exc
 
         created_files.append(out_path)
 
