@@ -1,0 +1,62 @@
+grade: 0
+grade_goal: "수학은 세상을 이해하는 언어"
+
+videos:
+  - id: "g0_v0"
+    title: "수학은 무엇일까요"
+    concept: "수학의 본질"
+    abstraction_stage: "현실 → 추상"
+    key_understanding: "수학은 계산이 아니라 세상을 이해하는 언어이다."
+
+    keywords:
+      - "수학"
+      - "추상"
+      - "구조"
+      - "개수"
+
+    flow:
+      - scene: hook
+        text: "다르게 생겼는데 왜 다 셀 수 있을까?"
+        visual: "question_popup"
+
+      - scene: problem
+        text: "사과 · 공 · 자동차"
+        visual: "object_compare"
+        items:
+          - "사과"
+          - "공"
+          - "자동차"
+
+      - scene: observation
+        text: "모양은 달라도"
+        visual: "highlight_common"
+
+      - scene: concept
+        text: "개수는 같을 수 있어요"
+        visual: "focus_keyword"
+        focus_word: "개수"
+
+      - scene: transform
+        text: "사과 3개 → 공 3개 → 자동차 3대 → 3"
+        visual: "transform_sequence"
+        sequence:
+          - "사과 3개"
+          - "공 3개"
+          - "자동차 3대"
+          - "3"
+
+      - scene: realization
+        text: "중요한 것만 남기면 수학이 보여요"
+        visual: "simplify_focus"
+
+      - scene: wrap_up
+        text: "수학은 세상을 이해하는 언어입니다"
+        visual: "title_emphasis"
+
+    example:
+      type: "conceptual"
+      story: "사과 3개 → 공 3개 → 자동차 3대 → 3"
+
+    visual_model: "abstraction_flow"
+    narration_style: "초등 친화적"
+    conclusion: "수학은 중요한 구조를 보는 힘입니다."

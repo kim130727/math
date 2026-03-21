@@ -125,3 +125,41 @@ def rebuild_tts_files(
         model=model,
         voice=voice,
     )
+
+def generate_tts_from_script(
+    script_path,
+    output_dir,
+    limit_scenes=None,
+):
+    import json
+    from pathlib import Path
+    from openai import OpenAI
+
+    client = OpenAI()
+
+    data = json.loads(Path(script_path).read_text(encoding="utf-8"))
+    scenes = data.get("scenes", [])
+
+    if limit_scenes:
+        scenes = scenes[:limit_scenes]
+
+    output_dir = Path(output_dir)
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    for idx, scene in enumerate(scenes, start=1):
+        text = scene.get("tts", "")
+        if not text:
+            continue
+
+        out_path = output_dir / f"{idx:02d}.mp3"
+
+        with client.audio.speech.with_streaming_response.create(
+            model="gpt-4o-mini-tts",
+            voice="alloy",
+            input=text,
+        ) as response:
+            response.stream_to_file(out_path)
+
+        print(f"[TTS] 생성 완료: {out_path}")
+
+    return list(output_dir.glob("*.mp3"))

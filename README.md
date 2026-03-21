@@ -1,3 +1,16 @@
+실행 방법
+이제 이렇게 단계별로 갈 수 있습니다.
+
+uv run main.py --grade 0 --video g0_v0 --step script
+uv run main.py --grade 0 --video g0_v0 --step review
+uv run main.py --grade 0 --video g0_v0 --step tts --limit-scenes 2
+uv run main.py --grade 0 --video g0_v0 --step timing
+uv run main.py --grade 0 --video g0_v0 --step render
+uv run main.py --grade 0 --video g0_v0 --step final
+전체 한 번에는:
+
+uv run main.py --grade 0 --video g0_v0 --step all
+
 # Math Video Factory
 
 초등 1학년부터 6학년까지의 수학 핵심 개념을  

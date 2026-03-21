@@ -6,469 +6,760 @@ from pathlib import Path
 
 from manim import *
 
-from math_video_factory.config import DEFAULT_FONT
+
+def _env_str(name: str, default: str) -> str:
+    return os.getenv(name, default).strip()
 
 
-def load_script_data() -> dict:
-    script_path = os.environ.get("VIDEO_SCRIPT_PATH")
-    if not script_path:
-        raise ValueError("VIDEO_SCRIPT_PATH 환경변수가 설정되지 않았습니다.")
+def _env_int(name: str, default: int) -> int:
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return default
+    return int(raw)
 
-    path = Path(script_path)
-    if not path.exists():
-        raise FileNotFoundError(f"script JSON 파일이 없습니다: {path}")
 
-    data = json.loads(path.read_text(encoding="utf-8"))
-    if not isinstance(data, dict):
-        raise ValueError(f"script JSON 형식이 올바르지 않습니다: {path}")
+def _env_float(name: str, default: float) -> float:
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return default
+    return float(raw)
 
-    scenes = data.get("scenes")
-    if not isinstance(scenes, list):
-        raise ValueError(f"script JSON에 scenes 리스트가 없습니다: {path}")
 
+# -------------------------------------------------------------------
+# Shorts / render configuration
+# -------------------------------------------------------------------
+config.pixel_width = _env_int("VIDEO_WIDTH", 1080)
+config.pixel_height = _env_int("VIDEO_HEIGHT", 1920)
+config.frame_rate = _env_int("FRAME_RATE", 30)
+config.frame_width = _env_float("FRAME_WIDTH", 9.0)
+config.frame_height = _env_float("FRAME_HEIGHT", 16.0)
+config.background_color = "#F7F7F7"
+
+FONT = _env_str("DEFAULT_FONT", "Malgun Gothic")
+
+SCRIPT_JSON_PATH = Path(_env_str("MATH_SCRIPT_JSON", ""))
+TIMING_JSON_PATH = Path(_env_str("MATH_TIMING_JSON", ""))
+
+
+def load_script() -> dict:
+    if not SCRIPT_JSON_PATH.exists():
+        raise FileNotFoundError(
+            f"MATH_SCRIPT_JSON 파일을 찾을 수 없습니다: {SCRIPT_JSON_PATH}"
+        )
+
+    data = json.loads(SCRIPT_JSON_PATH.read_text(encoding="utf-8"))
+    if "scenes" not in data or not isinstance(data["scenes"], list):
+        raise ValueError("script JSON 형식이 올바르지 않습니다. scenes 배열이 필요합니다.")
     return data
 
 
-def load_timing_data() -> list[float]:
-    timing_path = os.environ.get("VIDEO_TIMING_PATH")
-    if not timing_path:
+def load_timings() -> list[float]:
+    """
+    timing JSON 두 형식을 모두 허용:
+    1) {"durations": [2.1, 3.4, ...]}
+    2) {"items": [{"duration_sec": 2.1}, ...]}
+    """
+    if not TIMING_JSON_PATH.exists():
         return []
 
-    path = Path(timing_path)
-    if not path.exists():
-        return []
+    data = json.loads(TIMING_JSON_PATH.read_text(encoding="utf-8"))
 
-    data = json.loads(path.read_text(encoding="utf-8"))
-    durations = data.get("durations", [])
+    durations = data.get("durations")
+    if isinstance(durations, list):
+        result: list[float] = []
+        for x in durations:
+            try:
+                result.append(float(x))
+            except Exception:
+                result.append(3.0)
+        return result
 
-    if not isinstance(durations, list):
-        return []
+    items = data.get("items")
+    if isinstance(items, list):
+        result = []
+        for item in items:
+            try:
+                result.append(float(item.get("duration_sec", 3.0)))
+            except Exception:
+                result.append(3.0)
+        return result
 
-    cleaned: list[float] = []
-    for value in durations:
-        try:
-            cleaned.append(float(value))
-        except (TypeError, ValueError):
-            cleaned.append(0.0)
+    return []
 
-    return cleaned
+
+def fit_text_box(
+    text: str,
+    *,
+    max_width: float,
+    font_size: int = 40,
+    color=BLACK,
+    line_spacing: float = 0.9,
+    weight: str = NORMAL,
+) -> Text:
+    obj = Text(
+        text,
+        font=FONT,
+        font_size=font_size,
+        color=color,
+        line_spacing=line_spacing,
+        weight=weight,
+    )
+    if obj.width > max_width:
+        obj.scale_to_fit_width(max_width)
+    return obj
+
+
+def fit_math_box(
+    expression: str,
+    *,
+    max_width: float,
+    font_size: int = 72,
+    color=BLACK,
+) -> Mobject:
+    try:
+        obj = MathTex(expression, color=color, font_size=font_size)
+    except Exception:
+        obj = fit_text_box(
+            expression,
+            max_width=max_width,
+            font_size=int(font_size * 0.6),
+            color=color,
+            line_spacing=0.9,
+            weight=BOLD,
+        )
+
+    if obj.width > max_width:
+        obj.scale_to_fit_width(max_width)
+    return obj
 
 
 class AutoVideoScene(Scene):
     def construct(self) -> None:
-        self.camera.background_color = WHITE
+        self.script = load_script()
+        self.timings = load_timings()
+        self.scene_idx = 0
+
+        self.max_text_width = config.frame_width - 1.0
+        self.max_math_width = config.frame_width - 1.2
+
         self.text_color = BLACK
-        self.emphasis_color = DARK_BLUE
+        self.accent_color = DARK_BLUE
         self.warning_color = RED
         self.result_color = GREEN
+        self.subtle_color = GREY_D
 
-        script_data = load_script_data()
-        self.scenes_data = script_data["scenes"]
-        self.scene_durations = load_timing_data()
+        for scene in self.script["scenes"]:
+            scene_type = str(scene.get("type", "")).strip().lower()
 
-        for idx, scene in enumerate(self.scenes_data):
-            self.current_scene_index = idx
-
-            scene_type = scene["type"]
-            payload = scene.get("payload", {})
-            tts_text = str(scene.get("tts", "")).strip()
+            # 기존 payload 구조도 허용하고,
+            # 새 구조(장면 필드가 바로 아래 있음)도 허용
+            payload = self._normalize_payload(scene)
 
             if scene_type == "title":
-                self.render_title(payload, tts_text)
+                self.render_title(payload)
+            elif scene_type == "hook":
+                self.render_hook(payload)
             elif scene_type == "problem":
-                self.render_problem(payload, tts_text)
-            elif scene_type == "concept":
-                self.render_concept(payload, tts_text)
+                self.render_problem(payload)
             elif scene_type == "equation":
-                self.render_equation(payload, tts_text)
-            elif scene_type == "transform":
-                self.render_transform(payload, tts_text)
-            elif scene_type == "array":
-                self.render_array(payload, tts_text)
+                self.render_equation(payload)
+            elif scene_type in {"observation", "abstraction", "concept", "realization", "example"}:
+                self.render_concept(payload)
+            elif scene_type in {"transform", "transformation"}:
+                self.render_transform(payload)
             elif scene_type == "grouping":
-                self.render_grouping(payload, tts_text)
-            elif scene_type == "fraction":
-                self.render_fraction(payload, tts_text)
-            elif scene_type == "compare":
-                self.render_compare(payload, tts_text)
-            elif scene_type == "pattern":
-                self.render_pattern(payload, tts_text)
-            elif scene_type == "graph":
-                self.render_graph(payload, tts_text)
+                self.render_grouping(payload)
             elif scene_type == "wrap_up":
-                self.render_wrap_up(payload, tts_text)
+                self.render_wrap_up(payload)
             else:
-                raise ValueError(f"지원하지 않는 scene type: {scene_type}")
-            
-    def hold_time(self, tts_text: str, minimum: float = 1.2) -> float:
+                self.render_unknown(scene_type, payload)
+
+            self.scene_idx += 1
+
+    # ---------------------------------------------------------------
+    # normalization helpers
+    # ---------------------------------------------------------------
+    def _normalize_payload(self, scene: dict) -> dict:
         """
-        가능하면 실제 측정된 mp3 길이를 사용하고,
-        없으면 문자 수 기반 추정치로 fallback 한다.
+        scene 안의 payload가 있으면 그것을 우선 사용하고,
+        없으면 scene의 주요 필드를 payload처럼 정리한다.
         """
-        idx = getattr(self, "current_scene_index", -1)
+        payload = scene.get("payload")
+        if isinstance(payload, dict) and payload:
+            return payload
 
-        if 0 <= idx < len(getattr(self, "scene_durations", [])):
-            measured = float(self.scene_durations[idx])
+        normalized: dict = {}
 
-            # 음성 끝과 장면 전환이 너무 붙지 않게 소량 여유 추가
-            return max(measured + 0.25, minimum)
+        # 자주 쓰는 공통 필드
+        for key in [
+            "text",
+            "subtitle",
+            "visual",
+            "tts",
+            "focus_word",
+            "tone",
+            "label",
+        ]:
+            if key in scene:
+                normalized[key] = scene[key]
 
-        estimated = max(len(tts_text) * 0.08, minimum)
-        return min(estimated, 5.0)
+        # transform 관련
+        sequence = scene.get("sequence")
+        if isinstance(sequence, list) and sequence:
+            normalized["sequence"] = sequence
+            if len(sequence) >= 2:
+                normalized["from_expression"] = str(sequence[0])
+                normalized["to_expression"] = str(sequence[-1])
 
-    def make_text(
-        self,
-        text: str,
-        *,
-        font_size: int = 32,
-        color=BLACK,
-        line_spacing: float = 0.9,
-    ) -> Text:
-        return Text(
+        if "from_expression" in scene:
+            normalized["from_expression"] = scene["from_expression"]
+        if "to_expression" in scene:
+            normalized["to_expression"] = scene["to_expression"]
+
+        # problem 관련
+        items = scene.get("items")
+        if isinstance(items, list):
+            normalized["items"] = items
+
+        # grouping 관련
+        for key in ["total", "group_size"]:
+            if key in scene:
+                normalized[key] = scene[key]
+
+        # fallback
+        if "text" not in normalized:
+            normalized["text"] = ""
+
+        return normalized
+
+    # ---------------------------------------------------------------
+    # timing helpers
+    # ---------------------------------------------------------------
+    def sec(self, default: float) -> float:
+        if 0 <= self.scene_idx < len(self.timings):
+            return max(float(self.timings[self.scene_idx]), 0.8)
+        return default
+
+    def hold_after(self, used: float, default_total: float) -> None:
+        total = self.sec(default_total)
+        remain = max(total - used, 0.15)
+        self.wait(remain)
+
+    # ---------------------------------------------------------------
+    # common layout helpers
+    # ---------------------------------------------------------------
+    def make_top_label(self, text: str, color=GREY_D) -> Text:
+        obj = fit_text_box(
             text,
-            font=DEFAULT_FONT,
-            font_size=font_size,
-            color=color,
-            line_spacing=line_spacing,
-        )
-
-    def render_title(self, payload: dict, tts_text: str) -> None:
-        title_text = str(payload.get("text", "제목"))
-        subtitle_text = str(payload.get("subtitle", "")).strip()
-
-        title = self.make_text(
-            title_text,
-            font_size=40,
-            color=self.text_color,
-        )
-
-        if subtitle_text:
-            subtitle = self.make_text(
-                subtitle_text,
-                font_size=24,
-                color=self.emphasis_color,
-            )
-            subtitle.next_to(title, DOWN, buff=0.35)
-            group = VGroup(title, subtitle).move_to(ORIGIN)
-
-            self.play(Write(title), run_time=0.9)
-            self.play(FadeIn(subtitle, shift=UP), run_time=0.5)
-            self.wait(self.hold_time(tts_text, 1.4))
-            self.play(FadeOut(group), run_time=0.4)
-        else:
-            title.move_to(ORIGIN)
-            self.play(Write(title), run_time=0.9)
-            self.wait(self.hold_time(tts_text, 1.4))
-            self.play(FadeOut(title), run_time=0.4)
-
-    def render_problem(self, payload: dict, tts_text: str) -> None:
-        text = self.make_text(
-            str(payload.get("text", "")),
-            font_size=30,
-            color=self.text_color,
-        )
-        text.move_to(ORIGIN)
-
-        self.play(FadeIn(text, shift=UP), run_time=0.7)
-        self.wait(self.hold_time(tts_text))
-        self.play(FadeOut(text), run_time=0.4)
-
-    def render_concept(self, payload: dict, tts_text: str) -> None:
-        text_value = str(payload.get("text", ""))
-        tone = str(payload.get("tone", "normal"))
-
-        color = self.text_color
-        if tone == "warning":
-            color = self.warning_color
-        elif tone == "emphasis":
-            color = self.emphasis_color
-
-        text = self.make_text(
-            text_value,
+            max_width=self.max_text_width,
             font_size=28,
             color=color,
+            line_spacing=0.9,
+            weight=MEDIUM,
         )
-        text.move_to(ORIGIN)
+        obj.to_edge(UP, buff=0.45)
+        return obj
 
-        self.play(FadeIn(text), run_time=0.6)
-        self.wait(self.hold_time(tts_text))
-        self.play(FadeOut(text), run_time=0.4)
+    def clear_scene(self, *mobs: Mobject, run_time: float = 0.35) -> None:
+        existing = [m for m in mobs if m is not None]
+        if existing:
+            self.play(*[FadeOut(m) for m in existing], run_time=run_time)
 
-    def render_equation(self, payload: dict, tts_text: str) -> None:
-        expression = str(payload.get("expression", ""))
-        expr = MathTex(expression, color=self.text_color).scale(1.2)
+    # ---------------------------------------------------------------
+    # scene renderers
+    # ---------------------------------------------------------------
+    def render_title(self, payload: dict) -> None:
+        main_text = str(payload.get("text", "")).strip() or "수학"
+        subtitle = str(payload.get("subtitle", "")).strip()
 
-        self.play(Write(expr), run_time=0.8)
-        self.wait(self.hold_time(tts_text))
-        self.play(FadeOut(expr), run_time=0.4)
+        eyebrow = self.make_top_label("오늘의 질문", color=self.subtle_color)
 
-    def render_transform(self, payload: dict, tts_text: str) -> None:
-        from_expression = str(payload.get("from_expression", ""))
-        to_expression = str(payload.get("to_expression", ""))
-
-        from_expr = MathTex(from_expression, color=self.text_color).scale(1.0)
-        from_expr.move_to(UP * 1.2)
-
-        to_expr = MathTex(to_expression, color=self.emphasis_color).scale(1.2)
-        to_expr.move_to(DOWN * 1.0)
-
-        arrow = Arrow(
-            from_expr.get_bottom(),
-            to_expr.get_top(),
-            buff=0.2,
+        title = fit_text_box(
+            main_text,
+            max_width=self.max_text_width,
+            font_size=58,
             color=self.text_color,
-        )
+            line_spacing=0.92,
+            weight=BOLD,
+        ).move_to(UP * 1.7)
 
-        self.play(Write(from_expr), run_time=0.6)
-        self.play(GrowArrow(arrow), run_time=0.4)
-        self.play(Write(to_expr), run_time=0.6)
-        self.wait(self.hold_time(tts_text))
-        self.play(FadeOut(from_expr), FadeOut(arrow), FadeOut(to_expr), run_time=0.4)
-
-    def render_array(self, payload: dict, tts_text: str) -> None:
-        rows = int(payload.get("rows", 1))
-        cols = int(payload.get("cols", 1))
-        label_text = str(payload.get("label", "")).strip()
-
-        dots = VGroup()
-        spacing = 0.5
-
-        for r in range(rows):
-            row_group = VGroup()
-            for c in range(cols):
-                dot = Dot(radius=0.06, color=BLUE)
-                dot.move_to(
-                    LEFT * ((cols - 1) * spacing / 2)
-                    + RIGHT * c * spacing
-                    + UP * ((rows - 1) * spacing / 2)
-                    - DOWN * r * spacing
-                )
-                row_group.add(dot)
-            dots.add(row_group)
-
-        label = None
-        if label_text:
-            label = self.make_text(
-                label_text,
-                font_size=24,
-                color=self.text_color,
-            ).to_edge(UP, buff=0.7)
-
-        if label:
-            self.play(FadeIn(label), run_time=0.4)
-
-        for row in dots:
-            self.play(FadeIn(row, lag_ratio=0.08), run_time=0.25)
-
-        self.wait(self.hold_time(tts_text))
-        fade_targets = [dots]
-        if label:
-            fade_targets.append(label)
-        self.play(*[FadeOut(x) for x in fade_targets], run_time=0.4)
-
-    def render_grouping(self, payload: dict, tts_text: str) -> None:
-        total = int(payload.get("total", 1))
-        group_size = int(payload.get("group_size", 1))
-        label_text = str(payload.get("label", "")).strip()
-
-        dots = VGroup()
-        spacing = 0.5
-        per_row = 6
-
-        for i in range(total):
-            dot = Dot(radius=0.055, color=BLUE)
-            row = i // per_row
-            col = i % per_row
-            dot.move_to(
-                LEFT * ((per_row - 1) * spacing / 2)
-                + RIGHT * col * spacing
-                + UP * 1.0
-                - DOWN * row * spacing
+        subtitle_obj = None
+        if subtitle:
+            subtitle_obj = fit_text_box(
+                subtitle,
+                max_width=self.max_text_width - 0.2,
+                font_size=34,
+                color=self.accent_color,
+                line_spacing=0.95,
+                weight=MEDIUM,
             )
-            dots.add(dot)
+            subtitle_obj.next_to(title, DOWN, buff=0.45)
 
-        boxes = VGroup()
-        if group_size > 0:
-            for start in range(0, total, group_size):
-                chunk = dots[start:start + group_size]
-                if len(chunk) == group_size:
-                    box = SurroundingRectangle(VGroup(*chunk), color=GREEN, buff=0.12)
-                    boxes.add(box)
+        underline = Line(
+            LEFT * 2.2,
+            RIGHT * 2.2,
+            color=self.accent_color,
+            stroke_width=6,
+        ).next_to(subtitle_obj or title, DOWN, buff=0.5)
 
-        label = None
-        if label_text:
-            label = self.make_text(
-                label_text,
-                font_size=24,
-                color=self.text_color,
-            ).to_edge(UP, buff=0.7)
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.35)
+        used += 0.35
+        self.play(Write(title), run_time=0.7)
+        used += 0.7
 
-        if label:
-            self.play(FadeIn(label), run_time=0.4)
+        if subtitle_obj is not None:
+            self.play(FadeIn(subtitle_obj, shift=UP * 0.2), run_time=0.45)
+            used += 0.45
 
-        self.play(FadeIn(dots), run_time=0.6)
+        self.play(Create(underline), run_time=0.35)
+        used += 0.35
 
-        for box in boxes:
-            self.play(Create(box), run_time=0.25)
+        self.hold_after(used, 2.8)
+        self.clear_scene(eyebrow, title, subtitle_obj, underline)
 
-        self.wait(self.hold_time(tts_text))
-        fade_targets = [dots, boxes]
-        if label:
-            fade_targets.append(label)
-        self.play(*[FadeOut(x) for x in fade_targets], run_time=0.4)
+    def render_hook(self, payload: dict) -> None:
+        text = str(payload.get("text", "")).strip() or "생각의 문을 열어 봅시다."
 
-    def render_fraction(self, payload: dict, tts_text: str) -> None:
-        parts = int(payload.get("parts", 2))
-        selected = int(payload.get("selected", 1))
-        label_text = str(payload.get("label", "\\frac{1}{2}"))
+        eyebrow = self.make_top_label("생각 열기", color=self.subtle_color)
 
-        if parts <= 0:
-            parts = 2
-        selected = max(0, min(selected, parts))
+        question_box = RoundedRectangle(
+            width=config.frame_width - 0.8,
+            height=4.0,
+            corner_radius=0.35,
+            stroke_color=self.accent_color,
+            stroke_width=5,
+            fill_color=WHITE,
+            fill_opacity=1,
+        ).move_to(UP * 0.4)
 
-        sectors = VGroup()
-        circle_radius = 1.5
+        question = fit_text_box(
+            text,
+            max_width=question_box.width - 0.8,
+            font_size=46,
+            color=self.accent_color,
+            line_spacing=0.96,
+            weight=BOLD,
+        ).move_to(question_box.get_center())
 
-        for i in range(parts):
-            start_angle = i * TAU / parts
-            sector = Sector(
-                outer_radius=circle_radius,
-                start_angle=start_angle,
-                angle=TAU / parts,
-                fill_color=ORANGE if i < selected else LIGHT_GRAY,
-                fill_opacity=0.9,
-                stroke_color=BLACK,
-                stroke_width=2,
-            )
-            sectors.add(sector)
+        mark = Text(
+            "?",
+            font=FONT,
+            font_size=96,
+            color=self.accent_color,
+            weight=BOLD,
+        ).next_to(question_box, DOWN, buff=0.35)
 
-        fraction_label = MathTex(label_text, color=self.emphasis_color).scale(1.2)
-        fraction_label.next_to(sectors, DOWN, buff=0.6)
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.25)
+        used += 0.25
+        self.play(Create(question_box), run_time=0.4)
+        used += 0.4
+        self.play(FadeIn(question, shift=UP * 0.15), run_time=0.45)
+        used += 0.45
+        self.play(FadeIn(mark, scale=0.9), run_time=0.25)
+        used += 0.25
 
-        self.play(FadeIn(sectors), run_time=0.8)
-        self.play(Write(fraction_label), run_time=0.5)
-        self.wait(self.hold_time(tts_text))
-        self.play(FadeOut(sectors), FadeOut(fraction_label), run_time=0.4)
+        self.hold_after(used, 3.2)
+        self.clear_scene(eyebrow, question_box, question, mark)
 
-    def render_compare(self, payload: dict, tts_text: str) -> None:
+    def render_problem(self, payload: dict) -> None:
+        text = str(payload.get("text", "")).strip() or "문제를 생각해 봅시다."
         items = payload.get("items", [])
-        label_text = str(payload.get("label", "")).strip()
+        items = items if isinstance(items, list) else []
 
-        if not isinstance(items, list):
-            items = []
+        eyebrow = self.make_top_label("문제", color=self.subtle_color)
 
-        boxes = VGroup()
-        for item in items:
-            rect = RoundedRectangle(
-                width=2.2,
-                height=1.0,
-                corner_radius=0.15,
-                stroke_color=BLACK,
-                stroke_width=2,
-                fill_color=WHITE,
-                fill_opacity=1,
-            )
-            txt = self.make_text(
-                str(item),
-                font_size=24,
-                color=self.text_color,
-            ).move_to(rect.get_center())
-            boxes.add(VGroup(rect, txt))
+        q_box = RoundedRectangle(
+            width=config.frame_width - 0.8,
+            height=4.2,
+            corner_radius=0.3,
+            stroke_color=self.accent_color,
+            stroke_width=4,
+            fill_color=WHITE,
+            fill_opacity=1,
+        ).move_to(UP * 0.6)
 
-        boxes.arrange(RIGHT, buff=0.35)
-        boxes.move_to(ORIGIN)
+        question = fit_text_box(
+            text,
+            max_width=q_box.width - 0.7,
+            font_size=40,
+            color=self.text_color,
+            line_spacing=0.95,
+            weight=MEDIUM,
+        ).move_to(q_box.get_center())
 
-        label = None
-        if label_text:
-            label = self.make_text(
-                label_text,
-                font_size=24,
-                color=self.emphasis_color,
-            ).to_edge(UP, buff=0.7)
+        items_obj = None
+        if items:
+            items_text = " · ".join(str(x) for x in items)
+            items_obj = fit_text_box(
+                items_text,
+                max_width=self.max_text_width,
+                font_size=28,
+                color=self.accent_color,
+                line_spacing=0.9,
+                weight=MEDIUM,
+            ).next_to(q_box, DOWN, buff=0.35)
 
-        if label:
-            self.play(FadeIn(label), run_time=0.4)
+        hint = fit_text_box(
+            "천천히 보면 공통점이 보여요",
+            max_width=self.max_text_width,
+            font_size=26,
+            color=self.subtle_color,
+            line_spacing=0.9,
+            weight=MEDIUM,
+        )
+        hint.next_to(items_obj or q_box, DOWN, buff=0.28)
 
-        self.play(FadeIn(boxes, lag_ratio=0.15), run_time=0.8)
-        self.wait(self.hold_time(tts_text))
-        fade_targets = [boxes]
-        if label:
-            fade_targets.append(label)
-        self.play(*[FadeOut(x) for x in fade_targets], run_time=0.4)
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.3)
+        used += 0.3
+        self.play(Create(q_box), run_time=0.45)
+        used += 0.45
+        self.play(FadeIn(question, shift=UP * 0.2), run_time=0.45)
+        used += 0.45
 
-    def render_pattern(self, payload: dict, tts_text: str) -> None:
-        pattern = str(payload.get("pattern", "2, 4, 6, 8"))
-        question = str(payload.get("question", "")).strip()
+        if items_obj is not None:
+            self.play(FadeIn(items_obj), run_time=0.25)
+            used += 0.25
 
-        pattern_text = self.make_text(
-            pattern,
-            font_size=34,
+        self.play(FadeIn(hint), run_time=0.25)
+        used += 0.25
+
+        self.hold_after(used, 4.0)
+        self.clear_scene(eyebrow, q_box, question, items_obj, hint)
+
+    def render_equation(self, payload: dict) -> None:
+        expression = str(payload.get("expression", "")).strip() or "1+1=2"
+
+        eyebrow = self.make_top_label("생각을 식으로 나타내기", color=self.subtle_color)
+
+        expr = fit_math_box(
+            expression,
+            max_width=self.max_math_width,
+            font_size=88,
             color=self.text_color,
         ).move_to(UP * 0.3)
 
-        question_obj = None
-        if question:
-            question_obj = self.make_text(
-                question,
+        desc = fit_text_box(
+            "하나씩 세면 이렇게 길어질 수 있어요",
+            max_width=self.max_text_width,
+            font_size=32,
+            color=self.warning_color,
+            line_spacing=0.9,
+            weight=MEDIUM,
+        ).next_to(expr, DOWN, buff=0.7)
+
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.3)
+        used += 0.3
+        self.play(Write(expr), run_time=0.7)
+        used += 0.7
+        self.play(FadeIn(desc, shift=UP * 0.2), run_time=0.35)
+        used += 0.35
+
+        self.hold_after(used, 3.8)
+        self.clear_scene(eyebrow, expr, desc)
+
+    def render_concept(self, payload: dict) -> None:
+        text = str(payload.get("text", "")).strip() or "중요한 생각"
+        tone = str(payload.get("tone", "normal")).strip().lower()
+
+        eyebrow_text = "핵심 생각"
+        box_color = self.accent_color
+        text_color = self.text_color
+
+        if tone == "warning":
+            eyebrow_text = "왜 새 방법이 필요할까요?"
+            box_color = self.warning_color
+            text_color = self.warning_color
+
+        eyebrow = self.make_top_label(eyebrow_text, color=self.subtle_color)
+
+        box = RoundedRectangle(
+            width=config.frame_width - 0.8,
+            height=3.8,
+            corner_radius=0.35,
+            stroke_color=box_color,
+            stroke_width=4,
+            fill_color=WHITE,
+            fill_opacity=1,
+        ).move_to(UP * 0.2)
+
+        concept = fit_text_box(
+            text,
+            max_width=box.width - 0.8,
+            font_size=40,
+            color=text_color,
+            line_spacing=0.96,
+            weight=MEDIUM,
+        ).move_to(box.get_center())
+
+        focus_word = str(payload.get("focus_word", "")).strip()
+        focus_obj = None
+        if focus_word:
+            focus_obj = fit_text_box(
+                focus_word,
+                max_width=self.max_text_width,
+                font_size=28,
+                color=box_color,
+                line_spacing=0.9,
+                weight=BOLD,
+            ).next_to(box, DOWN, buff=0.4)
+
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.3)
+        used += 0.3
+        self.play(Create(box), run_time=0.45)
+        used += 0.45
+        self.play(FadeIn(concept, shift=UP * 0.15), run_time=0.4)
+        used += 0.4
+
+        if focus_obj is not None:
+            self.play(FadeIn(focus_obj), run_time=0.25)
+            used += 0.25
+
+        self.hold_after(used, 3.5)
+        self.clear_scene(eyebrow, box, concept, focus_obj)
+
+    def render_transform(self, payload: dict) -> None:
+        sequence = payload.get("sequence", [])
+        sequence = sequence if isinstance(sequence, list) else []
+
+        if len(sequence) >= 2:
+            from_expr = str(sequence[0]).strip()
+            to_expr = str(sequence[-1]).strip()
+        else:
+            from_expr = str(payload.get("from_expression", "")).strip() or "1+1+1"
+            to_expr = str(payload.get("to_expression", "")).strip() or "3"
+
+        eyebrow = self.make_top_label("바뀌어도 남는 것", color=self.subtle_color)
+
+        from_obj = fit_text_box(
+            from_expr,
+            max_width=self.max_text_width,
+            font_size=42,
+            color=self.text_color,
+            line_spacing=0.92,
+            weight=MEDIUM,
+        ).move_to(UP * 2.3)
+
+        arrow = Arrow(
+            start=UP * 1.0,
+            end=DOWN * 0.1,
+            buff=0.0,
+            color=self.accent_color,
+            stroke_width=8,
+            max_tip_length_to_length_ratio=0.16,
+        )
+
+        to_obj = fit_text_box(
+            to_expr,
+            max_width=self.max_text_width,
+            font_size=72,
+            color=self.accent_color,
+            line_spacing=0.92,
+            weight=BOLD,
+        ).move_to(DOWN * 1.9)
+
+        mid_steps = None
+        if len(sequence) > 2:
+            mids = "   →   ".join(str(x) for x in sequence[1:-1])
+            mid_steps = fit_text_box(
+                mids,
+                max_width=self.max_text_width,
                 font_size=24,
-                color=self.emphasis_color,
-            ).next_to(pattern_text, DOWN, buff=0.45)
+                color=self.subtle_color,
+                line_spacing=0.9,
+                weight=MEDIUM,
+            ).move_to(DOWN * 0.55)
 
-        self.play(Write(pattern_text), run_time=0.8)
-        if question_obj:
-            self.play(FadeIn(question_obj, shift=UP), run_time=0.4)
+        tip = fit_text_box(
+            "겉모습은 달라도 공통 구조는 남아요",
+            max_width=self.max_text_width,
+            font_size=28,
+            color=self.accent_color,
+            line_spacing=0.9,
+            weight=MEDIUM,
+        ).to_edge(DOWN, buff=0.8)
 
-        self.wait(self.hold_time(tts_text))
-        fade_targets = [pattern_text]
-        if question_obj:
-            fade_targets.append(question_obj)
-        self.play(*[FadeOut(x) for x in fade_targets], run_time=0.4)
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.25)
+        used += 0.25
+        self.play(Write(from_obj), run_time=0.45)
+        used += 0.45
+        self.play(GrowArrow(arrow), run_time=0.35)
+        used += 0.35
 
-    def render_graph(self, payload: dict, tts_text: str) -> None:
-        points = payload.get("points", [[1, 2], [2, 4], [3, 6]])
-        x_label = str(payload.get("x_label", "x"))
-        y_label = str(payload.get("y_label", "y"))
+        if mid_steps is not None:
+            self.play(FadeIn(mid_steps), run_time=0.25)
+            used += 0.25
 
-        if not isinstance(points, list) or not points:
-            points = [[1, 2], [2, 4], [3, 6]]
+        self.play(TransformFromCopy(from_obj, to_obj), run_time=0.6)
+        used += 0.6
+        self.play(FadeIn(tip, shift=UP * 0.15), run_time=0.3)
+        used += 0.3
 
-        axes = Axes(
-            x_range=[0, max(p[0] for p in points) + 1, 1],
-            y_range=[0, max(p[1] for p in points) + 1, 1],
-            x_length=6,
-            y_length=4,
-            axis_config={"color": BLACK},
-        )
+        self.hold_after(used, 3.8)
+        self.clear_scene(eyebrow, from_obj, arrow, mid_steps, to_obj, tip)
 
-        axis_labels = axes.get_axis_labels(
-            self.make_text(x_label, font_size=20, color=self.text_color),
-            self.make_text(y_label, font_size=20, color=self.text_color),
-        )
+    def render_grouping(self, payload: dict) -> None:
+        total = int(payload.get("total", 9))
+        group_size = int(payload.get("group_size", 3))
+        label = str(payload.get("label", f"{total}개를 {group_size}개씩 묶기")).strip()
+
+        eyebrow = self.make_top_label("하나하나 묶어 보기", color=self.subtle_color)
+        label_obj = fit_text_box(
+            label,
+            max_width=self.max_text_width,
+            font_size=34,
+            color=self.text_color,
+            line_spacing=0.9,
+            weight=MEDIUM,
+        ).move_to(UP * 2.5)
 
         dots = VGroup()
-        for x, y in points:
-            dots.add(Dot(axes.c2p(x, y), radius=0.07, color=BLUE))
+        cols = min(total, 5)
+        rows = (total + cols - 1) // cols
+        spacing_x = 1.1
+        spacing_y = 0.95
+        start_x = -((cols - 1) * spacing_x) / 2
+        start_y = 1.2
 
-        self.play(Create(axes), FadeIn(axis_labels), run_time=0.9)
-        self.play(FadeIn(dots, lag_ratio=0.15), run_time=0.8)
-        self.wait(self.hold_time(tts_text))
-        self.play(FadeOut(axes), FadeOut(axis_labels), FadeOut(dots), run_time=0.4)
+        for idx in range(total):
+            r = idx // cols
+            c = idx % cols
+            dot = Dot(
+                point=np.array(
+                    [
+                        start_x + c * spacing_x,
+                        start_y - r * spacing_y,
+                        0,
+                    ]
+                ),
+                radius=0.12,
+                color=self.accent_color,
+            )
+            dots.add(dot)
 
-    def render_wrap_up(self, payload: dict, tts_text: str) -> None:
-        text = self.make_text(
-            str(payload.get("text", "")),
+        groups = VGroup()
+        for start in range(0, total, group_size):
+            chunk = dots[start : start + group_size]
+            if len(chunk) == 0:
+                continue
+            box = SurroundingRectangle(
+                VGroup(*chunk),
+                color=self.result_color,
+                buff=0.18,
+                corner_radius=0.15,
+                stroke_width=4,
+            )
+            groups.add(box)
+
+        summary = fit_text_box(
+            f"{group_size}개씩 묶으면 몇 묶음인지 볼 수 있어요",
+            max_width=self.max_text_width,
             font_size=30,
-            color=self.emphasis_color,
-        ).move_to(ORIGIN)
+            color=self.result_color,
+            line_spacing=0.9,
+            weight=MEDIUM,
+        ).to_edge(DOWN, buff=0.9)
 
-        box = SurroundingRectangle(
+        used = 0.0
+        self.play(FadeIn(eyebrow, shift=DOWN * 0.2), run_time=0.25)
+        used += 0.25
+        self.play(FadeIn(label_obj, shift=UP * 0.15), run_time=0.35)
+        used += 0.35
+        self.play(FadeIn(dots, lag_ratio=0.08), run_time=0.65)
+        used += 0.65
+
+        for g in groups:
+            self.play(Create(g), run_time=0.25)
+            used += 0.25
+
+        self.play(FadeIn(summary, shift=UP * 0.15), run_time=0.3)
+        used += 0.3
+
+        self.hold_after(used, 4.4)
+        self.clear_scene(eyebrow, label_obj, dots, groups, summary)
+
+    def render_wrap_up(self, payload: dict) -> None:
+        text = str(payload.get("text", "")).strip() or "오늘의 정리"
+
+        badge = self.make_top_label("한 줄 정리", color=self.result_color)
+
+        box = RoundedRectangle(
+            width=config.frame_width - 0.7,
+            height=4.4,
+            corner_radius=0.4,
+            stroke_color=self.result_color,
+            stroke_width=5,
+            fill_color=WHITE,
+            fill_opacity=1,
+        ).move_to(UP * 0.2)
+
+        summary = fit_text_box(
             text,
-            color=self.emphasis_color,
-            buff=0.3,
-            corner_radius=0.18,
-        )
+            max_width=box.width - 0.8,
+            font_size=44,
+            color=self.text_color,
+            line_spacing=0.97,
+            weight=BOLD,
+        ).move_to(box.get_center())
 
-        self.play(FadeIn(text, shift=UP), run_time=0.6)
-        self.play(Create(box), run_time=0.4)
-        self.wait(self.hold_time(tts_text, 1.5))
-        self.play(FadeOut(text), FadeOut(box), run_time=0.4)
+        sparkle_left = Star(
+            n=5,
+            outer_radius=0.18,
+            color=self.result_color,
+            fill_opacity=1,
+        ).next_to(box, LEFT, buff=0.25)
+
+        sparkle_right = Star(
+            n=5,
+            outer_radius=0.18,
+            color=self.result_color,
+            fill_opacity=1,
+        ).next_to(box, RIGHT, buff=0.25)
+
+        used = 0.0
+        self.play(FadeIn(badge, shift=DOWN * 0.2), run_time=0.25)
+        used += 0.25
+        self.play(Create(box), run_time=0.45)
+        used += 0.45
+        self.play(FadeIn(summary, shift=UP * 0.15), run_time=0.5)
+        used += 0.5
+        self.play(FadeIn(sparkle_left), FadeIn(sparkle_right), run_time=0.25)
+        used += 0.25
+
+        self.hold_after(used, 3.6)
+        self.clear_scene(badge, box, summary, sparkle_left, sparkle_right)
+
+    def render_unknown(self, scene_type: str, payload: dict) -> None:
+        eyebrow = self.make_top_label("지원되지 않는 장면", color=self.warning_color)
+        title = fit_text_box(
+            f"scene type: {scene_type or 'unknown'}",
+            max_width=self.max_text_width,
+            font_size=34,
+            color=self.warning_color,
+            line_spacing=0.9,
+            weight=BOLD,
+        ).move_to(UP * 0.8)
+
+        body = fit_text_box(
+            json.dumps(payload, ensure_ascii=False, indent=2),
+            max_width=self.max_text_width,
+            font_size=22,
+            color=self.text_color,
+            line_spacing=0.9,
+        ).next_to(title, DOWN, buff=0.45)
+
+        used = 0.0
+        self.play(FadeIn(eyebrow), run_time=0.2)
+        used += 0.2
+        self.play(FadeIn(title), run_time=0.3)
+        used += 0.3
+        self.play(FadeIn(body), run_time=0.35)
+        used += 0.35
+
+        self.hold_after(used, 2.5)
+        self.clear_scene(eyebrow, title, body)
