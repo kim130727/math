@@ -1,77 +1,38 @@
 from __future__ import annotations
 
 import argparse
-import sys
 
-from math_video_factory.build_pipeline import BuildPipeline
+from src.math_video_factory.manim_runner import render_video
 
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Math Video Factory 단계별 빌드 도구"
-    )
+    parser = argparse.ArgumentParser(description="Math video factory runner")
+    parser.add_argument("--grade", type=int, required=True, help="학년 번호")
+    parser.add_argument("--video", type=str, required=True, help="영상 ID 예: g0_v0")
     parser.add_argument(
-        "--grade",
-        type=int,
-        required=True,
-        help="빌드할 학년 번호 (예: 0, 1)",
-    )
-    parser.add_argument(
-        "--video",
+        "--quality",
         type=str,
-        default=None,
-        help="특정 video_id만 빌드할 때 사용 (예: g0_v0, g1_v1)",
+        default="l",
+        choices=["l", "m", "h", "p", "k"],
+        help="Manim 품질 (l/m/h/p/k)",
     )
     parser.add_argument(
-        "--step",
-        type=str,
-        default="all",
-        choices=[
-            "script",
-            "review",
-            "tts",
-            "timing",
-            "render",
-            "final",
-            "all",
-        ],
-        help="실행할 단계 선택",
-    )
-    parser.add_argument(
-        "--limit-scenes",
-        type=int,
-        default=None,
-        help="TTS 생성 시 앞에서부터 일부 장면만 생성할 때 사용",
-    )
-    parser.add_argument(
-        "--scene",
-        type=str,
-        default=None,
-        help="부분 렌더용 장면 ID (렌더러가 지원할 경우 사용)",
+        "--preview",
+        action="store_true",
+        help="렌더 후 자동 미리보기",
     )
     return parser.parse_args()
 
 
-def main() -> None:
+def main() -> int:
     args = parse_args()
-
-    pipeline = BuildPipeline()
-    outputs = pipeline.build_grade(
+    return render_video(
         grade=args.grade,
         video_id=args.video,
-        step=args.step,
-        limit_scenes=args.limit_scenes,
-        scene=args.scene,
+        quality=args.quality,
+        preview=args.preview,
     )
-
-    print("\n=== BUILD RESULT ===")
-    for path in outputs:
-        print(path)
 
 
 if __name__ == "__main__":
-    try:
-        main()
-    except Exception as exc:
-        print(f"[ERROR] {exc}")
-        sys.exit(1)
+    raise SystemExit(main())

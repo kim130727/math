@@ -1,62 +1,61 @@
-grade: 0
-grade_goal: "수학은 세상을 이해하는 언어"
+meta:
+  title: "초등 수학"
+  description: "수학의 본질을 이해하는 시작"
 
 videos:
-  - id: "g0_v0"
-    title: "수학은 무엇일까요"
-    concept: "수학의 본질"
-    abstraction_stage: "현실 → 추상"
-    key_understanding: "수학은 계산이 아니라 세상을 이해하는 언어이다."
+  g0_v0:
+    title: "수학은 무엇일까"
+    description: "수학의 존재와 역할"
 
-    keywords:
-      - "수학"
-      - "추상"
-      - "구조"
-      - "개수"
+    scenes:
+      - type: fallback
+        title: "수학은 무엇일까요?"
+        body: "수학은 계산만 하는 것이 아니에요."
+        caption: "생각을 정리하는 도구"
+        duration: 3.0
 
-    flow:
-      - scene: hook
-        text: "다르게 생겼는데 왜 다 셀 수 있을까?"
-        visual: "question_popup"
+      - type: fallback
+        title: "우리는 유한해요"
+        body: "세상은 복잡하지만\n우리는 모든 것을 다 이해할 수 없어요."
+        duration: 3.0
 
-      - scene: problem
-        text: "사과 · 공 · 자동차"
-        visual: "object_compare"
-        items:
-          - "사과"
-          - "공"
-          - "자동차"
+      - type: fallback
+        title: "그래서 수학이 필요해요"
+        body: "복잡한 것을 단순하게\n정리하기 위해 수학을 사용해요."
+        duration: 3.2
 
-      - scene: observation
-        text: "모양은 달라도"
-        visual: "highlight_common"
+      - type: fallback
+        title: "수학은 기술이 아니라"
+        body: "가능한 세계를 만들고\n그 안에서 탐험하는 학문이에요."
+        duration: 3.5
 
-      - scene: concept
-        text: "개수는 같을 수 있어요"
-        visual: "focus_keyword"
-        focus_word: "개수"
+      - type: fallback
+        title: "수학은 두 가지가 있어요"
+        body: "존재를 다루는 수학\n그리고 수행하는 수학"
+        duration: 3.2
 
-      - scene: transform
-        text: "사과 3개 → 공 3개 → 자동차 3대 → 3"
-        visual: "transform_sequence"
-        sequence:
-          - "사과 3개"
-          - "공 3개"
-          - "자동차 3대"
-          - "3"
+      - type: fallback
+        title: "존재 중심 수학"
+        body: "이미 있는 구조를 이해하는 것"
+        duration: 3.0
 
-      - scene: realization
-        text: "중요한 것만 남기면 수학이 보여요"
-        visual: "simplify_focus"
+      - type: fallback
+        title: "수행 중심 수학"
+        body: "우리가 직접 만들어보는 것"
+        duration: 3.0
 
-      - scene: wrap_up
-        text: "수학은 세상을 이해하는 언어입니다"
-        visual: "title_emphasis"
+      - type: fallback
+        title: "수학은 언어예요"
+        body: "세상을 표현하는\n가장 정확한 언어입니다."
+        duration: 3.2
 
-    example:
-      type: "conceptual"
-      story: "사과 3개 → 공 3개 → 자동차 3대 → 3"
+      - type: fallback
+        title: "수학을 배우는 이유"
+        body: "세상을 더 잘 이해하고\n더 잘 살아가기 위해서입니다."
+        duration: 3.5
 
-    visual_model: "abstraction_flow"
-    narration_style: "초등 친화적"
-    conclusion: "수학은 중요한 구조를 보는 힘입니다."
+      - type: fallback
+        title: "이제 시작해볼까요?"
+        body: "수학의 세계로 함께 들어가요!"
+        caption: "Grade 0 시작"
+        duration: 3.0
