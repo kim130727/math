@@ -152,6 +152,8 @@ def _build_manim_command(
             [
                 "--config_file",
                 str(cfg_path),
+                "-r",
+                f"{pixel_width},{pixel_height}",
             ]
         )
 
