@@ -3,128 +3,108 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parents[2]
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
-
-CURRICULUM_DIR = PROJECT_ROOT / "curriculum"
-GENERATED_DIR = PROJECT_ROOT / "generated"
-
+CURRICULUM_DIR = BASE_DIR / "curriculum"
+GENERATED_DIR = BASE_DIR / "generated"
 SCRIPTS_DIR = GENERATED_DIR / "scripts"
-TTS_DIR = GENERATED_DIR / "tts"
 TIMINGS_DIR = GENERATED_DIR / "timings"
-RENDERS_DIR = GENERATED_DIR / "renders"
 VIDEOS_DIR = GENERATED_DIR / "videos"
+MANIM_MEDIA_DIR = GENERATED_DIR / "manim_media"
 
-ASSETS_DIR = PROJECT_ROOT / "assets"
-FONTS_DIR = ASSETS_DIR / "fonts"
+
+def _get_env_str(name: str, default: str) -> str:
+    value = os.getenv(name)
+    if value is None:
+        return default
+    return str(value).strip()
+
+
+def _get_env_int(name: str, default: int) -> int:
+    raw = os.getenv(name)
+    if raw is None or str(raw).strip() == "":
+        return default
+    try:
+        return int(str(raw).strip())
+    except ValueError as exc:
+        raise ValueError(f"환경변수 {name} 값이 정수가 아닙니다: {raw!r}") from exc
+
+
+def _get_env_float(name: str, default: float) -> float:
+    raw = os.getenv(name)
+    if raw is None or str(raw).strip() == "":
+        return default
+    try:
+        return float(str(raw).strip())
+    except ValueError as exc:
+        raise ValueError(f"환경변수 {name} 값이 숫자가 아닙니다: {raw!r}") from exc
+
+
+def _get_env_bool(name: str, default: bool) -> bool:
+    raw = os.getenv(name)
+    if raw is None:
+        return default
+
+    value = str(raw).strip().lower()
+    if value in {"1", "true", "yes", "y", "on"}:
+        return True
+    if value in {"0", "false", "no", "n", "off"}:
+        return False
+
+    raise ValueError(
+        f"환경변수 {name} 값이 bool 형식이 아닙니다: {raw!r} "
+        "(allowed: 1/0, true/false, yes/no, on/off)"
+    )
+
 
 # -------------------------------------------------------------------
-# Manim runtime
+# 기본 렌더 설정
 # -------------------------------------------------------------------
-MANIM_QUALITY = os.getenv("MANIM_QUALITY", "-pqh").strip()
-MANIM_ENTRY_FILE = PROJECT_ROOT / "src" / "math_video_factory" / "manim_entry.py"
-MANIM_SCENE_NAME = "AutoVideoScene"
+SHORTS_MODE = _get_env_bool("SHORTS_MODE", True)
+
+VIDEO_WIDTH = _get_env_int("VIDEO_WIDTH", 1080)
+VIDEO_HEIGHT = _get_env_int("VIDEO_HEIGHT", 1920)
+
+# Manim 내부 좌표계 프레임
+FRAME_WIDTH = _get_env_float("FRAME_WIDTH", 9.0)
+FRAME_HEIGHT = _get_env_float("FRAME_HEIGHT", 16.0)
+
+# l / m / h / p / k 혹은 -pql / -pqm / -pqh 등도 runner 쪽에서 처리
+MANIM_QUALITY = _get_env_str("MANIM_QUALITY", "m")
+
+# manim에서 기본으로 사용할 엔트리 파일/씬 이름
+# 현재 구조에서는 runner가 동적으로 처리하므로 기본값만 둠
+MANIM_ENTRY_FILE = _get_env_str(
+    "MANIM_ENTRY_FILE",
+    "src/math_video_factory/manim_entry.py",
+)
+MANIM_SCENE_NAME = _get_env_str("MANIM_SCENE_NAME", "Grade0Video0")
+
 
 # -------------------------------------------------------------------
-# TTS runtime
+# TTS / 후처리용 확장 설정
+# 지금 당장은 필수는 아니지만 이후 파이프라인 확장을 위해 유지
 # -------------------------------------------------------------------
-TTS_MODEL = os.getenv("TTS_MODEL", "gpt-4o-mini-tts").strip()
-TTS_VOICE = os.getenv("TTS_VOICE", "alloy").strip()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "").strip()
+OPENAI_API_KEY = _get_env_str("OPENAI_API_KEY", "")
+OPENAI_TTS_MODEL = _get_env_str("OPENAI_TTS_MODEL", "gpt-4o-mini-tts")
+OPENAI_TTS_VOICE = _get_env_str("OPENAI_TTS_VOICE", "alloy")
+OPENAI_TTS_FORMAT = _get_env_str("OPENAI_TTS_FORMAT", "mp3")
 
-# -------------------------------------------------------------------
-# Visual / font
-# -------------------------------------------------------------------
-DEFAULT_FONT = os.getenv("DEFAULT_FONT", "Malgun Gothic").strip()
-
-# -------------------------------------------------------------------
-# Shorts mode
-# -------------------------------------------------------------------
-SHORTS_MODE = os.getenv("SHORTS_MODE", "true").strip().lower() in {
-    "1",
-    "true",
-    "yes",
-    "y",
-    "on",
-}
-
-VIDEO_WIDTH = int(os.getenv("VIDEO_WIDTH", "1080").strip())
-VIDEO_HEIGHT = int(os.getenv("VIDEO_HEIGHT", "1920").strip())
-FRAME_WIDTH = float(os.getenv("FRAME_WIDTH", "9").strip())
-FRAME_HEIGHT = float(os.getenv("FRAME_HEIGHT", "16").strip())
-FRAME_RATE = int(os.getenv("FRAME_RATE", "30").strip())
-SHORTS_MAX_DURATION = float(os.getenv("SHORTS_MAX_DURATION", "55").strip())
-
-# -------------------------------------------------------------------
-# ffmpeg encoding
-# -------------------------------------------------------------------
-FFMPEG_CRF = int(os.getenv("FFMPEG_CRF", "23").strip())
-FFMPEG_PRESET = os.getenv("FFMPEG_PRESET", "medium").strip()
-FFMPEG_AUDIO_BITRATE = os.getenv("FFMPEG_AUDIO_BITRATE", "128k").strip()
-
-# -------------------------------------------------------------------
-# 기타 옵션
-# -------------------------------------------------------------------
-DEBUG = os.getenv("DEBUG", "false").strip().lower() in {
-    "1",
-    "true",
-    "yes",
-    "y",
-    "on",
-}
+FFMPEG_VIDEO_CODEC = _get_env_str("FFMPEG_VIDEO_CODEC", "libx264")
+FFMPEG_AUDIO_CODEC = _get_env_str("FFMPEG_AUDIO_CODEC", "aac")
+FFMPEG_CRF = _get_env_int("FFMPEG_CRF", 23)
+FFMPEG_PRESET = _get_env_str("FFMPEG_PRESET", "medium")
+FFMPEG_AUDIO_BITRATE = _get_env_str("FFMPEG_AUDIO_BITRATE", "192k")
 
 
 def ensure_directories() -> None:
-    for path in [
-        GENERATED_DIR,
-        SCRIPTS_DIR,
-        TTS_DIR,
-        TIMINGS_DIR,
-        RENDERS_DIR,
-        VIDEOS_DIR,
-    ]:
-        path.mkdir(parents=True, exist_ok=True)
+    CURRICULUM_DIR.mkdir(parents=True, exist_ok=True)
+    GENERATED_DIR.mkdir(parents=True, exist_ok=True)
+    SCRIPTS_DIR.mkdir(parents=True, exist_ok=True)
+    TIMINGS_DIR.mkdir(parents=True, exist_ok=True)
+    VIDEOS_DIR.mkdir(parents=True, exist_ok=True)
+    MANIM_MEDIA_DIR.mkdir(parents=True, exist_ok=True)
 
 
-def validate_runtime_config(*, require_tts: bool = True) -> None:
-    """
-    실행 전 필수 설정을 검증한다.
-    """
-    if require_tts and not OPENAI_API_KEY:
-        raise RuntimeError(
-            "OPENAI_API_KEY가 설정되지 않았습니다.\n"
-            "프로젝트 루트의 .env 파일에 아래처럼 추가하세요.\n\n"
-            "OPENAI_API_KEY=your_api_key_here"
-        )
-
-    if VIDEO_WIDTH <= 0 or VIDEO_HEIGHT <= 0:
-        raise RuntimeError("VIDEO_WIDTH, VIDEO_HEIGHT는 0보다 커야 합니다.")
-
-    if FRAME_WIDTH <= 0 or FRAME_HEIGHT <= 0:
-        raise RuntimeError("FRAME_WIDTH, FRAME_HEIGHT는 0보다 커야 합니다.")
-
-    if FRAME_RATE <= 0:
-        raise RuntimeError("FRAME_RATE는 0보다 커야 합니다.")
-
-    if SHORTS_MAX_DURATION <= 0:
-        raise RuntimeError("SHORTS_MAX_DURATION은 0보다 커야 합니다.")
-
-    allowed_presets = {
-        "ultrafast",
-        "superfast",
-        "veryfast",
-        "faster",
-        "fast",
-        "medium",
-        "slow",
-        "slower",
-        "veryslow",
-    }
-    if FFMPEG_PRESET not in allowed_presets:
-        raise RuntimeError(
-            "FFMPEG_PRESET 값이 올바르지 않습니다. "
-            f"현재값: {FFMPEG_PRESET}"
-        )
+ensure_directories()

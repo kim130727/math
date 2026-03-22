@@ -1,61 +1,22 @@
-meta:
-  title: "초등 수학"
-  description: "수학의 본질을 이해하는 시작"
+grade: 0
+grade_goal: "수학은 세상을 단순하게 보고 이해하는 언어"
 
 videos:
-  g0_v0:
-    title: "수학은 무엇일까"
-    description: "수학의 존재와 역할"
-
-    scenes:
-      - type: fallback
-        title: "수학은 무엇일까요?"
-        body: "수학은 계산만 하는 것이 아니에요."
-        caption: "생각을 정리하는 도구"
-        duration: 3.0
-
-      - type: fallback
-        title: "우리는 유한해요"
-        body: "세상은 복잡하지만\n우리는 모든 것을 다 이해할 수 없어요."
-        duration: 3.0
-
-      - type: fallback
-        title: "그래서 수학이 필요해요"
-        body: "복잡한 것을 단순하게\n정리하기 위해 수학을 사용해요."
-        duration: 3.2
-
-      - type: fallback
-        title: "수학은 기술이 아니라"
-        body: "가능한 세계를 만들고\n그 안에서 탐험하는 학문이에요."
-        duration: 3.5
-
-      - type: fallback
-        title: "수학은 두 가지가 있어요"
-        body: "존재를 다루는 수학\n그리고 수행하는 수학"
-        duration: 3.2
-
-      - type: fallback
-        title: "존재 중심 수학"
-        body: "이미 있는 구조를 이해하는 것"
-        duration: 3.0
-
-      - type: fallback
-        title: "수행 중심 수학"
-        body: "우리가 직접 만들어보는 것"
-        duration: 3.0
-
-      - type: fallback
-        title: "수학은 언어예요"
-        body: "세상을 표현하는\n가장 정확한 언어입니다."
-        duration: 3.2
-
-      - type: fallback
-        title: "수학을 배우는 이유"
-        body: "세상을 더 잘 이해하고\n더 잘 살아가기 위해서입니다."
-        duration: 3.5
-
-      - type: fallback
-        title: "이제 시작해볼까요?"
-        body: "수학의 세계로 함께 들어가요!"
-        caption: "Grade 0 시작"
-        duration: 3.0
+  - id: "g0_v0"
+    title: "수학은 무엇일까요"
+    concept: "수학의 시작"
+    abstraction_stage: "구체 → 규칙 → 표현"
+    key_understanding: "수학은 복잡한 세상에서 규칙을 발견하고, 그것을 더 단순하고 분명하게 표현하는 방법이다."
+    keywords:
+      - "수학"
+      - "규칙"
+      - "패턴"
+      - "표현"
+      - "생각"
+    example:
+      type: "pattern_growth"
+      pattern: "●, ●●, ●●●"
+      rule_text: "하나, 둘, 셋처럼 수량이 늘어나는 규칙을 발견할 수 있습니다."
+    visual_model: "pattern"
+    narration_style: "초등 친화적"
+    conclusion: "수학은 복잡한 것을 쉽게 보고, 규칙을 찾고, 생각을 표현하는 방법입니다."
