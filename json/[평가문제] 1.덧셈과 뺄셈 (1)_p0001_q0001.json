@@ -1,0 +1,131 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 810,
+    "height": 347
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "worksheet_problem_solving"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#FFFFFF",
+      "#666666"
+    ],
+    "text_styles": [
+      {
+        "id": "t_main",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_box",
+        "font_size": 31,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_box",
+        "stroke": "#000000",
+        "stroke_width": 2,
+        "fill": "#FFFFFF",
+        "rx": 11,
+        "ry": 11,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 1,
+    "instruction": "기호 ●에 대하여 □●△ = □−△+□라고 약속할 때 다음을 계산하시오.",
+    "expression": {
+      "lhs": 769,
+      "operator": "◉",
+      "rhs": 392,
+      "result": 1146
+    },
+    "answer": 1146
+  },
+  "render": {
+    "canvas": {
+      "width": 810,
+      "height": 347,
+      "background": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "1.",
+        "bbox": {
+          "x": 17,
+          "y": 15,
+          "w": 30,
+          "h": 32
+        },
+        "style_id": "t_main"
+      },
+      {
+        "type": "text",
+        "text": "기호 ●에 대하여 □●△ = □−△+□라고 약속할",
+        "bbox": {
+          "x": 56,
+          "y": 14,
+          "w": 736,
+          "h": 34
+        },
+        "style_id": "t_main"
+      },
+      {
+        "type": "text",
+        "text": "때 다음을 계산하시오.",
+        "bbox": {
+          "x": 55,
+          "y": 60,
+          "w": 287,
+          "h": 34
+        },
+        "style_id": "t_main"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 184,
+          "y": 138,
+          "w": 442,
+          "h": 103
+        },
+        "style_id": "s_box"
+      },
+      {
+        "type": "text",
+        "text": "769◉392",
+        "bbox": {
+          "x": 314,
+          "y": 173,
+          "w": 181,
+          "h": 37
+        },
+        "style_id": "t_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "The black-circle operator in the boxed expression is interpreted as the same custom operator defined in the instruction, shown as ◉ in the semantic layer."
+    ],
+    "limitations": [
+      "Exact font family and precise text metrics are approximate.",
+      "Bounding boxes are visually estimated from the provided image."
+    ]
+  }
+}

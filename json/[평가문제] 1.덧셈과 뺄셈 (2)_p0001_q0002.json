@@ -1,0 +1,265 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 809,
+    "height": 306
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary mathematics",
+    "task_type": "worksheet problem"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#111111",
+      "#d47ca1",
+      "#f4c5d3",
+      "#ffd34d",
+      "#fff1a8",
+      "#67e8ff",
+      "#c9f8ff",
+      "#41f2b0",
+      "#c9ffe9",
+      "#9db07e",
+      "#dbe3c0"
+    ],
+    "text_styles": [
+      {
+        "id": "instr",
+        "font_size": 32,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "card_digit",
+        "font_size": 46,
+        "font_family": null,
+        "font_weight": 700,
+        "fill": "#111111"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "card_pink",
+        "stroke": "#c66c93",
+        "stroke_width": 3,
+        "fill": "#f4c5d3",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_yellow",
+        "stroke": "#ffc61a",
+        "stroke_width": 3,
+        "fill": "#fff1a8",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_cyan",
+        "stroke": "#67e8ff",
+        "stroke_width": 3,
+        "fill": "#c9f8ff",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_green",
+        "stroke": "#41f2b0",
+        "stroke_width": 3,
+        "fill": "#c9ffe9",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_olive",
+        "stroke": "#9db07e",
+        "stroke_width": 3,
+        "fill": "#dbe3c0",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 2,
+    "instruction": "숫자 카드를 한 번씩만 사용하여 만들 수 있는 세 자리 수 중 가장 큰 수와 가장 작은 수의 차는 얼마입니까?",
+    "expression": {
+      "lhs": 874,
+      "operator": "-",
+      "rhs": 204,
+      "result": 670
+    },
+    "answer": 670
+  },
+  "render": {
+    "canvas": {
+      "width": 809,
+      "height": 306,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "2.",
+        "bbox": {
+          "x": 16,
+          "y": 18,
+          "w": 28,
+          "h": 34
+        },
+        "style_id": "instr"
+      },
+      {
+        "type": "text",
+        "text": "숫자 카드를 한 번씩만 사용하여 만들 수 있는 세 자리",
+        "bbox": {
+          "x": 58,
+          "y": 20,
+          "w": 555,
+          "h": 38
+        },
+        "style_id": "instr"
+      },
+      {
+        "type": "text",
+        "text": "수 중 가장 큰 수와 가장 작은 수의 차는 얼마입니까?",
+        "bbox": {
+          "x": 59,
+          "y": 68,
+          "w": 612,
+          "h": 38
+        },
+        "style_id": "instr"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 219,
+          "y": 133,
+          "w": 57,
+          "h": 74
+        },
+        "style_id": "card_pink"
+      },
+      {
+        "type": "text",
+        "text": "0",
+        "bbox": {
+          "x": 234,
+          "y": 141,
+          "w": 24,
+          "h": 48
+        },
+        "style_id": "card_digit"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 298,
+          "y": 133,
+          "w": 56,
+          "h": 74
+        },
+        "style_id": "card_yellow"
+      },
+      {
+        "type": "text",
+        "text": "2",
+        "bbox": {
+          "x": 312,
+          "y": 141,
+          "w": 24,
+          "h": 48
+        },
+        "style_id": "card_digit"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 377,
+          "y": 133,
+          "w": 57,
+          "h": 74
+        },
+        "style_id": "card_cyan"
+      },
+      {
+        "type": "text",
+        "text": "4",
+        "bbox": {
+          "x": 391,
+          "y": 141,
+          "w": 24,
+          "h": 48
+        },
+        "style_id": "card_digit"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 450,
+          "y": 133,
+          "w": 57,
+          "h": 74
+        },
+        "style_id": "card_green"
+      },
+      {
+        "type": "text",
+        "text": "7",
+        "bbox": {
+          "x": 464,
+          "y": 141,
+          "w": 24,
+          "h": 48
+        },
+        "style_id": "card_digit"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 527,
+          "y": 133,
+          "w": 57,
+          "h": 74
+        },
+        "style_id": "card_olive"
+      },
+      {
+        "type": "text",
+        "text": "8",
+        "bbox": {
+          "x": 541,
+          "y": 141,
+          "w": 24,
+          "h": 48
+        },
+        "style_id": "card_digit"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.94,
+    "assumptions": [
+      "문항의 정답은 가장 큰 세 자리 수 874와 가장 작은 세 자리 수 204의 차로 해석했습니다.",
+      "카드의 미세한 음영과 테두리 두께는 단순화하여 근사했습니다."
+    ],
+    "limitations": [
+      "원본 폰트는 알 수 없어 유사한 산세리프체로 근사했습니다.",
+      "정확한 카드 내부의 3D/그라데이션 효과는 반영하지 않았습니다."
+    ]
+  }
+}

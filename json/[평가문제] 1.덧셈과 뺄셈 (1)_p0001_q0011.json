@@ -1,0 +1,228 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 802,
+    "height": 432
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "word_problem"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#000000",
+      "#8eff00",
+      "#ffd0de",
+      "#5cf4c8",
+      "#7aefff"
+    ],
+    "text_styles": [
+      {
+        "id": "question_main",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "digit_card",
+        "font_size": 54,
+        "font_family": null,
+        "font_weight": 700,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "card_green",
+        "stroke": "#8eff00",
+        "stroke_width": 3,
+        "fill": "#d7ff66",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_pink",
+        "stroke": "#ff9cbc",
+        "stroke_width": 3,
+        "fill": "#ffd7e3",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_teal",
+        "stroke": "#30f0b4",
+        "stroke_width": 3,
+        "fill": "#68f4cc",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "card_cyan",
+        "stroke": "#45e0ff",
+        "stroke_width": 3,
+        "fill": "#8aefff",
+        "rx": 14,
+        "ry": 14,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 11,
+    "instruction": "4장의 숫자 카드 중에서 3장을 뽑아 한 번씩만 사용하여 세 자리 수를 만들려고 합니다. 만들 수 있는 가장 큰 수와 가장 작은 수의 합을 구하시오.",
+    "expression": {
+      "lhs": 974,
+      "operator": "+",
+      "rhs": 347,
+      "result": 1321
+    },
+    "answer": 1321
+  },
+  "render": {
+    "canvas": {
+      "width": 802,
+      "height": 432,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "11. 4 장의 숫자 카드 중에서 3 장을 뽑아 한 번씩만 사용",
+        "bbox": {
+          "x": 29,
+          "y": 25,
+          "w": 724,
+          "h": 36
+        },
+        "style_id": "question_main"
+      },
+      {
+        "type": "text",
+        "text": "하여 세 자리 수를 만들려고 합니다. 만들 수 있는 가장",
+        "bbox": {
+          "x": 71,
+          "y": 64,
+          "w": 655,
+          "h": 36
+        },
+        "style_id": "question_main"
+      },
+      {
+        "type": "text",
+        "text": "큰 수와 가장 작은 수의 합을 구하시오.",
+        "bbox": {
+          "x": 62,
+          "y": 104,
+          "w": 520,
+          "h": 36
+        },
+        "style_id": "question_main"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 247,
+          "y": 188,
+          "w": 61,
+          "h": 76
+        },
+        "style_id": "card_green"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 334,
+          "y": 188,
+          "w": 61,
+          "h": 76
+        },
+        "style_id": "card_pink"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 420,
+          "y": 188,
+          "w": 61,
+          "h": 76
+        },
+        "style_id": "card_teal"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 506,
+          "y": 188,
+          "w": 61,
+          "h": 76
+        },
+        "style_id": "card_cyan"
+      },
+      {
+        "type": "text",
+        "text": "3",
+        "bbox": {
+          "x": 260,
+          "y": 191,
+          "w": 33,
+          "h": 54
+        },
+        "style_id": "digit_card"
+      },
+      {
+        "type": "text",
+        "text": "9",
+        "bbox": {
+          "x": 347,
+          "y": 191,
+          "w": 33,
+          "h": 54
+        },
+        "style_id": "digit_card"
+      },
+      {
+        "type": "text",
+        "text": "7",
+        "bbox": {
+          "x": 433,
+          "y": 191,
+          "w": 33,
+          "h": 54
+        },
+        "style_id": "digit_card"
+      },
+      {
+        "type": "text",
+        "text": "4",
+        "bbox": {
+          "x": 520,
+          "y": 191,
+          "w": 33,
+          "h": 54
+        },
+        "style_id": "digit_card"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.92,
+    "assumptions": [
+      "문항의 줄바꿈은 이미지에서 보이는 형태를 기준으로 3줄로 재구성했습니다.",
+      "숫자 카드의 색상과 테두리는 원본에 가깝게 근사했습니다."
+    ],
+    "limitations": [
+      "원본 글꼴을 정확히 식별할 수 없어 폰트는 근사치입니다.",
+      "각 요소의 bbox는 시각적 판독 기반의 근사값입니다."
+    ]
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 808,
+    "height": 402
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary math",
+    "task_type": "fill-in-the-blank subtraction"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#000000",
+      "#f8e3ac",
+      "#e0b23a",
+      "#e6dbf1",
+      "#9b6db3",
+      "#d9a11c"
+    ],
+    "text_styles": [
+      {
+        "id": "text_instr",
+        "font_size": 28,
+        "font_family": "sans-serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "text_num",
+        "font_size": 34,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "box_yellow",
+        "stroke": "#e0b23a",
+        "stroke_width": 3,
+        "fill": "#f8e3ac",
+        "rx": 12,
+        "ry": 12,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "box_blank",
+        "stroke": "#e0b23a",
+        "stroke_width": 3,
+        "fill": "#ffffff",
+        "rx": 12,
+        "ry": 12,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "oval_purple",
+        "stroke": "#9b6db3",
+        "stroke_width": 3,
+        "fill": "#e6dbf1",
+        "rx": 48,
+        "ry": 48,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "arrow_gold",
+        "stroke": "#d9a11c",
+        "stroke_width": 6,
+        "fill": "none",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "arrowhead_gold",
+        "stroke": "#d9a11c",
+        "stroke_width": 1,
+        "fill": "#d9a11c",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 12,
+    "instruction": "빈칸에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 967,
+      "operator": "-",
+      "rhs": 525,
+      "result": 442
+    },
+    "answer": 442
+  },
+  "render": {
+    "canvas": {
+      "width": 808,
+      "height": 402,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "12.",
+        "bbox": {
+          "x": 24,
+          "y": 20,
+          "w": 40,
+          "h": 34
+        },
+        "style_id": "text_instr"
+      },
+      {
+        "type": "text",
+        "text": "빈칸에 알맞은 수를 써넣으시오.",
+        "bbox": {
+          "x": 67,
+          "y": 20,
+          "w": 330,
+          "h": 38
+        },
+        "style_id": "text_instr"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 173,
+          "y": 206,
+          "w": 160,
+          "h": 83
+        },
+        "style_id": "box_yellow"
+      },
+      {
+        "type": "text",
+        "text": "967",
+        "bbox": {
+          "x": 210,
+          "y": 226,
+          "w": 72,
+          "h": 48
+        },
+        "style_id": "text_num"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 326,
+          "y": 91,
+          "w": 158,
+          "h": 95
+        },
+        "style_id": "oval_purple"
+      },
+      {
+        "type": "text",
+        "text": "−525",
+        "bbox": {
+          "x": 373,
+          "y": 103,
+          "w": 82,
+          "h": 52
+        },
+        "style_id": "text_num"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 572,
+          "y": 206,
+          "w": 160,
+          "h": 83
+        },
+        "style_id": "box_blank"
+      },
+      {
+        "type": "line",
+        "x1": 245,
+        "y1": 206,
+        "x2": 293,
+        "y2": 160,
+        "style_id": "arrow_gold"
+      },
+      {
+        "type": "line",
+        "x1": 293,
+        "y1": 160,
+        "x2": 356,
+        "y2": 140,
+        "style_id": "arrow_gold"
+      },
+      {
+        "type": "line",
+        "x1": 480,
+        "y1": 140,
+        "x2": 565,
+        "y2": 194,
+        "style_id": "arrow_gold"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 560,
+            "y": 188
+          },
+          {
+            "x": 573,
+            "y": 196
+          },
+          {
+            "x": 560,
+            "y": 205
+          }
+        ],
+        "style_id": "arrowhead_gold"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.91,
+    "assumptions": [
+      "The central subtraction sign text is rendered as a Unicode minus with no visible space, matching the worksheet closely enough.",
+      "The curved arrow is approximated with straight line segments and a triangular arrowhead because the schema does not support Bézier curves or ellipse geometry directly."
+    ],
+    "limitations": [
+      "The oval container is approximated using a rounded rectangle shape.",
+      "Minor font and spacing differences may exist versus the original raster image."
+    ]
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 800,
+    "height": 470
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary math worksheet",
+    "task_type": "fill_in_answer"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#000000",
+      "#9a9a9a",
+      "#2a9df4",
+      "#bfe4ff"
+    ],
+    "text_styles": [
+      {
+        "id": "instruction_text",
+        "font_size": 30,
+        "font_family": "sans-serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "equation_text",
+        "font_size": 34,
+        "font_family": "Times New Roman",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "container",
+        "stroke": "#9a9a9a",
+        "stroke_width": 4,
+        "fill": "#ffffff",
+        "rx": 18,
+        "ry": 18,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "divider",
+        "stroke": "#9a9a9a",
+        "stroke_width": 4,
+        "fill": "none",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "answer_box",
+        "stroke": "#8a8a8a",
+        "stroke_width": 1.5,
+        "fill": "#ffffff",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "base10_blue",
+        "stroke": "#2a9df4",
+        "stroke_width": 1,
+        "fill": "#bfe4ff",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": "#2a9df4",
+        "cell_grid_stroke_width": 0.8
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 3,
+    "instruction": "수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 364,
+      "operator": "+",
+      "rhs": 153,
+      "result": 517
+    },
+    "answer": 517
+  },
+  "render": {
+    "canvas": {
+      "width": 800,
+      "height": 470,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "3. 수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+        "bbox": {
+          "x": 24,
+          "y": 14,
+          "w": 650,
+          "h": 42
+        },
+        "style_id": "instruction_text"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 58,
+          "y": 91,
+          "w": 681,
+          "h": 188
+        },
+        "style_id": "container"
+      },
+      {
+        "type": "line",
+        "x1": 438,
+        "y1": 91,
+        "x2": 438,
+        "y2": 279,
+        "style_id": "divider"
+      },
+      {
+        "type": "base10_group",
+        "label": "364",
+        "bbox": {
+          "x": 82,
+          "y": 106,
+          "w": 348,
+          "h": 145
+        },
+        "style_id": "base10_blue",
+        "components": {
+          "hundreds": {
+            "count": 3,
+            "front_face_bbox": {
+              "x": 82,
+              "y": 120,
+              "w": 95,
+              "h": 127
+            },
+            "depth_offset": {
+              "dx": 10,
+              "dy": -10
+            }
+          },
+          "tens": {
+            "count": 6,
+            "item_bbox": {
+              "x": 188,
+              "y": 106,
+              "w": 13,
+              "h": 128
+            },
+            "gap": 13
+          },
+          "ones": {
+            "count": 4,
+            "item_bbox": {
+              "x": 368,
+              "y": 145,
+              "w": 12,
+              "h": 12
+            },
+            "gap": 11
+          }
+        }
+      },
+      {
+        "type": "base10_group",
+        "label": "153",
+        "bbox": {
+          "x": 454,
+          "y": 106,
+          "w": 301,
+          "h": 144
+        },
+        "style_id": "base10_blue",
+        "components": {
+          "hundreds": {
+            "count": 1,
+            "front_face_bbox": {
+              "x": 454,
+              "y": 106,
+              "w": 95,
+              "h": 128
+            },
+            "depth_offset": {
+              "dx": 0,
+              "dy": 0
+            }
+          },
+          "tens": {
+            "count": 5,
+            "item_bbox": {
+              "x": 575,
+              "y": 107,
+              "w": 13,
+              "h": 126
+            },
+            "gap": 13
+          },
+          "ones": {
+            "count": 3,
+            "item_bbox": {
+              "x": 714,
+              "y": 145,
+              "w": 12,
+              "h": 12
+            },
+            "gap": 11
+          }
+        }
+      },
+      {
+        "type": "text",
+        "text": "364 + 153 =",
+        "bbox": {
+          "x": 263,
+          "y": 331,
+          "w": 187,
+          "h": 44
+        },
+        "style_id": "equation_text"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 437,
+          "y": 312,
+          "w": 104,
+          "h": 61
+        },
+        "style_id": "answer_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "캔버스 크기를 800x470으로 추정했다.",
+      "수 모형의 각 블록 수는 그림상 364와 153으로 해석했다.",
+      "왼쪽/오른쪽 모형의 세부 블록 위치와 크기는 시각적으로 비슷하게 근사했다."
+    ],
+    "limitations": [
+      "실제 벡터 도형의 정확한 픽셀 경계는 일부 오차가 있을 수 있다.",
+      "수 모형은 base10_group 요약 표현으로 렌더링해 개별 블록의 미세한 원근감은 완전히 반영하지 못한다."
+    ]
+  }
+}

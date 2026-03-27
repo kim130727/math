@@ -1,0 +1,274 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 803,
+    "height": 657
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "fill_in_the_blank_subtraction"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#f8e8b0",
+      "#d9a300",
+      "#ff22d8",
+      "#8b8b8b",
+      "#111111"
+    ],
+    "text_styles": [
+      {
+        "id": "txt_kor",
+        "font_size": 31,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "txt_num",
+        "font_size": 40,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "txt_expr",
+        "font_size": 44,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "container_yellow",
+        "stroke": "#d9a300",
+        "stroke_width": 3,
+        "fill": "#f8e8b0",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "arrow_magenta",
+        "stroke": "#ff22d8",
+        "stroke_width": 1,
+        "fill": "#ff22d8",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "answer_box",
+        "stroke": "#8b8b8b",
+        "stroke_width": 2,
+        "fill": "#ffffff",
+        "rx": 6,
+        "ry": 6,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 9,
+    "instruction": "□ 안에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 917,
+      "operator": "-",
+      "rhs": 353,
+      "result": 564
+    },
+    "answer": 564
+  },
+  "render": {
+    "canvas": {
+      "width": 803,
+      "height": 657,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "9. □ 안에 알맞은 수를 써넣으시오.",
+        "bbox": {
+          "x": 23,
+          "y": 21,
+          "w": 453,
+          "h": 40
+        },
+        "style_id": "txt_kor"
+      },
+      {
+        "type": "text",
+        "text": "917",
+        "bbox": {
+          "x": 235,
+          "y": 78,
+          "w": 88,
+          "h": 42
+        },
+        "style_id": "txt_num"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 168,
+            "y": 191
+          },
+          {
+            "x": 264,
+            "y": 191
+          },
+          {
+            "x": 252,
+            "y": 128
+          },
+          {
+            "x": 334,
+            "y": 128
+          },
+          {
+            "x": 322,
+            "y": 191
+          },
+          {
+            "x": 595,
+            "y": 191
+          },
+          {
+            "x": 595,
+            "y": 401
+          },
+          {
+            "x": 485,
+            "y": 401
+          },
+          {
+            "x": 495,
+            "y": 469
+          },
+          {
+            "x": 392,
+            "y": 469
+          },
+          {
+            "x": 402,
+            "y": 401
+          },
+          {
+            "x": 168,
+            "y": 401
+          }
+        ],
+        "style_id": "container_yellow"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 290,
+            "y": 158
+          },
+          {
+            "x": 303,
+            "y": 158
+          },
+          {
+            "x": 303,
+            "y": 173
+          },
+          {
+            "x": 310,
+            "y": 173
+          },
+          {
+            "x": 299,
+            "y": 192
+          },
+          {
+            "x": 288,
+            "y": 173
+          },
+          {
+            "x": 290,
+            "y": 173
+          }
+        ],
+        "style_id": "arrow_magenta"
+      },
+      {
+        "type": "text",
+        "text": "-353",
+        "bbox": {
+          "x": 293,
+          "y": 280,
+          "w": 108,
+          "h": 54
+        },
+        "style_id": "txt_expr"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 438,
+            "y": 404
+          },
+          {
+            "x": 451,
+            "y": 404
+          },
+          {
+            "x": 451,
+            "y": 419
+          },
+          {
+            "x": 458,
+            "y": 419
+          },
+          {
+            "x": 445,
+            "y": 439
+          },
+          {
+            "x": 432,
+            "y": 419
+          },
+          {
+            "x": 438,
+            "y": 419
+          }
+        ],
+        "style_id": "arrow_magenta"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 393,
+          "y": 471,
+          "w": 102,
+          "h": 73
+        },
+        "style_id": "answer_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.9,
+    "assumptions": [
+      "The worksheet canvas is approximated as 803x657 based on the provided image.",
+      "The final answer is inferred from the subtraction 917-353=564.",
+      "Text/font placement and the irregular yellow container are approximated to visually match the raster image."
+    ],
+    "limitations": [
+      "Exact font family and polygon geometry may differ slightly from the original print.",
+      "The top and bottom magenta arrows are represented as approximate polygons rather than as precise vector artwork."
+    ]
+  }
+}

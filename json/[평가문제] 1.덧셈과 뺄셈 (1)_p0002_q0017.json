@@ -1,0 +1,284 @@
+{
+  "source_image": {
+    "filename": "input.png",
+    "width": 802,
+    "height": 426
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary mathematics worksheet",
+    "task_type": "missing-digit addition"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#FFFFFF"
+    ],
+    "text_styles": [
+      {
+        "id": "t_title",
+        "font_size": 26,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_num",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_box",
+        "font_size": 24,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_outline",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "#FFFFFF",
+        "rx": 24,
+        "ry": 24,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_box",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "#FFFFFF",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_line",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "none",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 17,
+    "instruction": "□ 안에 알맞은 숫자를 써넣으시오.",
+    "expression": {
+      "lhs": 549,
+      "operator": "+",
+      "rhs": 375,
+      "result": 924
+    },
+    "answer": 924
+  },
+  "render": {
+    "canvas": {
+      "width": 802,
+      "height": 426,
+      "background": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "17.",
+        "bbox": {
+          "x": 28,
+          "y": 23,
+          "w": 34,
+          "h": 30
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "text",
+        "text": "□ 안에 알맞은 숫자를 써넣으시오.",
+        "bbox": {
+          "x": 79,
+          "y": 23,
+          "w": 274,
+          "h": 33
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 194,
+          "y": 79,
+          "w": 401,
+          "h": 244
+        },
+        "style_id": "s_outline"
+      },
+      {
+        "type": "text",
+        "text": "5",
+        "bbox": {
+          "x": 342,
+          "y": 116,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 391,
+          "y": 114,
+          "w": 49,
+          "h": 50
+        },
+        "style_id": "s_box"
+      },
+      {
+        "type": "text",
+        "text": "㉠",
+        "bbox": {
+          "x": 403,
+          "y": 121,
+          "w": 26,
+          "h": 28
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "9",
+        "bbox": {
+          "x": 473,
+          "y": 116,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "text",
+        "text": "+",
+        "bbox": {
+          "x": 273,
+          "y": 181,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "text",
+        "text": "3",
+        "bbox": {
+          "x": 343,
+          "y": 181,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "text",
+        "text": "7",
+        "bbox": {
+          "x": 411,
+          "y": 181,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 458,
+          "y": 173,
+          "w": 49,
+          "h": 49
+        },
+        "style_id": "s_box"
+      },
+      {
+        "type": "text",
+        "text": "㉡",
+        "bbox": {
+          "x": 470,
+          "y": 180,
+          "w": 26,
+          "h": 28
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "line",
+        "x1": 269,
+        "y1": 227,
+        "x2": 505,
+        "y2": 227,
+        "style_id": "s_line"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 325,
+          "y": 235,
+          "w": 49,
+          "h": 48
+        },
+        "style_id": "s_box"
+      },
+      {
+        "type": "text",
+        "text": "㉢",
+        "bbox": {
+          "x": 337,
+          "y": 242,
+          "w": 26,
+          "h": 28
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "2",
+        "bbox": {
+          "x": 409,
+          "y": 242,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "text",
+        "text": "4",
+        "bbox": {
+          "x": 474,
+          "y": 242,
+          "w": 20,
+          "h": 33
+        },
+        "style_id": "t_num"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "The small boxed symbols are rendered as the circled Korean markers ㉠, ㉡, ㉢ as seen in the OCR reference flow.",
+      "The arithmetic is interpreted as 549 + 375 = 924, matching the missing digits in the image."
+    ],
+    "limitations": [
+      "Exact font face and glyph metrics may differ slightly from the worksheet original.",
+      "Bounding boxes are approximate pixel-space placements based on the visible scan."
+    ]
+  }
+}

@@ -1,0 +1,564 @@
+{
+  "schema_version": "1.0",
+  "problem_id": "[평가문제] 1.덧셈과 뺄셈 (1)_p0001_q0008",
+  "input_meta": {
+    "source_filename": "worksheet.png",
+    "source_size": {
+      "width": 801,
+      "height": 459
+    },
+    "language": "ko",
+    "raw_problem_text": "수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+    "ocr_text": "수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+    "legacy_keys": [
+      "source_image",
+      "document",
+      "styles",
+      "semantic",
+      "render",
+      "quality_notes"
+    ]
+  },
+  "pedagogy": {
+    "grade_band": "elementary",
+    "goal": "정답뿐 아니라 풀이 설명까지 생성",
+    "explanation_style": "teacher_like_step_by_step",
+    "must_include": [
+      "narration",
+      "caption",
+      "derived_facts",
+      "checks"
+    ]
+  },
+  "semantic": {
+    "problem_type": "arithmetic_addition",
+    "expressions": [
+      {
+        "lhs": 573,
+        "operator": "+",
+        "rhs": 244,
+        "result": 817
+      }
+    ],
+    "answer": 817,
+    "givens": [
+      {
+        "lhs": 573
+      },
+      {
+        "rhs": 244
+      }
+    ],
+    "unknowns": [
+      "result"
+    ],
+    "constraints": [
+      "elementary_math",
+      "explanation_required"
+    ],
+    "concept_tags": [
+      "arithmetic_addition",
+      "place_value",
+      "animation_script"
+    ]
+  },
+  "derived_facts": [
+    {
+      "id": "fact_place_values",
+      "kind": "place_value_split",
+      "value": {
+        "lhs": {
+          "hundreds": 5,
+          "tens": 7,
+          "ones": 3
+        },
+        "rhs": {
+          "hundreds": 2,
+          "tens": 4,
+          "ones": 4
+        }
+      },
+      "explanation": "자리값 분해"
+    },
+    {
+      "id": "fact_ones_sum",
+      "kind": "intermediate_sum",
+      "value": 7,
+      "explanation": "일의 자리 3+4=7"
+    },
+    {
+      "id": "fact_tens_sum",
+      "kind": "intermediate_sum",
+      "value": 11,
+      "explanation": "십의 자리 합"
+    },
+    {
+      "id": "fact_carry_hundreds",
+      "kind": "carry",
+      "value": 1,
+      "explanation": "십의 자리 받아올림"
+    }
+  ],
+  "scene_objects": [
+    {
+      "id": "problem_text",
+      "type": "text_block",
+      "text": "수 모형을 보고 □ 안에 알맞은 수를 써넣으시오."
+    },
+    {
+      "id": "main_expression",
+      "type": "math_expression",
+      "latex": "573 + 244 = \\Box",
+      "value": {
+        "lhs": 573,
+        "operator": "+",
+        "rhs": 244,
+        "result": 817
+      }
+    },
+    {
+      "id": "answer_box",
+      "type": "answer_box",
+      "placeholder": "□"
+    },
+    {
+      "id": "legacy_text_1",
+      "type": "text_block",
+      "text": "8. 수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+      "bbox": {
+        "x": 28,
+        "y": 17,
+        "w": 633,
+        "h": 37
+      }
+    },
+    {
+      "id": "legacy_rounded_rect_2",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 75,
+        "y": 92,
+        "w": 649,
+        "h": 171
+      }
+    },
+    {
+      "id": "legacy_line_3",
+      "type": "arrow",
+      "from": {
+        "x": 463,
+        "y": 92
+      },
+      "to": {
+        "x": 463,
+        "y": 263
+      }
+    },
+    {
+      "id": "legacy_base10_group_4",
+      "type": "base10_blocks",
+      "label": "573",
+      "components": {
+        "hundreds": {
+          "count": 5,
+          "front_face_bbox": {
+            "x": 93,
+            "y": 160,
+            "w": 75,
+            "h": 82
+          },
+          "depth_offset": {
+            "dx": 12,
+            "dy": -12
+          }
+        },
+        "tens": {
+          "count": 7,
+          "item_bbox": {
+            "x": 263,
+            "y": 140,
+            "w": 10,
+            "h": 78
+          },
+          "gap": 16
+        },
+        "ones": {
+          "count": 3,
+          "item_bbox": {
+            "x": 428,
+            "y": 173,
+            "w": 10,
+            "h": 10
+          },
+          "gap": 16
+        }
+      },
+      "bbox": {
+        "x": 90,
+        "y": 116,
+        "w": 362,
+        "h": 128
+      }
+    },
+    {
+      "id": "legacy_base10_group_5",
+      "type": "base10_blocks",
+      "label": "244",
+      "components": {
+        "hundreds": {
+          "count": 2,
+          "front_face_bbox": {
+            "x": 482,
+            "y": 133,
+            "w": 74,
+            "h": 89
+          },
+          "depth_offset": {
+            "dx": 12,
+            "dy": -12
+          }
+        },
+        "tens": {
+          "count": 4,
+          "item_bbox": {
+            "x": 602,
+            "y": 140,
+            "w": 10,
+            "h": 78
+          },
+          "gap": 18
+        },
+        "ones": {
+          "count": 4,
+          "item_bbox": {
+            "x": 702,
+            "y": 154,
+            "w": 10,
+            "h": 10
+          },
+          "gap": 10
+        }
+      },
+      "bbox": {
+        "x": 476,
+        "y": 116,
+        "w": 247,
+        "h": 128
+      }
+    },
+    {
+      "id": "legacy_text_6",
+      "type": "text_block",
+      "text": "573 + 244 =",
+      "bbox": {
+        "x": 266,
+        "y": 315,
+        "w": 167,
+        "h": 42
+      }
+    },
+    {
+      "id": "legacy_rect_7",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 451,
+        "y": 294,
+        "w": 104,
+        "h": 62
+      }
+    }
+  ],
+  "layout_template": {
+    "name": "worksheet_default",
+    "canvas": {
+      "width": 801,
+      "height": 459,
+      "background": "#ffffff"
+    },
+    "regions": {
+      "problem": [
+        0.05,
+        0.05,
+        0.9,
+        0.2
+      ],
+      "work": [
+        0.08,
+        0.22,
+        0.84,
+        0.58
+      ],
+      "answer": [
+        0.66,
+        0.82,
+        0.2,
+        0.12
+      ]
+    }
+  },
+  "solution_plan": {
+    "strategy": "explain_then_compute",
+    "step_policy": "all_steps_need_narration_and_caption",
+    "steps": [
+      {
+        "id": "step_01",
+        "phase": "intro",
+        "action": "display_problem",
+        "title": "문제 확인",
+        "pedagogical_purpose": "무엇을 구하는지 파악",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "problem_understood": true
+        },
+        "narration": {
+          "primary": "문제를 읽고 무엇을 구해야 하는지 확인해요.",
+          "alternate_short": "문제를 먼저 확인해요."
+        },
+        "caption": "무엇을 구할지 확인",
+        "emphasis": [
+          "goal"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "problem_text"
+          }
+        ],
+        "depends_on": [],
+        "teacher_note": "학생이 문제 요구를 먼저 말하게 유도"
+      },
+      {
+        "id": "step_02",
+        "phase": "modeling",
+        "action": "show_object",
+        "title": "식 제시",
+        "pedagogical_purpose": "문제 정보를 수식 형태로 시각화",
+        "target": "main_expression",
+        "inputs": {},
+        "outputs": {
+          "expression_shown": true
+        },
+        "narration": {
+          "primary": "식을 화면에 보여주고 자리값 순서로 계산할 준비를 합니다.",
+          "alternate_short": "식을 보여줄게요."
+        },
+        "caption": "식과 계산 순서 준비",
+        "emphasis": [
+          "expression"
+        ],
+        "animation": {
+          "name": "fade_in",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "main_expression"
+          }
+        ],
+        "depends_on": [
+          "step_01"
+        ],
+        "teacher_note": "연산 기호와 피연산자를 정확히 읽게 지도"
+      },
+      {
+        "id": "step_03",
+        "phase": "compute",
+        "action": "show_place_value",
+        "title": "자리값 분해",
+        "pedagogical_purpose": "백/십/일 자리 단위로 계산 준비",
+        "target": "main_expression",
+        "inputs": {
+          "lhs": 573,
+          "rhs": 244
+        },
+        "outputs": {
+          "place_value_ready": true
+        },
+        "narration": {
+          "primary": "두 수를 백, 십, 일 자리로 나누어 봅시다.",
+          "alternate_short": "자리값으로 나눠요."
+        },
+        "caption": "자리값 분해",
+        "emphasis": [
+          "place_value"
+        ],
+        "animation": {
+          "name": "highlight",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "place_value_valid"
+          }
+        ],
+        "depends_on": [
+          "step_02"
+        ],
+        "teacher_note": "자리값을 분해하면 오류가 줄어듦"
+      },
+      {
+        "id": "step_04",
+        "phase": "compute",
+        "action": "combine_place_values",
+        "title": "일의 자리 계산",
+        "pedagogical_purpose": "첫 계산 단계를 명확히 제시",
+        "target": "main_expression",
+        "inputs": {
+          "place": "ones"
+        },
+        "outputs": {
+          "ones_sum": 7
+        },
+        "narration": {
+          "primary": "일의 자리 3+4=7입니다.",
+          "alternate_short": "일의 자리 계산"
+        },
+        "caption": "일의 자리 합: 7",
+        "emphasis": [
+          "ones"
+        ],
+        "animation": {
+          "name": "highlight",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "numeric",
+            "key": "ones_sum"
+          }
+        ],
+        "depends_on": [
+          "step_03"
+        ],
+        "teacher_note": "항상 일의 자리부터 계산"
+      },
+      {
+        "id": "step_05",
+        "phase": "compute",
+        "action": "derive_intermediate_value",
+        "title": "받아올림 없음",
+        "pedagogical_purpose": "자리값 재구성 이해",
+        "target": "main_expression",
+        "inputs": {
+          "from": "ones",
+          "to": "tens",
+          "value": 0
+        },
+        "outputs": {
+          "carry": 0
+        },
+        "narration": {
+          "primary": "받아올림 없이 다음 자리로 넘어갑니다.",
+          "alternate_short": "받아올림 확인"
+        },
+        "caption": "받아올림 처리",
+        "emphasis": [
+          "carry"
+        ],
+        "animation": {
+          "name": "transform",
+          "duration": 1.1
+        },
+        "checks": [
+          {
+            "type": "carry_consistent"
+          }
+        ],
+        "depends_on": [
+          "step_04"
+        ],
+        "teacher_note": "받아올림은 10개를 한 묶음으로 바꾸는 개념"
+      },
+      {
+        "id": "step_06",
+        "phase": "answer",
+        "action": "fill_answer",
+        "title": "정답 기입",
+        "pedagogical_purpose": "최종 결과를 정답 칸에 연결",
+        "target": "answer_box",
+        "inputs": {
+          "answer": 817
+        },
+        "outputs": {
+          "answer_written": true
+        },
+        "narration": {
+          "primary": "계산 결과를 정답 칸에 쓰면 817입니다.",
+          "alternate_short": "정답 쓰기"
+        },
+        "caption": "정답: 817",
+        "emphasis": [
+          "answer"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 0.9
+        },
+        "checks": [
+          {
+            "type": "answer_not_null"
+          }
+        ],
+        "depends_on": [
+          "step_05"
+        ],
+        "teacher_note": "결과와 문제 요구가 일치하는지 확인"
+      },
+      {
+        "id": "step_07",
+        "phase": "close",
+        "action": "conclude",
+        "title": "마무리",
+        "pedagogical_purpose": "핵심 풀이 전략 재강조",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "lesson_complete": true
+        },
+        "narration": {
+          "primary": "자리값과 중간 계산을 차근차근 확인하면 실수를 줄일 수 있어요.",
+          "alternate_short": "풀이 마무리"
+        },
+        "caption": "핵심: 자리값 + 중간계산",
+        "emphasis": [
+          "summary"
+        ],
+        "animation": {
+          "name": "fade_out",
+          "duration": 0.8
+        },
+        "checks": [
+          {
+            "type": "flow_complete"
+          }
+        ],
+        "depends_on": [
+          "step_06"
+        ],
+        "teacher_note": "학생이 스스로 풀이 전략을 말해보게 하기"
+      }
+    ]
+  },
+  "animation_prefs": {
+    "theme": "clean_math",
+    "pace": "normal",
+    "caption_mode": "korean_subtitles",
+    "voice_mode": "tts_ready"
+  },
+  "validation": {
+    "render_safe": true,
+    "solve_safe": true,
+    "human_review_required": false,
+    "confidence": 0.95,
+    "warnings": [
+      "Exact font matching and some bounding boxes are approximate due to image resolution.",
+      "The internal cube grids of the base-10 blocks are represented abstractly rather than as individually drawn cubes."
+    ]
+  }
+}

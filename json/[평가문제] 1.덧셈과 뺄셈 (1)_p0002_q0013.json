@@ -1,0 +1,394 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 806,
+    "height": 331
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "number_line_missing_part"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#666666",
+      "#7f7f7f",
+      "#ffffff"
+    ],
+    "text_styles": [
+      {
+        "id": "t_header",
+        "font_size": 28,
+        "font_family": "Noto Sans CJK KR",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_num",
+        "font_size": 31,
+        "font_family": "Times New Roman",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_label",
+        "font_size": 30,
+        "font_family": "Times New Roman",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_box",
+        "stroke": "#000000",
+        "stroke_width": 1.5,
+        "fill": "#ffffff",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_answer_box",
+        "stroke": "#8a8a8a",
+        "stroke_width": 2,
+        "fill": "#ffffff",
+        "rx": 6,
+        "ry": 6,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_line",
+        "stroke": "#000000",
+        "stroke_width": 2,
+        "fill": "#000000",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_curve",
+        "stroke": "#7a7a7a",
+        "stroke_width": 1.2,
+        "fill": "#ffffff",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 13,
+    "instruction": "□ 안에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 802,
+      "operator": "-",
+      "rhs": 498,
+      "result": 304
+    },
+    "answer": 304
+  },
+  "render": {
+    "canvas": {
+      "width": 806,
+      "height": 331,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "13.",
+        "bbox": {
+          "x": 25,
+          "y": 21,
+          "w": 34,
+          "h": 29
+        },
+        "style_id": "t_header"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 59,
+          "y": 24,
+          "w": 21,
+          "h": 21
+        },
+        "style_id": "s_box"
+      },
+      {
+        "type": "text",
+        "text": "안에 알맞은 수를 써넣으시오.",
+        "bbox": {
+          "x": 95,
+          "y": 21,
+          "w": 246,
+          "h": 31
+        },
+        "style_id": "t_header"
+      },
+      {
+        "type": "text",
+        "text": "802",
+        "bbox": {
+          "x": 377,
+          "y": 86,
+          "w": 56,
+          "h": 34
+        },
+        "style_id": "t_label"
+      },
+      {
+        "type": "text",
+        "text": "498",
+        "bbox": {
+          "x": 500,
+          "y": 183,
+          "w": 56,
+          "h": 34
+        },
+        "style_id": "t_label"
+      },
+      {
+        "type": "line",
+        "x1": 67,
+        "y1": 154,
+        "x2": 707,
+        "y2": 154,
+        "style_id": "s_line"
+      },
+      {
+        "type": "line",
+        "x1": 67,
+        "y1": 146,
+        "x2": 67,
+        "y2": 162,
+        "style_id": "s_line"
+      },
+      {
+        "type": "line",
+        "x1": 307,
+        "y1": 146,
+        "x2": 307,
+        "y2": 162,
+        "style_id": "s_line"
+      },
+      {
+        "type": "line",
+        "x1": 707,
+        "y1": 146,
+        "x2": 707,
+        "y2": 162,
+        "style_id": "s_line"
+      },
+      {
+        "type": "line",
+        "x1": 67,
+        "y1": 154,
+        "x2": 135,
+        "y2": 129,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 135,
+        "y1": 129,
+        "x2": 203,
+        "y2": 113,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 203,
+        "y1": 113,
+        "x2": 271,
+        "y2": 105,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 271,
+        "y1": 105,
+        "x2": 339,
+        "y2": 104,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 339,
+        "y1": 104,
+        "x2": 407,
+        "y2": 105,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 407,
+        "y1": 105,
+        "x2": 475,
+        "y2": 113,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 475,
+        "y1": 113,
+        "x2": 543,
+        "y2": 129,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 543,
+        "y1": 129,
+        "x2": 611,
+        "y2": 143,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 611,
+        "y1": 143,
+        "x2": 707,
+        "y2": 154,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 67,
+        "y1": 154,
+        "x2": 105,
+        "y2": 165,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 105,
+        "y1": 165,
+        "x2": 143,
+        "y2": 176,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 143,
+        "y1": 176,
+        "x2": 181,
+        "y2": 186,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 181,
+        "y1": 186,
+        "x2": 219,
+        "y2": 191,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 219,
+        "y1": 191,
+        "x2": 257,
+        "y2": 182,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 257,
+        "y1": 182,
+        "x2": 307,
+        "y2": 154,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 307,
+        "y1": 154,
+        "x2": 353,
+        "y2": 170,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 353,
+        "y1": 170,
+        "x2": 399,
+        "y2": 183,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 399,
+        "y1": 183,
+        "x2": 445,
+        "y2": 192,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 445,
+        "y1": 192,
+        "x2": 491,
+        "y2": 197,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 491,
+        "y1": 197,
+        "x2": 537,
+        "y2": 192,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 537,
+        "y1": 192,
+        "x2": 583,
+        "y2": 183,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 583,
+        "y1": 183,
+        "x2": 629,
+        "y2": 170,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "line",
+        "x1": 629,
+        "y1": 170,
+        "x2": 707,
+        "y2": 154,
+        "style_id": "s_curve"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 164,
+          "y": 166,
+          "w": 76,
+          "h": 55
+        },
+        "style_id": "s_answer_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.97,
+    "assumptions": [
+      "The missing value is inferred from the number line relation 802 - 498 = 304."
+    ],
+    "limitations": [
+      "The dashed curved guide lines are approximated with multiple straight line segments because the schema does not support curved/dashed primitives directly."
+    ]
+  }
+}

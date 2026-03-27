@@ -1,0 +1,103 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 806,
+    "height": 264
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "worksheet_to_semantic_json"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#111111"
+    ],
+    "text_styles": [
+      {
+        "id": "text_main",
+        "font_size": 31,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      }
+    ],
+    "shape_styles": []
+  },
+  "semantic": {
+    "problem_number": 2,
+    "instruction": "민주네 반 학급 문고에는 동화책이 267권, 위인전이 312권 있습니다. 학급 문고에 있는 동화책과 위인전은 모두 몇 권입니까?",
+    "expression": {
+      "lhs": 267,
+      "operator": "+",
+      "rhs": 312,
+      "result": 579
+    },
+    "answer": 579
+  },
+  "render": {
+    "canvas": {
+      "width": 806,
+      "height": 264,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "2.",
+        "bbox": {
+          "x": 16,
+          "y": 18,
+          "w": 32,
+          "h": 36
+        },
+        "style_id": "text_main"
+      },
+      {
+        "type": "text",
+        "text": "민주네 반 학급 문고에는 동화책이 267 권, 위인전이",
+        "bbox": {
+          "x": 57,
+          "y": 18,
+          "w": 688,
+          "h": 42
+        },
+        "style_id": "text_main"
+      },
+      {
+        "type": "text",
+        "text": "312 권 있습니다. 학급 문고에 있는 동화책과 위인전은",
+        "bbox": {
+          "x": 57,
+          "y": 63,
+          "w": 679,
+          "h": 42
+        },
+        "style_id": "text_main"
+      },
+      {
+        "type": "text",
+        "text": "모두 몇 권입니까?",
+        "bbox": {
+          "x": 57,
+          "y": 108,
+          "w": 270,
+          "h": 42
+        },
+        "style_id": "text_main"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.96,
+    "assumptions": [
+      "원문 이미지는 3줄로 줄바꿈된 것으로 보이며 이를 반영해 텍스트 bbox를 근사했다.",
+      "실제 서체는 한국어 교과서형 명조체로 보이나 스타일은 serif 계열로 근사했다."
+    ],
+    "limitations": [
+      "문자 간 정확한 자간과 줄간격은 이미지에서 완전히 복원되지 않는다.",
+      "이미지 내 비텍스트 도형은 보이지 않아 별도 도형 요소를 두지 않았다."
+    ]
+  }
+}

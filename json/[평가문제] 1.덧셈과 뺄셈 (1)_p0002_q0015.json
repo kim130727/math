@@ -1,0 +1,369 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 822,
+    "height": 506
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math_worksheet",
+    "task_type": "match_equation_to_result"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#000000",
+      "#c8ff4d",
+      "#e0e0e0"
+    ],
+    "text_styles": [
+      {
+        "id": "title",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "item_label",
+        "font_size": 26,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "box_text",
+        "font_size": 34,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "choice_label",
+        "font_size": 28,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "bullet",
+        "font_size": 24,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "green_box",
+        "stroke": "#000000",
+        "stroke_width": 3,
+        "fill": "#c8ff4d",
+        "rx": 6,
+        "ry": 6,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 15,
+    "instruction": "계산 결과를 찾아 선으로 이으시오.",
+    "expression": {
+      "lhs": 527,
+      "operator": "+",
+      "rhs": 288,
+      "result": 815
+    },
+    "answer": 815
+  },
+  "render": {
+    "canvas": {
+      "width": 822,
+      "height": 506,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "15. 계산 결과를 찾아 선으로 이으시오.",
+        "bbox": {
+          "x": 33,
+          "y": 12,
+          "w": 430,
+          "h": 40
+        },
+        "style_id": "title"
+      },
+      {
+        "type": "text",
+        "text": "(1)",
+        "bbox": {
+          "x": 58,
+          "y": 107,
+          "w": 34,
+          "h": 30
+        },
+        "style_id": "item_label"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 114,
+          "y": 91,
+          "w": 183,
+          "h": 61
+        },
+        "style_id": "green_box"
+      },
+      {
+        "type": "text",
+        "text": "527 + 288",
+        "bbox": {
+          "x": 142,
+          "y": 100,
+          "w": 128,
+          "h": 42
+        },
+        "style_id": "box_text"
+      },
+      {
+        "type": "text",
+        "text": "•",
+        "bbox": {
+          "x": 323,
+          "y": 108,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "bullet"
+      },
+      {
+        "type": "text",
+        "text": "•",
+        "bbox": {
+          "x": 548,
+          "y": 108,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "bullet"
+      },
+      {
+        "type": "text",
+        "text": "가",
+        "bbox": {
+          "x": 576,
+          "y": 103,
+          "w": 28,
+          "h": 34
+        },
+        "style_id": "choice_label"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 615,
+          "y": 91,
+          "w": 93,
+          "h": 61
+        },
+        "style_id": "green_box"
+      },
+      {
+        "type": "text",
+        "text": "805",
+        "bbox": {
+          "x": 642,
+          "y": 99,
+          "w": 42,
+          "h": 42
+        },
+        "style_id": "box_text"
+      },
+      {
+        "type": "text",
+        "text": "(2)",
+        "bbox": {
+          "x": 58,
+          "y": 187,
+          "w": 34,
+          "h": 30
+        },
+        "style_id": "item_label"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 114,
+          "y": 173,
+          "w": 183,
+          "h": 61
+        },
+        "style_id": "green_box"
+      },
+      {
+        "type": "text",
+        "text": "178 + 674",
+        "bbox": {
+          "x": 142,
+          "y": 182,
+          "w": 128,
+          "h": 42
+        },
+        "style_id": "box_text"
+      },
+      {
+        "type": "text",
+        "text": "•",
+        "bbox": {
+          "x": 323,
+          "y": 189,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "bullet"
+      },
+      {
+        "type": "text",
+        "text": "•",
+        "bbox": {
+          "x": 548,
+          "y": 189,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "bullet"
+      },
+      {
+        "type": "text",
+        "text": "나",
+        "bbox": {
+          "x": 576,
+          "y": 183,
+          "w": 28,
+          "h": 34
+        },
+        "style_id": "choice_label"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 615,
+          "y": 173,
+          "w": 93,
+          "h": 61
+        },
+        "style_id": "green_box"
+      },
+      {
+        "type": "text",
+        "text": "815",
+        "bbox": {
+          "x": 643,
+          "y": 181,
+          "w": 40,
+          "h": 42
+        },
+        "style_id": "box_text"
+      },
+      {
+        "type": "text",
+        "text": "(3)",
+        "bbox": {
+          "x": 58,
+          "y": 267,
+          "w": 34,
+          "h": 30
+        },
+        "style_id": "item_label"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 114,
+          "y": 256,
+          "w": 183,
+          "h": 61
+        },
+        "style_id": "green_box"
+      },
+      {
+        "type": "text",
+        "text": "379 + 426",
+        "bbox": {
+          "x": 142,
+          "y": 264,
+          "w": 128,
+          "h": 42
+        },
+        "style_id": "box_text"
+      },
+      {
+        "type": "text",
+        "text": "•",
+        "bbox": {
+          "x": 323,
+          "y": 270,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "bullet"
+      },
+      {
+        "type": "text",
+        "text": "•",
+        "bbox": {
+          "x": 548,
+          "y": 270,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "bullet"
+      },
+      {
+        "type": "text",
+        "text": "다",
+        "bbox": {
+          "x": 576,
+          "y": 264,
+          "w": 28,
+          "h": 34
+        },
+        "style_id": "choice_label"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 615,
+          "y": 255,
+          "w": 93,
+          "h": 61
+        },
+        "style_id": "green_box"
+      },
+      {
+        "type": "text",
+        "text": "852",
+        "bbox": {
+          "x": 643,
+          "y": 263,
+          "w": 40,
+          "h": 42
+        },
+        "style_id": "box_text"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.94,
+    "assumptions": [
+      "The worksheet contains three addition problems to be matched with three results; the semantic section stores one representative equation because the schema allows only a single expression.",
+      "The visible page is treated as a cropped worksheet image without the PDF header text shown in the reference flow."
+    ],
+    "limitations": [
+      "No connecting lines are drawn in the source image, so only the printed prompts, boxes, labels, and answer choices are rendered.",
+      "Bounding boxes are approximate and based on visual estimation from the raster image."
+    ]
+  }
+}

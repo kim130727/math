@@ -1,0 +1,252 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 816,
+    "height": 648
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary math worksheet",
+    "task_type": "addition with base-ten blocks"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#9b9b9b",
+      "#1ea0ff",
+      "#cdeeff",
+      "#ffffff"
+    ],
+    "text_styles": [
+      {
+        "id": "t_main",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_eq",
+        "font_size": 36,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_container",
+        "stroke": "#9b9b9b",
+        "stroke_width": 2,
+        "fill": "#ffffff",
+        "rx": 18,
+        "ry": 18,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_divider",
+        "stroke": "#9b9b9b",
+        "stroke_width": 1.5,
+        "fill": "none",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_answer_box",
+        "stroke": "#9b9b9b",
+        "stroke_width": 1,
+        "fill": "#ffffff",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_block",
+        "stroke": "#1ea0ff",
+        "stroke_width": 1,
+        "fill": "#cdeeff",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": "#6ab8ff",
+        "cell_grid_stroke_width": 0.5
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 4,
+    "instruction": "수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 376,
+      "operator": "+",
+      "rhs": 255,
+      "result": 631
+    },
+    "answer": 631
+  },
+  "render": {
+    "canvas": {
+      "width": 816,
+      "height": 648,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "4. 수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+        "bbox": {
+          "x": 22,
+          "y": 16,
+          "w": 668,
+          "h": 38
+        },
+        "style_id": "t_main"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 59,
+          "y": 88,
+          "w": 685,
+          "h": 368
+        },
+        "style_id": "s_container"
+      },
+      {
+        "type": "line",
+        "x1": 405,
+        "y1": 89,
+        "x2": 405,
+        "y2": 456,
+        "style_id": "s_divider"
+      },
+      {
+        "type": "base10_group",
+        "label": "376",
+        "bbox": {
+          "x": 126,
+          "y": 121,
+          "w": 226,
+          "h": 282
+        },
+        "style_id": "s_block",
+        "components": {
+          "hundreds": {
+            "count": 3,
+            "front_face_bbox": {
+              "x": 129,
+              "y": 136,
+              "w": 98,
+              "h": 103
+            },
+            "depth_offset": {
+              "dx": 33,
+              "dy": -13
+            }
+          },
+          "tens": {
+            "count": 7,
+            "item_bbox": {
+              "x": 131,
+              "y": 271,
+              "w": 13,
+              "h": 104
+            },
+            "gap": 16
+          },
+          "ones": {
+            "count": 6,
+            "item_bbox": {
+              "x": 149,
+              "y": 405,
+              "w": 14,
+              "h": 15
+            },
+            "gap": 18
+          }
+        }
+      },
+      {
+        "type": "base10_group",
+        "label": "255",
+        "bbox": {
+          "x": 487,
+          "y": 124,
+          "w": 167,
+          "h": 281
+        },
+        "style_id": "s_block",
+        "components": {
+          "hundreds": {
+            "count": 2,
+            "front_face_bbox": {
+              "x": 489,
+              "y": 136,
+              "w": 98,
+              "h": 102
+            },
+            "depth_offset": {
+              "dx": 32,
+              "dy": -11
+            }
+          },
+          "tens": {
+            "count": 5,
+            "item_bbox": {
+              "x": 500,
+              "y": 259,
+              "w": 14,
+              "h": 104
+            },
+            "gap": 16
+          },
+          "ones": {
+            "count": 5,
+            "item_bbox": {
+              "x": 504,
+              "y": 405,
+              "w": 14,
+              "h": 15
+            },
+            "gap": 18
+          }
+        }
+      },
+      {
+        "type": "text",
+        "text": "376 + 255 =",
+        "bbox": {
+          "x": 253,
+          "y": 505,
+          "w": 159,
+          "h": 47
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 434,
+          "y": 487,
+          "w": 103,
+          "h": 61
+        },
+        "style_id": "s_answer_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.91,
+    "assumptions": [
+      "The worksheet canvas is approximated as 816×648 based on the provided image.",
+      "Base-10 block group bounding boxes are estimated from the visible 3D block clusters and may not match exact pixel edges."
+    ],
+    "limitations": [
+      "Fine grid lines within base-10 blocks are not modeled as separate elements.",
+      "Small anti-aliased text spacing and exact font face may differ from the source image."
+    ]
+  }
+}

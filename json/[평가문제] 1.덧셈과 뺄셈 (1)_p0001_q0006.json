@@ -1,0 +1,238 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 806,
+    "height": 454
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "symbolic_addition_puzzle"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#000000",
+      "#111111"
+    ],
+    "text_styles": [
+      {
+        "id": "t_prompt",
+        "font_size": 31,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "t_box",
+        "font_size": 30,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_border",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "#ffffff",
+        "rx": 18,
+        "ry": 18,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_line",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "#000000",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 6,
+    "instruction": "덧셈식에서 □, △, ○는 각각 서로 다른 숫자를 나타냅니다. □, △, ○는 각각 얼마입니까?",
+    "expression": {
+      "lhs": 321,
+      "operator": "+",
+      "rhs": 311,
+      "result": 632
+    },
+    "answer": 321
+  },
+  "render": {
+    "canvas": {
+      "width": 806,
+      "height": 454,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "6. 덧셈식에서 □, △, ○는 각각 서로 다른 숫자를 나타냅",
+        "bbox": {
+          "x": 31,
+          "y": 16,
+          "w": 738,
+          "h": 42
+        },
+        "style_id": "t_prompt"
+      },
+      {
+        "type": "text",
+        "text": "니다. □, △, ○는 각각 얼마입니까?",
+        "bbox": {
+          "x": 34,
+          "y": 64,
+          "w": 442,
+          "h": 42
+        },
+        "style_id": "t_prompt"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 247,
+          "y": 128,
+          "w": 275,
+          "h": 220
+        },
+        "style_id": "s_border"
+      },
+      {
+        "type": "text",
+        "text": "□",
+        "bbox": {
+          "x": 339,
+          "y": 164,
+          "w": 24,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "△",
+        "bbox": {
+          "x": 391,
+          "y": 164,
+          "w": 24,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "○",
+        "bbox": {
+          "x": 444,
+          "y": 164,
+          "w": 26,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "+",
+        "bbox": {
+          "x": 289,
+          "y": 223,
+          "w": 23,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "□",
+        "bbox": {
+          "x": 341,
+          "y": 223,
+          "w": 24,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "1",
+        "bbox": {
+          "x": 400,
+          "y": 223,
+          "w": 16,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "○",
+        "bbox": {
+          "x": 446,
+          "y": 223,
+          "w": 26,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "line",
+        "x1": 264,
+        "y1": 270,
+        "x2": 508,
+        "y2": 270,
+        "style_id": "s_line"
+      },
+      {
+        "type": "text",
+        "text": "6",
+        "bbox": {
+          "x": 339,
+          "y": 288,
+          "w": 18,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "□",
+        "bbox": {
+          "x": 391,
+          "y": 288,
+          "w": 24,
+          "h": 30
+        },
+        "style_id": "t_box"
+      },
+      {
+        "type": "text",
+        "text": "2",
+        "bbox": {
+          "x": 462,
+          "y": 288,
+          "w": 18,
+          "h": 30
+        },
+        "style_id": "t_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.95,
+    "assumptions": [
+      "The three symbols represent distinct digits and solve to □=3, △=2, ○=1.",
+      "The answer field encodes the symbol values in the order □△○ as 321."
+    ],
+    "limitations": [
+      "Text bounding boxes are approximate due to image resolution and anti-aliased glyphs.",
+      "The worksheet layout was inferred from the visible image and reference OCR flow."
+    ]
+  }
+}

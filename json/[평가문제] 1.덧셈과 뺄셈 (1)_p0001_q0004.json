@@ -1,0 +1,103 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 809,
+    "height": 263
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "subtraction_word_problem"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#ffffff"
+    ],
+    "text_styles": [
+      {
+        "id": "t1",
+        "font_size": 30,
+        "font_family": "sans-serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s1",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "#ffffff",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 4,
+    "instruction": "예원이는 동생보다 252원 더 가지고 있습니다. 예원이 가지고 있는 돈이 764원이라면 동생이 가지고 있는 돈은 얼마입니까?",
+    "expression": {
+      "lhs": 764,
+      "operator": "-",
+      "rhs": 252,
+      "result": 512
+    },
+    "answer": 512
+  },
+  "render": {
+    "canvas": {
+      "width": 809,
+      "height": 263,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "4. 예원이는 동생보다 252원 더 가지고 있습니다. 예원이",
+        "bbox": {
+          "x": 22,
+          "y": 18,
+          "w": 711,
+          "h": 38
+        },
+        "style_id": "t1"
+      },
+      {
+        "type": "text",
+        "text": "가 가지고 있는 돈이 764원이라면 동생이 가지고 있는",
+        "bbox": {
+          "x": 48,
+          "y": 63,
+          "w": 705,
+          "h": 38
+        },
+        "style_id": "t1"
+      },
+      {
+        "type": "text",
+        "text": "돈은 얼마입니까?",
+        "bbox": {
+          "x": 22,
+          "y": 108,
+          "w": 248,
+          "h": 38
+        },
+        "style_id": "t1"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "The worksheet contains only the visible problem text with no additional graphics or answer choices.",
+      "Canvas size was estimated from the provided image dimensions."
+    ],
+    "limitations": [
+      "Exact font family and precise line breaks may differ slightly from the original PDF layout.",
+      "Minor spacing differences within Korean text are possible due to raster-to-text reconstruction."
+    ]
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 800,
+    "height": 316
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "word_problem"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#FFFFFF"
+    ],
+    "text_styles": [
+      {
+        "id": "text_num",
+        "font_size": 30,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "text_body",
+        "font_size": 29,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": []
+  },
+  "semantic": {
+    "problem_number": 5,
+    "instruction": "기차에 처음 타고 있었던 사람은 몇 명입니까?",
+    "expression": {
+      "lhs": 346,
+      "operator": "-",
+      "rhs": 45,
+      "result": 301
+    },
+    "answer": 301
+  },
+  "render": {
+    "canvas": {
+      "width": 800,
+      "height": 316,
+      "background": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "5.",
+        "bbox": {
+          "x": 9,
+          "y": 22,
+          "w": 24,
+          "h": 34
+        },
+        "style_id": "text_num"
+      },
+      {
+        "type": "text",
+        "text": "관광객을 태운 기차가 목적지를 향해 가고 있습니다. 중",
+        "bbox": {
+          "x": 41,
+          "y": 22,
+          "w": 740,
+          "h": 38
+        },
+        "style_id": "text_body"
+      },
+      {
+        "type": "text",
+        "text": "간에 있는 역에서 174명이 내리고 219명이 더 탔습니",
+        "bbox": {
+          "x": 11,
+          "y": 70,
+          "w": 740,
+          "h": 38
+        },
+        "style_id": "text_body"
+      },
+      {
+        "type": "text",
+        "text": "다. 목적지에서 346명이 내렸다면, 기차에 처음 타고",
+        "bbox": {
+          "x": 11,
+          "y": 120,
+          "w": 740,
+          "h": 38
+        },
+        "style_id": "text_body"
+      },
+      {
+        "type": "text",
+        "text": "있었던 사람은 몇 명입니까?",
+        "bbox": {
+          "x": 41,
+          "y": 170,
+          "w": 340,
+          "h": 38
+        },
+        "style_id": "text_body"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.92,
+    "assumptions": [
+      "문항은 이미지에 보이는 5번 서술형 문제로 해석했다.",
+      "중간 역에서의 변화(174명 하차, 219명 탑승)를 합쳐 순증가 45명으로 정리했다.",
+      "텍스트 줄바꿈과 위치는 원본을 기준으로 근사했다."
+    ],
+    "limitations": [
+      "원본 이미지에 별도 도형이나 수식 표기는 없어서 텍스트만 렌더 요소로 구성했다.",
+      "일부 글자 위치는 OCR/가독성 한계로 인해 근사값이다."
+    ]
+  }
+}

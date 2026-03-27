@@ -1,0 +1,192 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 800,
+    "height": 384
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "compare_sums_fill_sign"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#FFFFFF"
+    ],
+    "text_styles": [
+      {
+        "id": "t_instruction",
+        "font_size": 34,
+        "font_family": "sans-serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_problem",
+        "font_size": 36,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_sign",
+        "font_size": 34,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_circle_blank",
+        "stroke": "#000000",
+        "stroke_width": 2,
+        "fill": "#FFFFFF",
+        "rx": 33,
+        "ry": 33,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 19,
+    "instruction": "계산 결과의 크기를 비교하여 ○ 안에 >, =, < 를 알맞게 써넣으시오.",
+    "expression": {
+      "lhs": 645,
+      "operator": "+",
+      "rhs": 786,
+      "result": 1431
+    },
+    "answer": -1
+  },
+  "render": {
+    "canvas": {
+      "width": 800,
+      "height": 384,
+      "background": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "19.",
+        "bbox": {
+          "x": 30,
+          "y": 21,
+          "w": 34,
+          "h": 34
+        },
+        "style_id": "t_instruction"
+      },
+      {
+        "type": "text",
+        "text": "계산 결과의 크기를 비교하여 ○ 안에 >, =, < 를",
+        "bbox": {
+          "x": 75,
+          "y": 23,
+          "w": 548,
+          "h": 37
+        },
+        "style_id": "t_instruction"
+      },
+      {
+        "type": "text",
+        "text": "알맞게 써넣으시오.",
+        "bbox": {
+          "x": 49,
+          "y": 72,
+          "w": 245,
+          "h": 39
+        },
+        "style_id": "t_instruction"
+      },
+      {
+        "type": "text",
+        "text": "645",
+        "bbox": {
+          "x": 152,
+          "y": 144,
+          "w": 52,
+          "h": 42
+        },
+        "style_id": "t_problem"
+      },
+      {
+        "type": "text",
+        "text": "+",
+        "bbox": {
+          "x": 212,
+          "y": 143,
+          "w": 24,
+          "h": 42
+        },
+        "style_id": "t_problem"
+      },
+      {
+        "type": "text",
+        "text": "786",
+        "bbox": {
+          "x": 244,
+          "y": 144,
+          "w": 58,
+          "h": 42
+        },
+        "style_id": "t_problem"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 338,
+          "y": 139,
+          "w": 66,
+          "h": 66
+        },
+        "style_id": "s_circle_blank"
+      },
+      {
+        "type": "text",
+        "text": "597",
+        "bbox": {
+          "x": 424,
+          "y": 144,
+          "w": 58,
+          "h": 42
+        },
+        "style_id": "t_problem"
+      },
+      {
+        "type": "text",
+        "text": "+",
+        "bbox": {
+          "x": 489,
+          "y": 143,
+          "w": 24,
+          "h": 42
+        },
+        "style_id": "t_problem"
+      },
+      {
+        "type": "text",
+        "text": "835",
+        "bbox": {
+          "x": 519,
+          "y": 144,
+          "w": 58,
+          "h": 42
+        },
+        "style_id": "t_problem"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "정답은 비교 결과를 -1(왼쪽이 더 작음)로 인코딩했습니다."
+    ],
+    "limitations": [
+      "원본 글꼴과 자간은 정확히 재현되지 않을 수 있습니다.",
+      "원형 빈칸은 rounded_rect로 근사했습니다."
+    ]
+  }
+}

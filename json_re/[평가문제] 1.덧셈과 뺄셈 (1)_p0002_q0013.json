@@ -1,0 +1,796 @@
+{
+  "schema_version": "1.0",
+  "problem_id": "[평가문제] 1.덧셈과 뺄셈 (1)_p0002_q0013",
+  "input_meta": {
+    "source_filename": "worksheet.png",
+    "source_size": {
+      "width": 806,
+      "height": 331
+    },
+    "language": "ko",
+    "raw_problem_text": "□ 안에 알맞은 수를 써넣으시오.",
+    "ocr_text": "□ 안에 알맞은 수를 써넣으시오.",
+    "legacy_keys": [
+      "source_image",
+      "document",
+      "styles",
+      "semantic",
+      "render",
+      "quality_notes"
+    ]
+  },
+  "pedagogy": {
+    "grade_band": "elementary",
+    "goal": "정답뿐 아니라 풀이 설명까지 생성",
+    "explanation_style": "teacher_like_step_by_step",
+    "must_include": [
+      "narration",
+      "caption",
+      "derived_facts",
+      "checks"
+    ]
+  },
+  "semantic": {
+    "problem_type": "arithmetic_subtraction",
+    "expressions": [
+      {
+        "lhs": 802,
+        "operator": "-",
+        "rhs": 498,
+        "result": 304
+      }
+    ],
+    "answer": 304,
+    "givens": [
+      {
+        "lhs": 802
+      },
+      {
+        "rhs": 498
+      }
+    ],
+    "unknowns": [
+      "result"
+    ],
+    "constraints": [
+      "elementary_math",
+      "explanation_required"
+    ],
+    "concept_tags": [
+      "arithmetic_subtraction",
+      "place_value",
+      "animation_script"
+    ]
+  },
+  "derived_facts": [
+    {
+      "id": "fact_place_values",
+      "kind": "place_value_split",
+      "value": {
+        "lhs": {
+          "hundreds": 8,
+          "tens": 0,
+          "ones": 2
+        },
+        "rhs": {
+          "hundreds": 4,
+          "tens": 9,
+          "ones": 8
+        }
+      },
+      "explanation": "자리값 분해"
+    },
+    {
+      "id": "fact_borrow_check",
+      "kind": "borrow_check",
+      "value": {
+        "ones": true,
+        "tens": true
+      },
+      "explanation": "받아내림 필요 여부 판단"
+    }
+  ],
+  "scene_objects": [
+    {
+      "id": "problem_text",
+      "type": "text_block",
+      "text": "□ 안에 알맞은 수를 써넣으시오."
+    },
+    {
+      "id": "main_expression",
+      "type": "math_expression",
+      "latex": "802 - 498 = \\Box",
+      "value": {
+        "lhs": 802,
+        "operator": "-",
+        "rhs": 498,
+        "result": 304
+      }
+    },
+    {
+      "id": "answer_box",
+      "type": "answer_box",
+      "placeholder": "□"
+    },
+    {
+      "id": "legacy_text_1",
+      "type": "text_block",
+      "text": "13.",
+      "bbox": {
+        "x": 25,
+        "y": 21,
+        "w": 34,
+        "h": 29
+      }
+    },
+    {
+      "id": "legacy_rect_2",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 59,
+        "y": 24,
+        "w": 21,
+        "h": 21
+      }
+    },
+    {
+      "id": "legacy_text_3",
+      "type": "text_block",
+      "text": "안에 알맞은 수를 써넣으시오.",
+      "bbox": {
+        "x": 95,
+        "y": 21,
+        "w": 246,
+        "h": 31
+      }
+    },
+    {
+      "id": "legacy_text_4",
+      "type": "text_block",
+      "text": "802",
+      "bbox": {
+        "x": 377,
+        "y": 86,
+        "w": 56,
+        "h": 34
+      }
+    },
+    {
+      "id": "legacy_text_5",
+      "type": "text_block",
+      "text": "498",
+      "bbox": {
+        "x": 500,
+        "y": 183,
+        "w": 56,
+        "h": 34
+      }
+    },
+    {
+      "id": "legacy_line_6",
+      "type": "arrow",
+      "from": {
+        "x": 67,
+        "y": 154
+      },
+      "to": {
+        "x": 707,
+        "y": 154
+      }
+    },
+    {
+      "id": "legacy_line_7",
+      "type": "arrow",
+      "from": {
+        "x": 67,
+        "y": 146
+      },
+      "to": {
+        "x": 67,
+        "y": 162
+      }
+    },
+    {
+      "id": "legacy_line_8",
+      "type": "arrow",
+      "from": {
+        "x": 307,
+        "y": 146
+      },
+      "to": {
+        "x": 307,
+        "y": 162
+      }
+    },
+    {
+      "id": "legacy_line_9",
+      "type": "arrow",
+      "from": {
+        "x": 707,
+        "y": 146
+      },
+      "to": {
+        "x": 707,
+        "y": 162
+      }
+    },
+    {
+      "id": "legacy_line_10",
+      "type": "arrow",
+      "from": {
+        "x": 67,
+        "y": 154
+      },
+      "to": {
+        "x": 135,
+        "y": 129
+      }
+    },
+    {
+      "id": "legacy_line_11",
+      "type": "arrow",
+      "from": {
+        "x": 135,
+        "y": 129
+      },
+      "to": {
+        "x": 203,
+        "y": 113
+      }
+    },
+    {
+      "id": "legacy_line_12",
+      "type": "arrow",
+      "from": {
+        "x": 203,
+        "y": 113
+      },
+      "to": {
+        "x": 271,
+        "y": 105
+      }
+    },
+    {
+      "id": "legacy_line_13",
+      "type": "arrow",
+      "from": {
+        "x": 271,
+        "y": 105
+      },
+      "to": {
+        "x": 339,
+        "y": 104
+      }
+    },
+    {
+      "id": "legacy_line_14",
+      "type": "arrow",
+      "from": {
+        "x": 339,
+        "y": 104
+      },
+      "to": {
+        "x": 407,
+        "y": 105
+      }
+    },
+    {
+      "id": "legacy_line_15",
+      "type": "arrow",
+      "from": {
+        "x": 407,
+        "y": 105
+      },
+      "to": {
+        "x": 475,
+        "y": 113
+      }
+    },
+    {
+      "id": "legacy_line_16",
+      "type": "arrow",
+      "from": {
+        "x": 475,
+        "y": 113
+      },
+      "to": {
+        "x": 543,
+        "y": 129
+      }
+    },
+    {
+      "id": "legacy_line_17",
+      "type": "arrow",
+      "from": {
+        "x": 543,
+        "y": 129
+      },
+      "to": {
+        "x": 611,
+        "y": 143
+      }
+    },
+    {
+      "id": "legacy_line_18",
+      "type": "arrow",
+      "from": {
+        "x": 611,
+        "y": 143
+      },
+      "to": {
+        "x": 707,
+        "y": 154
+      }
+    },
+    {
+      "id": "legacy_line_19",
+      "type": "arrow",
+      "from": {
+        "x": 67,
+        "y": 154
+      },
+      "to": {
+        "x": 105,
+        "y": 165
+      }
+    },
+    {
+      "id": "legacy_line_20",
+      "type": "arrow",
+      "from": {
+        "x": 105,
+        "y": 165
+      },
+      "to": {
+        "x": 143,
+        "y": 176
+      }
+    },
+    {
+      "id": "legacy_line_21",
+      "type": "arrow",
+      "from": {
+        "x": 143,
+        "y": 176
+      },
+      "to": {
+        "x": 181,
+        "y": 186
+      }
+    },
+    {
+      "id": "legacy_line_22",
+      "type": "arrow",
+      "from": {
+        "x": 181,
+        "y": 186
+      },
+      "to": {
+        "x": 219,
+        "y": 191
+      }
+    },
+    {
+      "id": "legacy_line_23",
+      "type": "arrow",
+      "from": {
+        "x": 219,
+        "y": 191
+      },
+      "to": {
+        "x": 257,
+        "y": 182
+      }
+    },
+    {
+      "id": "legacy_line_24",
+      "type": "arrow",
+      "from": {
+        "x": 257,
+        "y": 182
+      },
+      "to": {
+        "x": 307,
+        "y": 154
+      }
+    },
+    {
+      "id": "legacy_line_25",
+      "type": "arrow",
+      "from": {
+        "x": 307,
+        "y": 154
+      },
+      "to": {
+        "x": 353,
+        "y": 170
+      }
+    },
+    {
+      "id": "legacy_line_26",
+      "type": "arrow",
+      "from": {
+        "x": 353,
+        "y": 170
+      },
+      "to": {
+        "x": 399,
+        "y": 183
+      }
+    },
+    {
+      "id": "legacy_line_27",
+      "type": "arrow",
+      "from": {
+        "x": 399,
+        "y": 183
+      },
+      "to": {
+        "x": 445,
+        "y": 192
+      }
+    },
+    {
+      "id": "legacy_line_28",
+      "type": "arrow",
+      "from": {
+        "x": 445,
+        "y": 192
+      },
+      "to": {
+        "x": 491,
+        "y": 197
+      }
+    },
+    {
+      "id": "legacy_line_29",
+      "type": "arrow",
+      "from": {
+        "x": 491,
+        "y": 197
+      },
+      "to": {
+        "x": 537,
+        "y": 192
+      }
+    },
+    {
+      "id": "legacy_line_30",
+      "type": "arrow",
+      "from": {
+        "x": 537,
+        "y": 192
+      },
+      "to": {
+        "x": 583,
+        "y": 183
+      }
+    },
+    {
+      "id": "legacy_line_31",
+      "type": "arrow",
+      "from": {
+        "x": 583,
+        "y": 183
+      },
+      "to": {
+        "x": 629,
+        "y": 170
+      }
+    },
+    {
+      "id": "legacy_line_32",
+      "type": "arrow",
+      "from": {
+        "x": 629,
+        "y": 170
+      },
+      "to": {
+        "x": 707,
+        "y": 154
+      }
+    },
+    {
+      "id": "legacy_rounded_rect_33",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 164,
+        "y": 166,
+        "w": 76,
+        "h": 55
+      }
+    }
+  ],
+  "layout_template": {
+    "name": "worksheet_default",
+    "canvas": {
+      "width": 806,
+      "height": 331,
+      "background": "#ffffff"
+    },
+    "regions": {
+      "problem": [
+        0.05,
+        0.05,
+        0.9,
+        0.2
+      ],
+      "work": [
+        0.08,
+        0.22,
+        0.84,
+        0.58
+      ],
+      "answer": [
+        0.66,
+        0.82,
+        0.2,
+        0.12
+      ]
+    }
+  },
+  "solution_plan": {
+    "strategy": "explain_then_compute",
+    "step_policy": "all_steps_need_narration_and_caption",
+    "steps": [
+      {
+        "id": "step_01",
+        "phase": "intro",
+        "action": "display_problem",
+        "title": "문제 확인",
+        "pedagogical_purpose": "무엇을 구하는지 파악",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "problem_understood": true
+        },
+        "narration": {
+          "primary": "문제를 읽고 무엇을 구해야 하는지 확인해요.",
+          "alternate_short": "문제를 먼저 확인해요."
+        },
+        "caption": "무엇을 구할지 확인",
+        "emphasis": [
+          "goal"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "problem_text"
+          }
+        ],
+        "depends_on": [],
+        "teacher_note": "학생이 문제 요구를 먼저 말하게 유도"
+      },
+      {
+        "id": "step_02",
+        "phase": "modeling",
+        "action": "show_object",
+        "title": "식 제시",
+        "pedagogical_purpose": "문제 정보를 수식 형태로 시각화",
+        "target": "main_expression",
+        "inputs": {},
+        "outputs": {
+          "expression_shown": true
+        },
+        "narration": {
+          "primary": "식을 화면에 보여주고 자리값 순서로 계산할 준비를 합니다.",
+          "alternate_short": "식을 보여줄게요."
+        },
+        "caption": "식과 계산 순서 준비",
+        "emphasis": [
+          "expression"
+        ],
+        "animation": {
+          "name": "fade_in",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "main_expression"
+          }
+        ],
+        "depends_on": [
+          "step_01"
+        ],
+        "teacher_note": "연산 기호와 피연산자를 정확히 읽게 지도"
+      },
+      {
+        "id": "step_03",
+        "phase": "compute",
+        "action": "show_place_value",
+        "title": "자리값 분해",
+        "pedagogical_purpose": "받아내림 판단 준비",
+        "target": "main_expression",
+        "inputs": {
+          "lhs": 802,
+          "rhs": 498
+        },
+        "outputs": {
+          "place_value_ready": true
+        },
+        "narration": {
+          "primary": "자리값을 분해해 어느 자리에서 뺄셈이 어려운지 확인해요.",
+          "alternate_short": "자리값 확인"
+        },
+        "caption": "자리값 분해",
+        "emphasis": [
+          "place_value"
+        ],
+        "animation": {
+          "name": "highlight",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "place_value_valid"
+          }
+        ],
+        "depends_on": [
+          "step_02"
+        ],
+        "teacher_note": "받아내림 판단이 먼저"
+      },
+      {
+        "id": "step_04",
+        "phase": "compute",
+        "action": "highlight",
+        "title": "받아내림 판단",
+        "pedagogical_purpose": "계산 가능 여부를 먼저 진단",
+        "target": "main_expression",
+        "inputs": {
+          "place": "ones"
+        },
+        "outputs": {
+          "borrow_needed": true
+        },
+        "narration": {
+          "primary": "일의 자리에서 받아내림이 필요한지 확인합니다.",
+          "alternate_short": "받아내림 확인"
+        },
+        "caption": "받아내림 필요 여부",
+        "emphasis": [
+          "borrow_check"
+        ],
+        "animation": {
+          "name": "highlight",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "boolean",
+            "key": "borrow_needed"
+          }
+        ],
+        "depends_on": [
+          "step_03"
+        ],
+        "teacher_note": "먼저 판단 후 계산"
+      },
+      {
+        "id": "step_05",
+        "phase": "compute",
+        "action": "regroup",
+        "title": "받아내림 처리",
+        "pedagogical_purpose": "자릿수 재구성으로 뺄셈 가능 상태 확보",
+        "target": "main_expression",
+        "inputs": {
+          "from": "tens",
+          "to": "ones",
+          "value": 1
+        },
+        "outputs": {
+          "borrow_applied": true
+        },
+        "narration": {
+          "primary": "십의 자리에서 1을 받아와 일의 자리를 10 늘려 계산합니다.",
+          "alternate_short": "받아내림 처리"
+        },
+        "caption": "받아내림 적용",
+        "emphasis": [
+          "borrow"
+        ],
+        "animation": {
+          "name": "transform",
+          "duration": 1.1
+        },
+        "checks": [
+          {
+            "type": "borrow_consistent"
+          }
+        ],
+        "depends_on": [
+          "step_04"
+        ],
+        "teacher_note": "받아내림의 의미를 블록/화살표로 시각화"
+      },
+      {
+        "id": "step_06",
+        "phase": "answer",
+        "action": "fill_answer",
+        "title": "정답 기입",
+        "pedagogical_purpose": "최종 결과를 정답 칸에 연결",
+        "target": "answer_box",
+        "inputs": {
+          "answer": 304
+        },
+        "outputs": {
+          "answer_written": true
+        },
+        "narration": {
+          "primary": "계산 결과를 정답 칸에 쓰면 304입니다.",
+          "alternate_short": "정답 쓰기"
+        },
+        "caption": "정답: 304",
+        "emphasis": [
+          "answer"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 0.9
+        },
+        "checks": [
+          {
+            "type": "answer_not_null"
+          }
+        ],
+        "depends_on": [
+          "step_05"
+        ],
+        "teacher_note": "결과와 문제 요구가 일치하는지 확인"
+      },
+      {
+        "id": "step_07",
+        "phase": "close",
+        "action": "conclude",
+        "title": "마무리",
+        "pedagogical_purpose": "핵심 풀이 전략 재강조",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "lesson_complete": true
+        },
+        "narration": {
+          "primary": "자리값과 중간 계산을 차근차근 확인하면 실수를 줄일 수 있어요.",
+          "alternate_short": "풀이 마무리"
+        },
+        "caption": "핵심: 자리값 + 중간계산",
+        "emphasis": [
+          "summary"
+        ],
+        "animation": {
+          "name": "fade_out",
+          "duration": 0.8
+        },
+        "checks": [
+          {
+            "type": "flow_complete"
+          }
+        ],
+        "depends_on": [
+          "step_06"
+        ],
+        "teacher_note": "학생이 스스로 풀이 전략을 말해보게 하기"
+      }
+    ]
+  },
+  "animation_prefs": {
+    "theme": "clean_math",
+    "pace": "normal",
+    "caption_mode": "korean_subtitles",
+    "voice_mode": "tts_ready"
+  },
+  "validation": {
+    "render_safe": true,
+    "solve_safe": true,
+    "human_review_required": false,
+    "confidence": 0.97,
+    "warnings": [
+      "The dashed curved guide lines are approximated with multiple straight line segments because the schema does not support curved/dashed primitives directly."
+    ]
+  }
+}

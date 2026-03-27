@@ -1,0 +1,285 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 802,
+    "height": 560
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "solve_symbol_addition"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#444444",
+      "#ffffff"
+    ],
+    "text_styles": [
+      {
+        "id": "title_num",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "title_kr",
+        "font_size": 31,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "body_num",
+        "font_size": 28,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "body_sym",
+        "font_size": 28,
+        "font_family": null,
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "container",
+        "stroke": "#444444",
+        "stroke_width": 1,
+        "fill": "#ffffff",
+        "rx": 24,
+        "ry": 24,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "separator",
+        "stroke": "#444444",
+        "stroke_width": 1,
+        "fill": "#ffffff",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 20,
+    "instruction": "덧셈식을 보고 ㉠ + ㉡ + ㉢의 값을 구하시오.",
+    "expression": {
+      "lhs": 7,
+      "operator": "+",
+      "rhs": 13,
+      "result": 20
+    },
+    "answer": 20
+  },
+  "render": {
+    "canvas": {
+      "width": 802,
+      "height": 560,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "20.",
+        "bbox": {
+          "x": 29,
+          "y": 24,
+          "w": 34,
+          "h": 34
+        },
+        "style_id": "title_num"
+      },
+      {
+        "type": "text",
+        "text": "덧셈식을 보고 ㉠ + ㉡ + ㉢의 값을 구하시오.",
+        "bbox": {
+          "x": 67,
+          "y": 24,
+          "w": 552,
+          "h": 38
+        },
+        "style_id": "title_kr"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 226,
+          "y": 80,
+          "w": 344,
+          "h": 279
+        },
+        "style_id": "container"
+      },
+      {
+        "type": "text",
+        "text": "1",
+        "bbox": {
+          "x": 343,
+          "y": 106,
+          "w": 16,
+          "h": 28
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "1",
+        "bbox": {
+          "x": 390,
+          "y": 106,
+          "w": 16,
+          "h": 28
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "㉠",
+        "bbox": {
+          "x": 343,
+          "y": 141,
+          "w": 28,
+          "h": 30
+        },
+        "style_id": "body_sym"
+      },
+      {
+        "type": "text",
+        "text": "5",
+        "bbox": {
+          "x": 401,
+          "y": 141,
+          "w": 18,
+          "h": 28
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "㉡",
+        "bbox": {
+          "x": 470,
+          "y": 141,
+          "w": 28,
+          "h": 30
+        },
+        "style_id": "body_sym"
+      },
+      {
+        "type": "text",
+        "text": "+",
+        "bbox": {
+          "x": 280,
+          "y": 207,
+          "w": 22,
+          "h": 26
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "8",
+        "bbox": {
+          "x": 346,
+          "y": 206,
+          "w": 18,
+          "h": 28
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "㉡",
+        "bbox": {
+          "x": 403,
+          "y": 206,
+          "w": 28,
+          "h": 30
+        },
+        "style_id": "body_sym"
+      },
+      {
+        "type": "text",
+        "text": "㉠",
+        "bbox": {
+          "x": 470,
+          "y": 206,
+          "w": 28,
+          "h": 30
+        },
+        "style_id": "body_sym"
+      },
+      {
+        "type": "line",
+        "x1": 265,
+        "y1": 270,
+        "x2": 506,
+        "y2": 270,
+        "style_id": "separator"
+      },
+      {
+        "type": "text",
+        "text": "1",
+        "bbox": {
+          "x": 297,
+          "y": 285,
+          "w": 16,
+          "h": 28
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "6",
+        "bbox": {
+          "x": 349,
+          "y": 285,
+          "w": 16,
+          "h": 28
+        },
+        "style_id": "body_num"
+      },
+      {
+        "type": "text",
+        "text": "㉢",
+        "bbox": {
+          "x": 398,
+          "y": 285,
+          "w": 28,
+          "h": 30
+        },
+        "style_id": "body_sym"
+      },
+      {
+        "type": "text",
+        "text": "6",
+        "bbox": {
+          "x": 471,
+          "y": 285,
+          "w": 16,
+          "h": 28
+        },
+        "style_id": "body_num"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.92,
+    "assumptions": [
+      "The vertical addition is interpreted as 11 + ㉠5㉡ + 8㉡㉠ = 16㉢6.",
+      "From the column sums, ㉠=7, ㉡=8, ㉢=5, so ㉠+㉡+㉢=20."
+    ],
+    "limitations": [
+      "Exact font metrics and character placements are approximated from the image.",
+      "The source image contains only one visible problem; surrounding worksheet context is not included."
+    ]
+  }
+}

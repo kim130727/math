@@ -1,0 +1,351 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 817,
+    "height": 407
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math",
+    "task_type": "fill_in_difference"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#f8e7b2",
+      "#e0ad00",
+      "#202020",
+      "#2b2b2b"
+    ],
+    "text_styles": [
+      {
+        "id": "txt_instr",
+        "font_size": 27,
+        "font_family": "sans-serif",
+        "font_weight": 400,
+        "fill": "#202020"
+      },
+      {
+        "id": "txt_num",
+        "font_size": 39,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#2b2b2b"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "oval_fill",
+        "stroke": "#e0ad00",
+        "stroke_width": 2,
+        "fill": "#f8e7b2",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "oval_outline",
+        "stroke": "#e0ad00",
+        "stroke_width": 2,
+        "fill": "rgba(0,0,0,0)",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "divider",
+        "stroke": "#e0ad00",
+        "stroke_width": 2,
+        "fill": "rgba(0,0,0,0)",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 16,
+    "instruction": "두 수의 차를 빈 곳에 써넣으시오.",
+    "expression": {
+      "lhs": 516,
+      "operator": "-",
+      "rhs": 241,
+      "result": 275
+    },
+    "answer": 275
+  },
+  "render": {
+    "canvas": {
+      "width": 817,
+      "height": 407,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "16. 두 수의 차를 빈 곳에 써넣으시오.",
+        "bbox": {
+          "x": 29,
+          "y": 16,
+          "w": 455,
+          "h": 40
+        },
+        "style_id": "txt_instr"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 228,
+            "y": 196
+          },
+          {
+            "x": 233,
+            "y": 169
+          },
+          {
+            "x": 247,
+            "y": 145
+          },
+          {
+            "x": 268,
+            "y": 123
+          },
+          {
+            "x": 296,
+            "y": 105
+          },
+          {
+            "x": 330,
+            "y": 94
+          },
+          {
+            "x": 368,
+            "y": 90
+          },
+          {
+            "x": 406,
+            "y": 94
+          },
+          {
+            "x": 440,
+            "y": 105
+          },
+          {
+            "x": 468,
+            "y": 123
+          },
+          {
+            "x": 489,
+            "y": 145
+          },
+          {
+            "x": 503,
+            "y": 169
+          },
+          {
+            "x": 574,
+            "y": 196
+          },
+          {
+            "x": 503,
+            "y": 228
+          },
+          {
+            "x": 489,
+            "y": 252
+          },
+          {
+            "x": 468,
+            "y": 274
+          },
+          {
+            "x": 440,
+            "y": 292
+          },
+          {
+            "x": 406,
+            "y": 300
+          },
+          {
+            "x": 368,
+            "y": 301
+          },
+          {
+            "x": 330,
+            "y": 300
+          },
+          {
+            "x": 296,
+            "y": 292
+          },
+          {
+            "x": 268,
+            "y": 274
+          },
+          {
+            "x": 247,
+            "y": 252
+          },
+          {
+            "x": 233,
+            "y": 228
+          }
+        ],
+        "style_id": "oval_fill"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 228,
+            "y": 196
+          },
+          {
+            "x": 233,
+            "y": 169
+          },
+          {
+            "x": 247,
+            "y": 145
+          },
+          {
+            "x": 268,
+            "y": 123
+          },
+          {
+            "x": 296,
+            "y": 105
+          },
+          {
+            "x": 330,
+            "y": 94
+          },
+          {
+            "x": 368,
+            "y": 90
+          },
+          {
+            "x": 406,
+            "y": 94
+          },
+          {
+            "x": 440,
+            "y": 105
+          },
+          {
+            "x": 468,
+            "y": 123
+          },
+          {
+            "x": 489,
+            "y": 145
+          },
+          {
+            "x": 503,
+            "y": 169
+          },
+          {
+            "x": 574,
+            "y": 196
+          },
+          {
+            "x": 503,
+            "y": 228
+          },
+          {
+            "x": 489,
+            "y": 252
+          },
+          {
+            "x": 468,
+            "y": 274
+          },
+          {
+            "x": 440,
+            "y": 292
+          },
+          {
+            "x": 406,
+            "y": 300
+          },
+          {
+            "x": 368,
+            "y": 301
+          },
+          {
+            "x": 330,
+            "y": 300
+          },
+          {
+            "x": 296,
+            "y": 292
+          },
+          {
+            "x": 268,
+            "y": 274
+          },
+          {
+            "x": 247,
+            "y": 252
+          },
+          {
+            "x": 233,
+            "y": 228
+          }
+        ],
+        "style_id": "oval_outline"
+      },
+      {
+        "type": "line",
+        "x1": 228,
+        "y1": 196,
+        "x2": 574,
+        "y2": 196,
+        "style_id": "divider"
+      },
+      {
+        "type": "line",
+        "x1": 376,
+        "y1": 90,
+        "x2": 376,
+        "y2": 196,
+        "style_id": "divider"
+      },
+      {
+        "type": "text",
+        "text": "241",
+        "bbox": {
+          "x": 276,
+          "y": 129,
+          "w": 72,
+          "h": 50
+        },
+        "style_id": "txt_num"
+      },
+      {
+        "type": "text",
+        "text": "516",
+        "bbox": {
+          "x": 419,
+          "y": 129,
+          "w": 78,
+          "h": 50
+        },
+        "style_id": "txt_num"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.89,
+    "assumptions": [
+      "The intended answer is inferred as 516 - 241 = 275 from the visible numbers and instruction."
+    ],
+    "limitations": [
+      "The oval and text positions are approximated from the raster image; exact font and vector geometry are not available."
+    ]
+  }
+}

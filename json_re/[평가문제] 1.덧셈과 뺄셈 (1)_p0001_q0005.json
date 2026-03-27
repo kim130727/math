@@ -1,0 +1,356 @@
+{
+  "schema_version": "1.0",
+  "problem_id": "[평가문제] 1.덧셈과 뺄셈 (1)_p0001_q0005",
+  "input_meta": {
+    "source_filename": "worksheet.png",
+    "source_size": {
+      "width": 800,
+      "height": 316
+    },
+    "language": "ko",
+    "raw_problem_text": "기차에 처음 타고 있었던 사람은 몇 명입니까?",
+    "ocr_text": "기차에 처음 타고 있었던 사람은 몇 명입니까?",
+    "legacy_keys": [
+      "source_image",
+      "document",
+      "styles",
+      "semantic",
+      "render",
+      "quality_notes"
+    ]
+  },
+  "pedagogy": {
+    "grade_band": "elementary",
+    "goal": "정답뿐 아니라 풀이 설명까지 생성",
+    "explanation_style": "teacher_like_step_by_step",
+    "must_include": [
+      "narration",
+      "caption",
+      "derived_facts",
+      "checks"
+    ]
+  },
+  "semantic": {
+    "problem_type": "word_problem",
+    "expressions": [
+      {
+        "lhs": 346,
+        "operator": "-",
+        "rhs": 45,
+        "result": 301
+      }
+    ],
+    "answer": 301,
+    "givens": [
+      {
+        "lhs": 346
+      },
+      {
+        "rhs": 45
+      }
+    ],
+    "unknowns": [
+      "result"
+    ],
+    "constraints": [
+      "elementary_math",
+      "explanation_required"
+    ],
+    "concept_tags": [
+      "word_problem",
+      "place_value",
+      "animation_script"
+    ]
+  },
+  "derived_facts": [
+    {
+      "id": "fact_place_values",
+      "kind": "place_value_split",
+      "value": {
+        "lhs": {
+          "hundreds": 3,
+          "tens": 4,
+          "ones": 6
+        },
+        "rhs": {
+          "hundreds": 0,
+          "tens": 4,
+          "ones": 5
+        }
+      },
+      "explanation": "자리값 분해"
+    },
+    {
+      "id": "fact_borrow_check",
+      "kind": "borrow_check",
+      "value": {
+        "ones": false,
+        "tens": false
+      },
+      "explanation": "받아내림 필요 여부 판단"
+    }
+  ],
+  "scene_objects": [
+    {
+      "id": "problem_text",
+      "type": "text_block",
+      "text": "기차에 처음 타고 있었던 사람은 몇 명입니까?"
+    },
+    {
+      "id": "main_expression",
+      "type": "math_expression",
+      "latex": "346 - 45 = \\Box",
+      "value": {
+        "lhs": 346,
+        "operator": "-",
+        "rhs": 45,
+        "result": 301
+      }
+    },
+    {
+      "id": "answer_box",
+      "type": "answer_box",
+      "placeholder": "□"
+    },
+    {
+      "id": "legacy_text_1",
+      "type": "text_block",
+      "text": "5.",
+      "bbox": {
+        "x": 9,
+        "y": 22,
+        "w": 24,
+        "h": 34
+      }
+    },
+    {
+      "id": "legacy_text_2",
+      "type": "text_block",
+      "text": "관광객을 태운 기차가 목적지를 향해 가고 있습니다. 중",
+      "bbox": {
+        "x": 41,
+        "y": 22,
+        "w": 740,
+        "h": 38
+      }
+    },
+    {
+      "id": "legacy_text_3",
+      "type": "text_block",
+      "text": "간에 있는 역에서 174명이 내리고 219명이 더 탔습니",
+      "bbox": {
+        "x": 11,
+        "y": 70,
+        "w": 740,
+        "h": 38
+      }
+    },
+    {
+      "id": "legacy_text_4",
+      "type": "text_block",
+      "text": "다. 목적지에서 346명이 내렸다면, 기차에 처음 타고",
+      "bbox": {
+        "x": 11,
+        "y": 120,
+        "w": 740,
+        "h": 38
+      }
+    },
+    {
+      "id": "legacy_text_5",
+      "type": "text_block",
+      "text": "있었던 사람은 몇 명입니까?",
+      "bbox": {
+        "x": 41,
+        "y": 170,
+        "w": 340,
+        "h": 38
+      }
+    }
+  ],
+  "layout_template": {
+    "name": "worksheet_default",
+    "canvas": {
+      "width": 800,
+      "height": 316,
+      "background": "#FFFFFF"
+    },
+    "regions": {
+      "problem": [
+        0.05,
+        0.05,
+        0.9,
+        0.2
+      ],
+      "work": [
+        0.08,
+        0.22,
+        0.84,
+        0.58
+      ],
+      "answer": [
+        0.66,
+        0.82,
+        0.2,
+        0.12
+      ]
+    }
+  },
+  "solution_plan": {
+    "strategy": "explain_then_compute",
+    "step_policy": "all_steps_need_narration_and_caption",
+    "steps": [
+      {
+        "id": "step_01",
+        "phase": "intro",
+        "action": "display_problem",
+        "title": "문제 확인",
+        "pedagogical_purpose": "무엇을 구하는지 파악",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "problem_understood": true
+        },
+        "narration": {
+          "primary": "문제를 읽고 무엇을 구해야 하는지 확인해요.",
+          "alternate_short": "문제를 먼저 확인해요."
+        },
+        "caption": "무엇을 구할지 확인",
+        "emphasis": [
+          "goal"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "problem_text"
+          }
+        ],
+        "depends_on": [],
+        "teacher_note": "학생이 문제 요구를 먼저 말하게 유도"
+      },
+      {
+        "id": "step_02",
+        "phase": "modeling",
+        "action": "show_object",
+        "title": "식 제시",
+        "pedagogical_purpose": "문제 정보를 수식 형태로 시각화",
+        "target": "main_expression",
+        "inputs": {},
+        "outputs": {
+          "expression_shown": true
+        },
+        "narration": {
+          "primary": "식을 화면에 보여주고 자리값 순서로 계산할 준비를 합니다.",
+          "alternate_short": "식을 보여줄게요."
+        },
+        "caption": "식과 계산 순서 준비",
+        "emphasis": [
+          "expression"
+        ],
+        "animation": {
+          "name": "fade_in",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "main_expression"
+          }
+        ],
+        "depends_on": [
+          "step_01"
+        ],
+        "teacher_note": "연산 기호와 피연산자를 정확히 읽게 지도"
+      },
+      {
+        "id": "step_06",
+        "phase": "answer",
+        "action": "fill_answer",
+        "title": "정답 기입",
+        "pedagogical_purpose": "최종 결과를 정답 칸에 연결",
+        "target": "answer_box",
+        "inputs": {
+          "answer": 301
+        },
+        "outputs": {
+          "answer_written": true
+        },
+        "narration": {
+          "primary": "계산 결과를 정답 칸에 쓰면 301입니다.",
+          "alternate_short": "정답 쓰기"
+        },
+        "caption": "정답: 301",
+        "emphasis": [
+          "answer"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 0.9
+        },
+        "checks": [
+          {
+            "type": "answer_not_null"
+          }
+        ],
+        "depends_on": [
+          "step_02"
+        ],
+        "teacher_note": "결과와 문제 요구가 일치하는지 확인"
+      },
+      {
+        "id": "step_07",
+        "phase": "close",
+        "action": "conclude",
+        "title": "마무리",
+        "pedagogical_purpose": "핵심 풀이 전략 재강조",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "lesson_complete": true
+        },
+        "narration": {
+          "primary": "자리값과 중간 계산을 차근차근 확인하면 실수를 줄일 수 있어요.",
+          "alternate_short": "풀이 마무리"
+        },
+        "caption": "핵심: 자리값 + 중간계산",
+        "emphasis": [
+          "summary"
+        ],
+        "animation": {
+          "name": "fade_out",
+          "duration": 0.8
+        },
+        "checks": [
+          {
+            "type": "flow_complete"
+          }
+        ],
+        "depends_on": [
+          "step_06"
+        ],
+        "teacher_note": "학생이 스스로 풀이 전략을 말해보게 하기"
+      }
+    ]
+  },
+  "animation_prefs": {
+    "theme": "clean_math",
+    "pace": "normal",
+    "caption_mode": "korean_subtitles",
+    "voice_mode": "tts_ready"
+  },
+  "validation": {
+    "render_safe": true,
+    "solve_safe": true,
+    "human_review_required": true,
+    "confidence": 0.92,
+    "warnings": [
+      "원본 이미지에 별도 도형이나 수식 표기는 없어서 텍스트만 렌더 요소로 구성했다.",
+      "일부 글자 위치는 OCR/가독성 한계로 인해 근사값이다.",
+      "문제 지문 인코딩 또는 OCR 품질이 낮을 수 있습니다."
+    ]
+  }
+}

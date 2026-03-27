@@ -1,0 +1,103 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 806,
+    "height": 322
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary mathematics worksheet",
+    "task_type": "word problem"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#FFFFFF"
+    ],
+    "text_styles": [
+      {
+        "id": "t0",
+        "font_size": 30,
+        "font_family": null,
+        "font_weight": null,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": []
+  },
+  "semantic": {
+    "problem_number": 3,
+    "instruction": "진아는 가족들과 함께 낚시를 하러 갔습니다. 진아와 동생은 334 마리의 물고기를 잡았고, 부모님은 진아와 동생이 잡은 물고기 수보다 2 배만큼 잡았습니다. 부모님이 잡은 물고기는 모두 몇 마리입니까?",
+    "expression": {
+      "lhs": 334,
+      "operator": "*",
+      "rhs": 2,
+      "result": 668
+    },
+    "answer": 668
+  },
+  "render": {
+    "canvas": {
+      "width": 806,
+      "height": 322,
+      "background": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "3. 진아는 가족들과 함께 낚시를 하러 갔습니다. 진아와 동",
+        "bbox": {
+          "x": 19,
+          "y": 17,
+          "w": 760,
+          "h": 36
+        },
+        "style_id": "t0"
+      },
+      {
+        "type": "text",
+        "text": "생은 334 마리의 물고기를 잡았고, 부모님은 진아와 동",
+        "bbox": {
+          "x": 56,
+          "y": 63,
+          "w": 709,
+          "h": 36
+        },
+        "style_id": "t0"
+      },
+      {
+        "type": "text",
+        "text": "생이 잡은 물고기 수보다 2 배만큼 잡았습니다. 부모님",
+        "bbox": {
+          "x": 56,
+          "y": 109,
+          "w": 705,
+          "h": 36
+        },
+        "style_id": "t0"
+      },
+      {
+        "type": "text",
+        "text": "이 잡은 물고기는 모두 몇 마리입니까?",
+        "bbox": {
+          "x": 56,
+          "y": 155,
+          "w": 515,
+          "h": 36
+        },
+        "style_id": "t0"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.95,
+    "assumptions": [
+      "The visible worksheet contains only problem 3; the truncated reference text beyond the image boundary was not included.",
+      "The answer was inferred from the statement that parents caught 2 times as many fish as the 334 fish caught by Jin-a and her younger sibling."
+    ],
+    "limitations": [
+      "Exact font metrics and line wrapping are approximated from the image.",
+      "No explicit answer key is visible in the worksheet image."
+    ]
+  }
+}

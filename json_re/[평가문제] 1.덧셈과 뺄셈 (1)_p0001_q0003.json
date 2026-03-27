@@ -1,0 +1,446 @@
+{
+  "schema_version": "1.0",
+  "problem_id": "[평가문제] 1.덧셈과 뺄셈 (1)_p0001_q0003",
+  "input_meta": {
+    "source_filename": "worksheet.png",
+    "source_size": {
+      "width": 806,
+      "height": 322
+    },
+    "language": "ko",
+    "raw_problem_text": "진아는 가족들과 함께 낚시를 하러 갔습니다. 진아와 동생은 334 마리의 물고기를 잡았고, 부모님은 진아와 동생이 잡은 물고기 수보다 2 배만큼 잡았습니다. 부모님이 잡은 물고기는 모두 몇 마리입니까?",
+    "ocr_text": "진아는 가족들과 함께 낚시를 하러 갔습니다. 진아와 동생은 334 마리의 물고기를 잡았고, 부모님은 진아와 동생이 잡은 물고기 수보다 2 배만큼 잡았습니다. 부모님이 잡은 물고기는 모두 몇 마리입니까?",
+    "legacy_keys": [
+      "source_image",
+      "document",
+      "styles",
+      "semantic",
+      "render",
+      "quality_notes"
+    ]
+  },
+  "pedagogy": {
+    "grade_band": "elementary",
+    "goal": "정답뿐 아니라 풀이 설명까지 생성",
+    "explanation_style": "teacher_like_step_by_step",
+    "must_include": [
+      "narration",
+      "caption",
+      "derived_facts",
+      "checks"
+    ]
+  },
+  "semantic": {
+    "problem_type": "word_problem",
+    "expressions": [
+      {
+        "lhs": 334,
+        "operator": "*",
+        "rhs": 2,
+        "result": 668
+      }
+    ],
+    "answer": 668,
+    "givens": [
+      {
+        "lhs": 334
+      },
+      {
+        "rhs": 2
+      }
+    ],
+    "unknowns": [
+      "result"
+    ],
+    "constraints": [
+      "elementary_math",
+      "explanation_required"
+    ],
+    "concept_tags": [
+      "word_problem",
+      "place_value",
+      "animation_script"
+    ]
+  },
+  "derived_facts": [
+    {
+      "id": "fact_relation_equation",
+      "kind": "relation_to_equation",
+      "value": "형=동생+2",
+      "explanation": "문장 조건을 식으로 변환"
+    },
+    {
+      "id": "fact_intermediate_1",
+      "kind": "intermediate_value",
+      "value": 336,
+      "equation": "334+2=336",
+      "explanation": "형이 주운 개수"
+    },
+    {
+      "id": "fact_final_compose",
+      "kind": "final_composition",
+      "value": 670,
+      "equation": "334+336=670",
+      "explanation": "둘이 주운 총개수"
+    }
+  ],
+  "scene_objects": [
+    {
+      "id": "problem_text",
+      "type": "text_block",
+      "text": "진아는 가족들과 함께 낚시를 하러 갔습니다. 진아와 동생은 334 마리의 물고기를 잡았고, 부모님은 진아와 동생이 잡은 물고기 수보다 2 배만큼 잡았습니다. 부모님이 잡은 물고기는 모두 몇 마리입니까?"
+    },
+    {
+      "id": "main_expression",
+      "type": "math_expression",
+      "latex": "334 * 2 = \\Box",
+      "value": {
+        "lhs": 334,
+        "operator": "*",
+        "rhs": 2,
+        "result": 668
+      }
+    },
+    {
+      "id": "answer_box",
+      "type": "answer_box",
+      "placeholder": "□"
+    },
+    {
+      "id": "legacy_text_1",
+      "type": "text_block",
+      "text": "3. 진아는 가족들과 함께 낚시를 하러 갔습니다. 진아와 동",
+      "bbox": {
+        "x": 19,
+        "y": 17,
+        "w": 760,
+        "h": 36
+      }
+    },
+    {
+      "id": "legacy_text_2",
+      "type": "text_block",
+      "text": "생은 334 마리의 물고기를 잡았고, 부모님은 진아와 동",
+      "bbox": {
+        "x": 56,
+        "y": 63,
+        "w": 709,
+        "h": 36
+      }
+    },
+    {
+      "id": "legacy_text_3",
+      "type": "text_block",
+      "text": "생이 잡은 물고기 수보다 2 배만큼 잡았습니다. 부모님",
+      "bbox": {
+        "x": 56,
+        "y": 109,
+        "w": 705,
+        "h": 36
+      }
+    },
+    {
+      "id": "legacy_text_4",
+      "type": "text_block",
+      "text": "이 잡은 물고기는 모두 몇 마리입니까?",
+      "bbox": {
+        "x": 56,
+        "y": 155,
+        "w": 515,
+        "h": 36
+      }
+    }
+  ],
+  "layout_template": {
+    "name": "worksheet_default",
+    "canvas": {
+      "width": 806,
+      "height": 322,
+      "background": "#FFFFFF"
+    },
+    "regions": {
+      "problem": [
+        0.05,
+        0.05,
+        0.9,
+        0.2
+      ],
+      "work": [
+        0.08,
+        0.22,
+        0.84,
+        0.58
+      ],
+      "answer": [
+        0.66,
+        0.82,
+        0.2,
+        0.12
+      ]
+    }
+  },
+  "solution_plan": {
+    "strategy": "explain_then_compute",
+    "step_policy": "all_steps_need_narration_and_caption",
+    "steps": [
+      {
+        "id": "step_01",
+        "phase": "intro",
+        "action": "display_problem",
+        "title": "문제 확인",
+        "pedagogical_purpose": "무엇을 구하는지 파악",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "problem_understood": true
+        },
+        "narration": {
+          "primary": "문제를 읽고 무엇을 구해야 하는지 확인해요.",
+          "alternate_short": "문제를 먼저 확인해요."
+        },
+        "caption": "무엇을 구할지 확인",
+        "emphasis": [
+          "goal"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "problem_text"
+          }
+        ],
+        "depends_on": [],
+        "teacher_note": "학생이 문제 요구를 먼저 말하게 유도"
+      },
+      {
+        "id": "step_02",
+        "phase": "modeling",
+        "action": "show_object",
+        "title": "식 제시",
+        "pedagogical_purpose": "문제 정보를 수식 형태로 시각화",
+        "target": "main_expression",
+        "inputs": {},
+        "outputs": {
+          "expression_shown": true
+        },
+        "narration": {
+          "primary": "식을 화면에 보여주고 자리값 순서로 계산할 준비를 합니다.",
+          "alternate_short": "식을 보여줄게요."
+        },
+        "caption": "식과 계산 순서 준비",
+        "emphasis": [
+          "expression"
+        ],
+        "animation": {
+          "name": "fade_in",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "main_expression"
+          }
+        ],
+        "depends_on": [
+          "step_01"
+        ],
+        "teacher_note": "연산 기호와 피연산자를 정확히 읽게 지도"
+      },
+      {
+        "id": "step_03",
+        "phase": "reasoning",
+        "action": "derive_intermediate_value",
+        "title": "관계식으로 변환",
+        "pedagogical_purpose": "문장 조건을 수식으로 번역",
+        "target": "main_expression",
+        "inputs": {
+          "relation": "형=동생+2"
+        },
+        "outputs": {
+          "relation_built": true
+        },
+        "narration": {
+          "primary": "형은 동생보다 2개 더 많으므로 형=동생+2로 나타낼 수 있어요.",
+          "alternate_short": "문장을 식으로 바꿔요."
+        },
+        "caption": "형=동생+차이",
+        "emphasis": [
+          "relation"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "relation_valid"
+          }
+        ],
+        "depends_on": [
+          "step_02"
+        ],
+        "teacher_note": "문장제 핵심은 관계식을 먼저 세우는 것"
+      },
+      {
+        "id": "step_04",
+        "phase": "compute",
+        "action": "write_equation",
+        "title": "중간값 계산",
+        "pedagogical_purpose": "형의 개수를 먼저 계산",
+        "target": "main_expression",
+        "inputs": {
+          "equation": "334+2"
+        },
+        "outputs": {
+          "older_count": 336
+        },
+        "narration": {
+          "primary": "먼저 형의 개수를 계산하면 334+2=336이에요.",
+          "alternate_short": "중간값을 구해요."
+        },
+        "caption": "334+2=336",
+        "emphasis": [
+          "intermediate"
+        ],
+        "animation": {
+          "name": "transform",
+          "duration": 1.2
+        },
+        "checks": [
+          {
+            "type": "numeric",
+            "key": "older_count"
+          }
+        ],
+        "depends_on": [
+          "step_03"
+        ],
+        "teacher_note": "중간 결과를 꼭 기록하게 지도"
+      },
+      {
+        "id": "step_05",
+        "phase": "compute",
+        "action": "derive_intermediate_value",
+        "title": "최종 합 계산",
+        "pedagogical_purpose": "중간값과 기존 값을 합쳐 최종 정답 도출",
+        "target": "main_expression",
+        "inputs": {
+          "equation": "334+336"
+        },
+        "outputs": {
+          "final_answer": 670
+        },
+        "narration": {
+          "primary": "이제 둘의 합은 334+336=670입니다.",
+          "alternate_short": "최종 합을 구해요."
+        },
+        "caption": "334+336=670",
+        "emphasis": [
+          "final_sum"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.2
+        },
+        "checks": [
+          {
+            "type": "numeric",
+            "key": "final_answer"
+          }
+        ],
+        "depends_on": [
+          "step_04"
+        ],
+        "teacher_note": "문장제는 1차 계산 후 2차 계산으로 이어짐"
+      },
+      {
+        "id": "step_06",
+        "phase": "answer",
+        "action": "fill_answer",
+        "title": "정답 기입",
+        "pedagogical_purpose": "최종 결과를 정답 칸에 연결",
+        "target": "answer_box",
+        "inputs": {
+          "answer": 670
+        },
+        "outputs": {
+          "answer_written": true
+        },
+        "narration": {
+          "primary": "계산 결과를 정답 칸에 쓰면 670입니다.",
+          "alternate_short": "정답 쓰기"
+        },
+        "caption": "정답: 670",
+        "emphasis": [
+          "answer"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 0.9
+        },
+        "checks": [
+          {
+            "type": "answer_not_null"
+          }
+        ],
+        "depends_on": [
+          "step_05"
+        ],
+        "teacher_note": "결과와 문제 요구가 일치하는지 확인"
+      },
+      {
+        "id": "step_07",
+        "phase": "close",
+        "action": "conclude",
+        "title": "마무리",
+        "pedagogical_purpose": "핵심 풀이 전략 재강조",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "lesson_complete": true
+        },
+        "narration": {
+          "primary": "자리값과 중간 계산을 차근차근 확인하면 실수를 줄일 수 있어요.",
+          "alternate_short": "풀이 마무리"
+        },
+        "caption": "핵심: 자리값 + 중간계산",
+        "emphasis": [
+          "summary"
+        ],
+        "animation": {
+          "name": "fade_out",
+          "duration": 0.8
+        },
+        "checks": [
+          {
+            "type": "flow_complete"
+          }
+        ],
+        "depends_on": [
+          "step_06"
+        ],
+        "teacher_note": "학생이 스스로 풀이 전략을 말해보게 하기"
+      }
+    ]
+  },
+  "animation_prefs": {
+    "theme": "clean_math",
+    "pace": "normal",
+    "caption_mode": "korean_subtitles",
+    "voice_mode": "tts_ready"
+  },
+  "validation": {
+    "render_safe": true,
+    "solve_safe": true,
+    "human_review_required": true,
+    "confidence": 0.95,
+    "warnings": [
+      "Exact font metrics and line wrapping are approximated from the image.",
+      "No explicit answer key is visible in the worksheet image.",
+      "문제 지문 인코딩 또는 OCR 품질이 낮을 수 있습니다."
+    ]
+  }
+}

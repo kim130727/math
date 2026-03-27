@@ -1,0 +1,330 @@
+{
+  "source_image": {
+    "filename": "input.png",
+    "width": 802,
+    "height": 330
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary mathematics worksheet",
+    "task_type": "find two unknown numbers and their sum"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#FFFFFF"
+    ],
+    "text_styles": [
+      {
+        "id": "t_title",
+        "font_size": 29,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_eq",
+        "font_size": 34,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_circle",
+        "font_size": 24,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "s_rect",
+        "stroke": "#000000",
+        "stroke_width": 2,
+        "fill": "#FFFFFF",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "s_circle",
+        "stroke": "#000000",
+        "stroke_width": 1,
+        "fill": "#FFFFFF",
+        "rx": 13,
+        "ry": 13,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 18,
+    "instruction": "두 수 ㉮, ㉯의 합을 구하시오.",
+    "expression": {
+      "lhs": 248,
+      "operator": "+",
+      "rhs": 421,
+      "result": 669
+    },
+    "answer": 669
+  },
+  "render": {
+    "canvas": {
+      "width": 802,
+      "height": 330,
+      "background": "#FFFFFF"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "18.",
+        "bbox": {
+          "x": 34,
+          "y": 22,
+          "w": 34,
+          "h": 30
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "text",
+        "text": "두 수",
+        "bbox": {
+          "x": 76,
+          "y": 22,
+          "w": 70,
+          "h": 30
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 205,
+          "y": 24,
+          "w": 24,
+          "h": 24
+        },
+        "style_id": "s_circle"
+      },
+      {
+        "type": "text",
+        "text": "가",
+        "bbox": {
+          "x": 205,
+          "y": 24,
+          "w": 24,
+          "h": 24
+        },
+        "style_id": "t_circle"
+      },
+      {
+        "type": "text",
+        "text": ",",
+        "bbox": {
+          "x": 235,
+          "y": 28,
+          "w": 10,
+          "h": 18
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 251,
+          "y": 24,
+          "w": 24,
+          "h": 24
+        },
+        "style_id": "s_circle"
+      },
+      {
+        "type": "text",
+        "text": "나",
+        "bbox": {
+          "x": 251,
+          "y": 24,
+          "w": 24,
+          "h": 24
+        },
+        "style_id": "t_circle"
+      },
+      {
+        "type": "text",
+        "text": "의 합을 구하시오.",
+        "bbox": {
+          "x": 282,
+          "y": 22,
+          "w": 213,
+          "h": 30
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 264,
+          "y": 90,
+          "w": 104,
+          "h": 56
+        },
+        "style_id": "s_rect"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 301,
+          "y": 98,
+          "w": 30,
+          "h": 30
+        },
+        "style_id": "s_circle"
+      },
+      {
+        "type": "text",
+        "text": "가",
+        "bbox": {
+          "x": 306,
+          "y": 100,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "t_circle"
+      },
+      {
+        "type": "text",
+        "text": "+",
+        "bbox": {
+          "x": 382,
+          "y": 93,
+          "w": 22,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "text",
+        "text": "268",
+        "bbox": {
+          "x": 404,
+          "y": 93,
+          "w": 56,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "text",
+        "text": "=",
+        "bbox": {
+          "x": 487,
+          "y": 93,
+          "w": 22,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "text",
+        "text": "516",
+        "bbox": {
+          "x": 516,
+          "y": 93,
+          "w": 56,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 264,
+          "y": 161,
+          "w": 104,
+          "h": 56
+        },
+        "style_id": "s_rect"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 301,
+          "y": 169,
+          "w": 30,
+          "h": 30
+        },
+        "style_id": "s_circle"
+      },
+      {
+        "type": "text",
+        "text": "나",
+        "bbox": {
+          "x": 306,
+          "y": 171,
+          "w": 20,
+          "h": 24
+        },
+        "style_id": "t_circle"
+      },
+      {
+        "type": "text",
+        "text": "-",
+        "bbox": {
+          "x": 382,
+          "y": 164,
+          "w": 18,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "text",
+        "text": "187",
+        "bbox": {
+          "x": 404,
+          "y": 164,
+          "w": 56,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "text",
+        "text": "=",
+        "bbox": {
+          "x": 487,
+          "y": 164,
+          "w": 22,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "text",
+        "text": "234",
+        "bbox": {
+          "x": 516,
+          "y": 164,
+          "w": 56,
+          "h": 36
+        },
+        "style_id": "t_eq"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "The circled labels in the prompt appear as 가 and 나 inside the circles; the semantic instruction follows the OCR reference notation ㉮, ㉯.",
+      "The final answer is computed from the two displayed equations: 가=248 and 나=421, so their sum is 669."
+    ],
+    "limitations": [
+      "Exact font metrics and circle placement are approximate.",
+      "No irregular polygons or arrows were present in this worksheet image."
+    ]
+  }
+}

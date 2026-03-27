@@ -1,0 +1,89 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 817,
+    "height": 87
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math_worksheet",
+    "task_type": "word_problem"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#ffffff",
+      "#666666"
+    ],
+    "text_styles": [
+      {
+        "id": "t_main",
+        "font_size": 33,
+        "font_family": "Malgun Gothic",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "t_small",
+        "font_size": 14,
+        "font_family": "Malgun Gothic",
+        "font_weight": 400,
+        "fill": "#666666"
+      }
+    ],
+    "shape_styles": []
+  },
+  "semantic": {
+    "problem_number": 7,
+    "instruction": "과수원에서 감을 땄습니다. 동생은 412개를 땄고, 형은 동생보다 133개를 더 많이 땄습니다. 동생과 형이 딴 감은 모두 몇 개입니까? 수모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 412,
+      "operator": "+",
+      "rhs": 545,
+      "result": 957
+    },
+    "answer": 957
+  },
+  "render": {
+    "canvas": {
+      "width": 817,
+      "height": 87,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "7.",
+        "bbox": {
+          "x": 25,
+          "y": 24,
+          "w": 24,
+          "h": 34
+        },
+        "style_id": "t_main"
+      },
+      {
+        "type": "text",
+        "text": "과수원에서 감을 땄습니다. 동생은 412개를 땄고, 형은",
+        "bbox": {
+          "x": 56,
+          "y": 24,
+          "w": 735,
+          "h": 34
+        },
+        "style_id": "t_main"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.63,
+    "assumptions": [
+      "제공된 이미지가 상단이 잘린 워크시트 일부라서, 보이는 첫 줄만 렌더에 반영했습니다.",
+      "참조 텍스트를 이용해 문제 문장을 복원했고, 실제 이미지에서 보이지 않는 뒷부분은 semantic에만 반영했습니다."
+    ],
+    "limitations": [
+      "수모형이나 추가 도형은 이 크롭 이미지에서 확인되지 않았습니다.",
+      "헤더/페이지 정보는 판독이 불확실하여 렌더에서 생략했습니다."
+    ]
+  }
+}

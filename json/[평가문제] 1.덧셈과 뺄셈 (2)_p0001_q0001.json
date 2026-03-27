@@ -1,0 +1,121 @@
+{
+  "source_image": {
+    "filename": "input.png",
+    "width": 809,
+    "height": 323
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary mathematics worksheet",
+    "task_type": "word problem"
+  },
+  "styles": {
+    "palette": [
+      "#000000",
+      "#ffffff"
+    ],
+    "text_styles": [
+      {
+        "id": "num",
+        "font_size": 26,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      },
+      {
+        "id": "body",
+        "font_size": 31,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#000000"
+      }
+    ],
+    "shape_styles": []
+  },
+  "semantic": {
+    "problem_number": 1,
+    "instruction": "슬기는 아침마다 달리기를 합니다. 오늘 아침에는 247m를 달렸습니다. 내일부터는 전날보다 179m씩 더 달리려고 합니다. 계속 이렇게 달리다면 3일 후에는 몇 m를 달려야 하는지 구하시오.",
+    "expression": {
+      "lhs": 247,
+      "operator": "+",
+      "rhs": 537,
+      "result": 784
+    },
+    "answer": 784
+  },
+  "render": {
+    "canvas": {
+      "width": 809,
+      "height": 323,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "1.",
+        "bbox": {
+          "x": 20,
+          "y": 19,
+          "w": 28,
+          "h": 30
+        },
+        "style_id": "num"
+      },
+      {
+        "type": "text",
+        "text": "슬기는 아침마다 달리기를 합니다. 오늘 아침에는",
+        "bbox": {
+          "x": 73,
+          "y": 22,
+          "w": 670,
+          "h": 36
+        },
+        "style_id": "body"
+      },
+      {
+        "type": "text",
+        "text": "247m 를 달렸습니다. 내일부터는 전날보다 179m씩",
+        "bbox": {
+          "x": 54,
+          "y": 61,
+          "w": 700,
+          "h": 37
+        },
+        "style_id": "body"
+      },
+      {
+        "type": "text",
+        "text": "더 달리려고 합니다. 계속 이렇게 달리다면 3일 후에는",
+        "bbox": {
+          "x": 55,
+          "y": 103,
+          "w": 675,
+          "h": 37
+        },
+        "style_id": "body"
+      },
+      {
+        "type": "text",
+        "text": "몇 m 를 달려야 하는지 구하시오.",
+        "bbox": {
+          "x": 55,
+          "y": 151,
+          "w": 430,
+          "h": 37
+        },
+        "style_id": "body"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.93,
+    "assumptions": [
+      "문제의 최종 해석을 '오늘 247m에서 매일 179m씩 3번 더 늘어나는 거리'로 보아 784m로 계산함.",
+      "이미지 기반으로 줄바꿈과 글자 간격을 근사해 배치함."
+    ],
+    "limitations": [
+      "원본 PDF의 정확한 서체와 자간은 재현하지 못함.",
+      "일부 OCR 추정 텍스트와 실제 이미지의 공백 차이는 있을 수 있음."
+    ]
+  }
+}

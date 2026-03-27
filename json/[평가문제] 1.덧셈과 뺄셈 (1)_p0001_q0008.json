@@ -1,0 +1,252 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 801,
+    "height": 459
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary mathematics worksheet",
+    "task_type": "addition"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#111111",
+      "#a8a8a8",
+      "#58b8ff",
+      "#3d9cff"
+    ],
+    "text_styles": [
+      {
+        "id": "t_title",
+        "font_size": 29,
+        "font_family": "Malgun Gothic",
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "t_eq",
+        "font_size": 33,
+        "font_family": "Times New Roman",
+        "font_weight": 400,
+        "fill": "#111111"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "container",
+        "stroke": "#a8a8a8",
+        "stroke_width": 2,
+        "fill": "#ffffff",
+        "rx": 12,
+        "ry": 12,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "divider",
+        "stroke": "#a8a8a8",
+        "stroke_width": 2,
+        "fill": "none",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "answer_box",
+        "stroke": "#777777",
+        "stroke_width": 1,
+        "fill": "#ffffff",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "block_blue",
+        "stroke": "#3d9cff",
+        "stroke_width": 1,
+        "fill": "#58b8ff",
+        "rx": 0,
+        "ry": 0,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 8,
+    "instruction": "수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+    "expression": {
+      "lhs": 573,
+      "operator": "+",
+      "rhs": 244,
+      "result": 817
+    },
+    "answer": 817
+  },
+  "render": {
+    "canvas": {
+      "width": 801,
+      "height": 459,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "8. 수 모형을 보고 □ 안에 알맞은 수를 써넣으시오.",
+        "bbox": {
+          "x": 28,
+          "y": 17,
+          "w": 633,
+          "h": 37
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 75,
+          "y": 92,
+          "w": 649,
+          "h": 171
+        },
+        "style_id": "container"
+      },
+      {
+        "type": "line",
+        "x1": 463,
+        "y1": 92,
+        "x2": 463,
+        "y2": 263,
+        "style_id": "divider"
+      },
+      {
+        "type": "base10_group",
+        "label": "573",
+        "bbox": {
+          "x": 90,
+          "y": 116,
+          "w": 362,
+          "h": 128
+        },
+        "style_id": "block_blue",
+        "components": {
+          "hundreds": {
+            "count": 5,
+            "front_face_bbox": {
+              "x": 93,
+              "y": 160,
+              "w": 75,
+              "h": 82
+            },
+            "depth_offset": {
+              "dx": 12,
+              "dy": -12
+            }
+          },
+          "tens": {
+            "count": 7,
+            "item_bbox": {
+              "x": 263,
+              "y": 140,
+              "w": 10,
+              "h": 78
+            },
+            "gap": 16
+          },
+          "ones": {
+            "count": 3,
+            "item_bbox": {
+              "x": 428,
+              "y": 173,
+              "w": 10,
+              "h": 10
+            },
+            "gap": 16
+          }
+        }
+      },
+      {
+        "type": "base10_group",
+        "label": "244",
+        "bbox": {
+          "x": 476,
+          "y": 116,
+          "w": 247,
+          "h": 128
+        },
+        "style_id": "block_blue",
+        "components": {
+          "hundreds": {
+            "count": 2,
+            "front_face_bbox": {
+              "x": 482,
+              "y": 133,
+              "w": 74,
+              "h": 89
+            },
+            "depth_offset": {
+              "dx": 12,
+              "dy": -12
+            }
+          },
+          "tens": {
+            "count": 4,
+            "item_bbox": {
+              "x": 602,
+              "y": 140,
+              "w": 10,
+              "h": 78
+            },
+            "gap": 18
+          },
+          "ones": {
+            "count": 4,
+            "item_bbox": {
+              "x": 702,
+              "y": 154,
+              "w": 10,
+              "h": 10
+            },
+            "gap": 10
+          }
+        }
+      },
+      {
+        "type": "text",
+        "text": "573 + 244 =",
+        "bbox": {
+          "x": 266,
+          "y": 315,
+          "w": 167,
+          "h": 42
+        },
+        "style_id": "t_eq"
+      },
+      {
+        "type": "rect",
+        "bbox": {
+          "x": 451,
+          "y": 294,
+          "w": 104,
+          "h": 62
+        },
+        "style_id": "answer_box"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.95,
+    "assumptions": [
+      "The worksheet shows the addition problem 573 + 244 with the answer blank intended to be filled in.",
+      "Base-10 block counts were inferred from the visible hundreds rods, tens rods, and ones cubes in each panel."
+    ],
+    "limitations": [
+      "Exact font matching and some bounding boxes are approximate due to image resolution.",
+      "The internal cube grids of the base-10 blocks are represented abstractly rather than as individually drawn cubes."
+    ]
+  }
+}

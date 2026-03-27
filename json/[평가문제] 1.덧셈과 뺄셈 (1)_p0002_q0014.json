@@ -1,0 +1,270 @@
+{
+  "source_image": {
+    "filename": "worksheet.png",
+    "width": 818,
+    "height": 752
+  },
+  "document": {
+    "language": "ko",
+    "domain": "elementary_math_worksheet",
+    "task_type": "base-10 blocks addition word problem"
+  },
+  "styles": {
+    "palette": [
+      "#ffffff",
+      "#111111",
+      "#7f7f7f",
+      "#9a9a9a",
+      "#b7d4ff",
+      "#6ea3ff",
+      "#2f6fff",
+      "#d9e8ff",
+      "#f4f4f4",
+      "#fbe7e7",
+      "#a57a3c",
+      "#5b3c12"
+    ],
+    "text_styles": [
+      {
+        "id": "t_num",
+        "font_size": 27,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "t_title",
+        "font_size": 31,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "t_bubble",
+        "font_size": 29,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      },
+      {
+        "id": "t_name",
+        "font_size": 29,
+        "font_family": "serif",
+        "font_weight": 400,
+        "fill": "#111111"
+      }
+    ],
+    "shape_styles": [
+      {
+        "id": "outline",
+        "stroke": "#8c8c8c",
+        "stroke_width": 2,
+        "fill": "#ffffff",
+        "rx": 16,
+        "ry": 16,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "bubble",
+        "stroke": "#8c8c8c",
+        "stroke_width": 1.5,
+        "fill": "#ffffff",
+        "rx": 16,
+        "ry": 16,
+        "cell_grid_stroke": null,
+        "cell_grid_stroke_width": null
+      },
+      {
+        "id": "base10",
+        "stroke": "#2f6fff",
+        "stroke_width": 1,
+        "fill": "none",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": "#2f6fff",
+        "cell_grid_stroke_width": 0.8
+      },
+      {
+        "id": "base10_face",
+        "stroke": "#2f6fff",
+        "stroke_width": 1,
+        "fill": "#b9d8ff",
+        "rx": null,
+        "ry": null,
+        "cell_grid_stroke": "#2f6fff",
+        "cell_grid_stroke_width": 0.8
+      }
+    ]
+  },
+  "semantic": {
+    "problem_number": 14,
+    "instruction": "나래가 말하는 수를 구하시오.",
+    "expression": {
+      "lhs": 524,
+      "operator": "+",
+      "rhs": 139,
+      "result": 663
+    },
+    "answer": 663
+  },
+  "render": {
+    "canvas": {
+      "width": 818,
+      "height": 752,
+      "background": "#ffffff"
+    },
+    "elements": [
+      {
+        "type": "text",
+        "text": "14.",
+        "bbox": {
+          "x": 25,
+          "y": 20,
+          "w": 33,
+          "h": 34
+        },
+        "style_id": "t_num"
+      },
+      {
+        "type": "text",
+        "text": "나래가 말하는 수를 구하시오.",
+        "bbox": {
+          "x": 64,
+          "y": 18,
+          "w": 351,
+          "h": 40
+        },
+        "style_id": "t_title"
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 145,
+          "y": 91,
+          "w": 442,
+          "h": 320
+        },
+        "style_id": "outline"
+      },
+      {
+        "type": "base10_group",
+        "label": "524",
+        "bbox": {
+          "x": 165,
+          "y": 112,
+          "w": 396,
+          "h": 277
+        },
+        "style_id": "base10",
+        "components": {
+          "hundreds": {
+            "count": 5,
+            "front_face_bbox": {
+              "x": 167,
+              "y": 114,
+              "w": 124,
+              "h": 124
+            },
+            "depth_offset": {
+              "dx": 10,
+              "dy": -6
+            }
+          },
+          "tens": {
+            "count": 2,
+            "item_bbox": {
+              "x": 465,
+              "y": 264,
+              "w": 16,
+              "h": 123
+            },
+            "gap": 10
+          },
+          "ones": {
+            "count": 4,
+            "item_bbox": {
+              "x": 531,
+              "y": 292,
+              "w": 17,
+              "h": 17
+            },
+            "gap": 13
+          }
+        }
+      },
+      {
+        "type": "rounded_rect",
+        "bbox": {
+          "x": 96,
+          "y": 458,
+          "w": 438,
+          "h": 139
+        },
+        "style_id": "bubble"
+      },
+      {
+        "type": "polygon",
+        "points": [
+          {
+            "x": 533,
+            "y": 530
+          },
+          {
+            "x": 579,
+            "y": 546
+          },
+          {
+            "x": 533,
+            "y": 562
+          }
+        ],
+        "style_id": "bubble"
+      },
+      {
+        "type": "text",
+        "text": "수 모형이 나타내는 수보다",
+        "bbox": {
+          "x": 135,
+          "y": 485,
+          "w": 277,
+          "h": 38
+        },
+        "style_id": "t_bubble"
+      },
+      {
+        "type": "text",
+        "text": "139 큰 수를 구해 봐.",
+        "bbox": {
+          "x": 160,
+          "y": 524,
+          "w": 246,
+          "h": 40
+        },
+        "style_id": "t_bubble"
+      },
+      {
+        "type": "text",
+        "text": "나래",
+        "bbox": {
+          "x": 611,
+          "y": 605,
+          "w": 56,
+          "h": 38
+        },
+        "style_id": "t_name"
+      }
+    ]
+  },
+  "quality_notes": {
+    "confidence": 0.92,
+    "assumptions": [
+      "수 모형은 5백, 2십, 4일의 자리로 보이며 값은 524로 해석했다.",
+      "말풍선의 끝부분은 삼각형 폴리곤으로 근사했다."
+    ],
+    "limitations": [
+      "캐릭터 얼굴 일러스트는 현재 도형 스키마로 정밀 재현하지 않았다.",
+      "블록의 3D 세부 셀 패턴은 base10_group으로 요약 표현했다."
+    ]
+  }
+}

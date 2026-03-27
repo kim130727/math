@@ -1,0 +1,518 @@
+{
+  "schema_version": "1.0",
+  "problem_id": "[평가문제] 1.덧셈과 뺄셈 (1)_p0001_q0011",
+  "input_meta": {
+    "source_filename": "worksheet.png",
+    "source_size": {
+      "width": 802,
+      "height": 432
+    },
+    "language": "ko",
+    "raw_problem_text": "4장의 숫자 카드 중에서 3장을 뽑아 한 번씩만 사용하여 세 자리 수를 만들려고 합니다. 만들 수 있는 가장 큰 수와 가장 작은 수의 합을 구하시오.",
+    "ocr_text": "4장의 숫자 카드 중에서 3장을 뽑아 한 번씩만 사용하여 세 자리 수를 만들려고 합니다. 만들 수 있는 가장 큰 수와 가장 작은 수의 합을 구하시오.",
+    "legacy_keys": [
+      "source_image",
+      "document",
+      "styles",
+      "semantic",
+      "render",
+      "quality_notes"
+    ]
+  },
+  "pedagogy": {
+    "grade_band": "elementary",
+    "goal": "정답뿐 아니라 풀이 설명까지 생성",
+    "explanation_style": "teacher_like_step_by_step",
+    "must_include": [
+      "narration",
+      "caption",
+      "derived_facts",
+      "checks"
+    ]
+  },
+  "semantic": {
+    "problem_type": "word_problem",
+    "expressions": [
+      {
+        "lhs": 974,
+        "operator": "+",
+        "rhs": 347,
+        "result": 1321
+      }
+    ],
+    "answer": 1321,
+    "givens": [
+      {
+        "lhs": 974
+      },
+      {
+        "rhs": 347
+      }
+    ],
+    "unknowns": [
+      "result"
+    ],
+    "constraints": [
+      "elementary_math",
+      "explanation_required"
+    ],
+    "concept_tags": [
+      "word_problem",
+      "place_value",
+      "animation_script"
+    ]
+  },
+  "derived_facts": [
+    {
+      "id": "fact_relation_equation",
+      "kind": "relation_to_equation",
+      "value": "형=동생+3",
+      "explanation": "문장 조건을 식으로 변환"
+    },
+    {
+      "id": "fact_intermediate_1",
+      "kind": "intermediate_value",
+      "value": 7,
+      "equation": "4+3=7",
+      "explanation": "형이 주운 개수"
+    },
+    {
+      "id": "fact_final_compose",
+      "kind": "final_composition",
+      "value": 11,
+      "equation": "4+7=11",
+      "explanation": "둘이 주운 총개수"
+    }
+  ],
+  "scene_objects": [
+    {
+      "id": "problem_text",
+      "type": "text_block",
+      "text": "4장의 숫자 카드 중에서 3장을 뽑아 한 번씩만 사용하여 세 자리 수를 만들려고 합니다. 만들 수 있는 가장 큰 수와 가장 작은 수의 합을 구하시오."
+    },
+    {
+      "id": "main_expression",
+      "type": "math_expression",
+      "latex": "974 + 347 = \\Box",
+      "value": {
+        "lhs": 974,
+        "operator": "+",
+        "rhs": 347,
+        "result": 1321
+      }
+    },
+    {
+      "id": "answer_box",
+      "type": "answer_box",
+      "placeholder": "□"
+    },
+    {
+      "id": "legacy_text_1",
+      "type": "text_block",
+      "text": "11. 4 장의 숫자 카드 중에서 3 장을 뽑아 한 번씩만 사용",
+      "bbox": {
+        "x": 29,
+        "y": 25,
+        "w": 724,
+        "h": 36
+      }
+    },
+    {
+      "id": "legacy_text_2",
+      "type": "text_block",
+      "text": "하여 세 자리 수를 만들려고 합니다. 만들 수 있는 가장",
+      "bbox": {
+        "x": 71,
+        "y": 64,
+        "w": 655,
+        "h": 36
+      }
+    },
+    {
+      "id": "legacy_text_3",
+      "type": "text_block",
+      "text": "큰 수와 가장 작은 수의 합을 구하시오.",
+      "bbox": {
+        "x": 62,
+        "y": 104,
+        "w": 520,
+        "h": 36
+      }
+    },
+    {
+      "id": "legacy_rounded_rect_4",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 247,
+        "y": 188,
+        "w": 61,
+        "h": 76
+      }
+    },
+    {
+      "id": "legacy_rounded_rect_5",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 334,
+        "y": 188,
+        "w": 61,
+        "h": 76
+      }
+    },
+    {
+      "id": "legacy_rounded_rect_6",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 420,
+        "y": 188,
+        "w": 61,
+        "h": 76
+      }
+    },
+    {
+      "id": "legacy_rounded_rect_7",
+      "type": "highlight_box",
+      "bbox": {
+        "x": 506,
+        "y": 188,
+        "w": 61,
+        "h": 76
+      }
+    },
+    {
+      "id": "legacy_text_8",
+      "type": "text_block",
+      "text": "3",
+      "bbox": {
+        "x": 260,
+        "y": 191,
+        "w": 33,
+        "h": 54
+      }
+    },
+    {
+      "id": "legacy_text_9",
+      "type": "text_block",
+      "text": "9",
+      "bbox": {
+        "x": 347,
+        "y": 191,
+        "w": 33,
+        "h": 54
+      }
+    },
+    {
+      "id": "legacy_text_10",
+      "type": "text_block",
+      "text": "7",
+      "bbox": {
+        "x": 433,
+        "y": 191,
+        "w": 33,
+        "h": 54
+      }
+    },
+    {
+      "id": "legacy_text_11",
+      "type": "text_block",
+      "text": "4",
+      "bbox": {
+        "x": 520,
+        "y": 191,
+        "w": 33,
+        "h": 54
+      }
+    }
+  ],
+  "layout_template": {
+    "name": "worksheet_default",
+    "canvas": {
+      "width": 802,
+      "height": 432,
+      "background": "#ffffff"
+    },
+    "regions": {
+      "problem": [
+        0.05,
+        0.05,
+        0.9,
+        0.2
+      ],
+      "work": [
+        0.08,
+        0.22,
+        0.84,
+        0.58
+      ],
+      "answer": [
+        0.66,
+        0.82,
+        0.2,
+        0.12
+      ]
+    }
+  },
+  "solution_plan": {
+    "strategy": "explain_then_compute",
+    "step_policy": "all_steps_need_narration_and_caption",
+    "steps": [
+      {
+        "id": "step_01",
+        "phase": "intro",
+        "action": "display_problem",
+        "title": "문제 확인",
+        "pedagogical_purpose": "무엇을 구하는지 파악",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "problem_understood": true
+        },
+        "narration": {
+          "primary": "문제를 읽고 무엇을 구해야 하는지 확인해요.",
+          "alternate_short": "문제를 먼저 확인해요."
+        },
+        "caption": "무엇을 구할지 확인",
+        "emphasis": [
+          "goal"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "problem_text"
+          }
+        ],
+        "depends_on": [],
+        "teacher_note": "학생이 문제 요구를 먼저 말하게 유도"
+      },
+      {
+        "id": "step_02",
+        "phase": "modeling",
+        "action": "show_object",
+        "title": "식 제시",
+        "pedagogical_purpose": "문제 정보를 수식 형태로 시각화",
+        "target": "main_expression",
+        "inputs": {},
+        "outputs": {
+          "expression_shown": true
+        },
+        "narration": {
+          "primary": "식을 화면에 보여주고 자리값 순서로 계산할 준비를 합니다.",
+          "alternate_short": "식을 보여줄게요."
+        },
+        "caption": "식과 계산 순서 준비",
+        "emphasis": [
+          "expression"
+        ],
+        "animation": {
+          "name": "fade_in",
+          "duration": 1.0
+        },
+        "checks": [
+          {
+            "type": "target_exists",
+            "target": "main_expression"
+          }
+        ],
+        "depends_on": [
+          "step_01"
+        ],
+        "teacher_note": "연산 기호와 피연산자를 정확히 읽게 지도"
+      },
+      {
+        "id": "step_03",
+        "phase": "reasoning",
+        "action": "derive_intermediate_value",
+        "title": "관계식으로 변환",
+        "pedagogical_purpose": "문장 조건을 수식으로 번역",
+        "target": "main_expression",
+        "inputs": {
+          "relation": "형=동생+3"
+        },
+        "outputs": {
+          "relation_built": true
+        },
+        "narration": {
+          "primary": "형은 동생보다 3개 더 많으므로 형=동생+3로 나타낼 수 있어요.",
+          "alternate_short": "문장을 식으로 바꿔요."
+        },
+        "caption": "형=동생+차이",
+        "emphasis": [
+          "relation"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.3
+        },
+        "checks": [
+          {
+            "type": "relation_valid"
+          }
+        ],
+        "depends_on": [
+          "step_02"
+        ],
+        "teacher_note": "문장제 핵심은 관계식을 먼저 세우는 것"
+      },
+      {
+        "id": "step_04",
+        "phase": "compute",
+        "action": "write_equation",
+        "title": "중간값 계산",
+        "pedagogical_purpose": "형의 개수를 먼저 계산",
+        "target": "main_expression",
+        "inputs": {
+          "equation": "4+3"
+        },
+        "outputs": {
+          "older_count": 7
+        },
+        "narration": {
+          "primary": "먼저 형의 개수를 계산하면 4+3=7이에요.",
+          "alternate_short": "중간값을 구해요."
+        },
+        "caption": "4+3=7",
+        "emphasis": [
+          "intermediate"
+        ],
+        "animation": {
+          "name": "transform",
+          "duration": 1.2
+        },
+        "checks": [
+          {
+            "type": "numeric",
+            "key": "older_count"
+          }
+        ],
+        "depends_on": [
+          "step_03"
+        ],
+        "teacher_note": "중간 결과를 꼭 기록하게 지도"
+      },
+      {
+        "id": "step_05",
+        "phase": "compute",
+        "action": "derive_intermediate_value",
+        "title": "최종 합 계산",
+        "pedagogical_purpose": "중간값과 기존 값을 합쳐 최종 정답 도출",
+        "target": "main_expression",
+        "inputs": {
+          "equation": "4+7"
+        },
+        "outputs": {
+          "final_answer": 11
+        },
+        "narration": {
+          "primary": "이제 둘의 합은 4+7=11입니다.",
+          "alternate_short": "최종 합을 구해요."
+        },
+        "caption": "4+7=11",
+        "emphasis": [
+          "final_sum"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 1.2
+        },
+        "checks": [
+          {
+            "type": "numeric",
+            "key": "final_answer"
+          }
+        ],
+        "depends_on": [
+          "step_04"
+        ],
+        "teacher_note": "문장제는 1차 계산 후 2차 계산으로 이어짐"
+      },
+      {
+        "id": "step_06",
+        "phase": "answer",
+        "action": "fill_answer",
+        "title": "정답 기입",
+        "pedagogical_purpose": "최종 결과를 정답 칸에 연결",
+        "target": "answer_box",
+        "inputs": {
+          "answer": 11
+        },
+        "outputs": {
+          "answer_written": true
+        },
+        "narration": {
+          "primary": "계산 결과를 정답 칸에 쓰면 11입니다.",
+          "alternate_short": "정답 쓰기"
+        },
+        "caption": "정답: 11",
+        "emphasis": [
+          "answer"
+        ],
+        "animation": {
+          "name": "write",
+          "duration": 0.9
+        },
+        "checks": [
+          {
+            "type": "answer_not_null"
+          }
+        ],
+        "depends_on": [
+          "step_05"
+        ],
+        "teacher_note": "결과와 문제 요구가 일치하는지 확인"
+      },
+      {
+        "id": "step_07",
+        "phase": "close",
+        "action": "conclude",
+        "title": "마무리",
+        "pedagogical_purpose": "핵심 풀이 전략 재강조",
+        "target": "problem_text",
+        "inputs": {},
+        "outputs": {
+          "lesson_complete": true
+        },
+        "narration": {
+          "primary": "자리값과 중간 계산을 차근차근 확인하면 실수를 줄일 수 있어요.",
+          "alternate_short": "풀이 마무리"
+        },
+        "caption": "핵심: 자리값 + 중간계산",
+        "emphasis": [
+          "summary"
+        ],
+        "animation": {
+          "name": "fade_out",
+          "duration": 0.8
+        },
+        "checks": [
+          {
+            "type": "flow_complete"
+          }
+        ],
+        "depends_on": [
+          "step_06"
+        ],
+        "teacher_note": "학생이 스스로 풀이 전략을 말해보게 하기"
+      }
+    ]
+  },
+  "animation_prefs": {
+    "theme": "clean_math",
+    "pace": "normal",
+    "caption_mode": "korean_subtitles",
+    "voice_mode": "tts_ready"
+  },
+  "validation": {
+    "render_safe": true,
+    "solve_safe": true,
+    "human_review_required": false,
+    "confidence": 0.92,
+    "warnings": [
+      "원본 글꼴을 정확히 식별할 수 없어 폰트는 근사치입니다.",
+      "각 요소의 bbox는 시각적 판독 기반의 근사값입니다."
+    ]
+  }
+}
